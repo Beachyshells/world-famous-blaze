@@ -15,7 +15,7 @@ export function Hero() {
 
                 <p className="text-lg md:text-xl text-text-muted max-w-2xl leading-relaxed mb-12">
                     Carefully curated cannabis from trusted growers. Locally owned,
-                    deeply rooted, and built for the people who actually live here.
+                    deeply rooted, and built for the community.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4">
