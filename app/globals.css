@@ -1,26 +1,83 @@
 @import "tailwindcss";
 
+/* ============================================
+   LIGHT MODE (default)
+   ============================================ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Theme-aware colors */
+  --color-bg: #faf7f0;           /* warm cream background */
+  --color-surface: #ffffff;       /* cards, modals */
+  --color-text: #1a2e1f;          /* dark green-black body text */
+  --color-text-muted: #5c6e60;    /* softer body text */
+  --color-border: #e0dccf;        /* subtle dividers */
+
+  /* Brand colors (consistent across themes) */
+  --color-primary: #7a8b6c;       /* sage cannabis green */
+  --color-accent: #b8956a;        /* warm dusty gold */
+  --color-danger: #b85c5c;        /* warm red for warnings */
+  --color-success: #6a8b5a;       /* deeper leaf green */
+
+  /* Typography */
+  --font-heading: 'Georgia', 'Times New Roman', serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'Geist Mono', monospace;
 }
 
+/* ============================================
+   DARK MODE (activated by .dark on <html>)
+   ============================================ */
+.dark {
+  --color-bg: #0f1411;           /* deep charcoal-green */
+  --color-surface: #1a2018;       /* slightly lifted */
+  --color-text: #f0ebd8;          /* warm cream text */
+  --color-text-muted: #a8a594;    /* muted cream */
+  --color-border: #2a3128;        /* dim divider */
+
+  /* Brand colors stay the same — they're the brand */
+  /* But we can adjust slightly for dark mode contrast */
+  --color-primary: #9aab8c;       /* brighter sage for dark bg */
+  --color-accent: #d4ab7a;        /* brighter gold */
+  --color-danger: #d47c7c;        /* lifted red */
+  --color-success: #8aab7a;       /* lifted green */
+}
+
+/* ============================================
+   TELL TAILWIND ABOUT OUR TOKENS
+   ============================================ */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Backgrounds */
+  --color-bg: var(--color-bg);
+  --color-surface: var(--color-surface);
+
+  /* Text */
+  --color-text: var(--color-text);
+  --color-text-muted: var(--color-text-muted);
+
+  /* Borders */
+  --color-border: var(--color-border);
+
+  /* Brand */
+  --color-primary: var(--color-primary);
+  --color-accent: var(--color-accent);
+  --color-danger: var(--color-danger);
+  --color-success: var(--color-success);
+
+  /* Fonts */
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* ============================================
+   BASE STYLES
+   ============================================ */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
 }
