@@ -24,14 +24,14 @@ export function VisitPreview() {
                         <div className="space-y-4 mb-8">
                             <div className="border-l-2 border-primary pl-4">
                                 <p className="text-xs tracking-[0.3em] uppercase text-text-muted mb-1">Hours</p>
-                                <p className="text-text">Mon–Sat: 10am–9pm</p>
-                                <p className="text-text">Sun: 11am–7pm</p>
+                                <p className="text-text">Mon–Sun: open 24 hours</p>
+
                             </div>
 
                             <div className="border-l-2 border-primary pl-4">
                                 <p className="text-xs tracking-[0.3em] uppercase text-text-muted mb-1">Location</p>
-                                <p className="text-text">123 Placeholder Street</p>
-                                <p className="text-text">City, State 00000</p>
+                                <p className="text-text">2797 NY-95</p>
+                                <p className="text-text">Bombay, NY 12914</p>
                             </div>
                         </div>
 
@@ -45,7 +45,7 @@ export function VisitPreview() {
                     </div>
 
                     {/* Right: Map placeholder */}
-                    <div className="aspect-[4/3] bg-surface border border-border flex items-center justify-center">
+                    <div className="aspect-4/3 bg-surface border border-border flex items-center justify-center">
                         <div className="text-center">
                             <p className="text-xs tracking-[0.3em] uppercase text-text-muted mb-2">
                                 Map Goes Here
