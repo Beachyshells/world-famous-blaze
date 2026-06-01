@@ -1,9 +1,7 @@
-import { ThemeToggle } from '../components/ThemeToggle'
 
 export default function StyleGuide() {
     return (
         <main className="min-h-screen bg-bg text-text p-8 md:p-16">
-            <ThemeToggle />
             <div className="max-w-5xl mx-auto space-y-16">
 
                 {/* HEADER */}
