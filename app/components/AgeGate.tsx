@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from 'react'
 
+const VERIFICATION_DAYS = 30
+
 type GateState = 'checking' | 'show' | 'verified' | 'rejected'
 
 export function AgeGate() {
@@ -13,12 +15,20 @@ export function AgeGate() {
     const [error, setError] = useState('')
 
     useEffect(() => {
-        const verified = localStorage.getItem('age-verified')
-        if (verified === 'true') {
-            setState('verified')
-        } else {
-            setState('show')
+        const verifiedAt = localStorage.getItem('age-verified-at')
+
+        if (verifiedAt) {
+            const verifiedDate = new Date(verifiedAt)
+            const now = new Date()
+            const daysSince = (now.getTime() - verifiedDate.getTime()) / (1000 * 60 * 60 * 24)
+
+            if (daysSince < VERIFICATION_DAYS) {
+                setState('verified')
+                return
+            }
         }
+
+        setState('show')
     }, [])
 
     const handleSubmit = (e: React.FormEvent) => {
@@ -51,7 +61,7 @@ export function AgeGate() {
         }
 
         if (age >= 21) {
-            localStorage.setItem('age-verified', 'true')
+            localStorage.setItem('age-verified-at', new Date().toISOString())
             setState('verified')
         } else {
             setState('rejected')
