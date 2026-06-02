@@ -13,7 +13,8 @@ const placeholderProducts = [
         name: 'House Pre-Rolls',
         category: 'Pre-Rolls',
         description: 'Cones rolled fresh weekly by our team.',
-        bgImage: '/images/cannabis-pre-rolls.jpg', align: 'right'
+        bgImage: '/images/cannabis-pre-rolls.jpg',
+        align: 'right'
     },
     {
         name: 'Artisan Edibles',
@@ -26,7 +27,7 @@ const placeholderProducts = [
         name: 'Vape Cartridges',
         category: 'Concentrates',
         description: 'Pure, lab-tested full-spectrum distillates.',
-        bgImage: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1200&q=80',
+        bgImage: '/images/cannabis-vape-cartridges.jpg',
         align: 'right'
     },
 ]
