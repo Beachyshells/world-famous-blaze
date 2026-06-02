@@ -6,7 +6,7 @@ const placeholderProducts = [
         name: 'Premium Flower',
         category: 'Flower',
         description: 'Hand-trimmed, hand-cured small batches.',
-        bgImage: 'https://images.unsplash.com/photo-1603909223429-69bb7101f420?auto=format&fit=crop&w=1200&q=80',
+        bgImage: '/images/cannabis-flower.jpg',
         align: 'left'
     },
     {
@@ -20,7 +20,7 @@ const placeholderProducts = [
         name: 'Artisan Edibles',
         category: 'Edibles',
         description: 'Locally made, precisely dosed provisions.',
-        bgImage: 'https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=1200&q=80',
+        bgImage: '/images/cannabis-edibles.jpg',
         align: 'left'
     },
     {
@@ -55,7 +55,7 @@ export function FeaturedPreview() {
                     {placeholderProducts.map((product) => (
                         <div
                             key={product.name}
-                            className="relative w-full h-70 rounded-3xl overflow-hidden group cursor-pointer border border-border/40 shadow-xs hover:shadow-xl transition-all duration-500"
+                            className="relative w-full h-70 rounded-3xl overflow-hidden group cursor-pointer border border-border shadow-xs hover:shadow-xl transition-all duration-500"
                         >
                             {/* Colorful Background Image Layer */}
                             <div
