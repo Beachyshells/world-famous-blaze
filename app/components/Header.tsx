@@ -7,6 +7,7 @@ import { ThemeToggle } from './ThemeToggle'
 const navLinks = [
     { href: '/', label: 'Home' },
     { href: '/menu', label: 'Menu' },
+    { href: '/merchandise', label: 'Merch' },
     { href: '/visit', label: 'Visit' },
     { href: '/about', label: 'About' },
     { href: '/learn', label: 'Learn' },
@@ -17,8 +18,8 @@ export function Header() {
     const [menuOpen, setMenuOpen] = useState(false)
 
     return (
-        <header className="sticky top-0 z-40 bg-surface/95 backdrop-blur-sm border-b border-border">
-            <div className="max-w-7xl mx-auto px-6 md:px-8 py-4 flex items-center justify-between">
+        <header className="sticky w-full top-0 z-40 bg-surface/95 backdrop-blur-sm border-b border-border">
+            <div className="max-w-9xl mx-auto px-6 md:px-8 py-4 flex items-center justify-between">
 
                 {/* Logo / Site name */}
                 <Link

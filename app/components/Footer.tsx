@@ -35,7 +35,7 @@ export function Footer() {
         <footer className="bg-surface border-t border-border mt-auto">
 
             {/* MAIN FOOTER CONTENT */}
-            <div className="max-w-7xl mx-auto px-6 md:px-8 py-12 grid grid-cols-1 md:grid-cols-3 gap-10">
+            <div className="max-w-9xl mx-auto px-6 md:px-8 py-12 grid grid-cols-1 md:grid-cols-3 gap-10">
 
                 {/* COLUMN 1 — Visit */}
                 <div>
