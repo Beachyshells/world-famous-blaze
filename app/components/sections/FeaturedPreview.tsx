@@ -1,11 +1,34 @@
 import Link from 'next/link'
 
-// Placeholder products — will pull from Sanity in Phase 7
+// Placeholder products with distinct background images and text alignments
 const placeholderProducts = [
-    { name: 'Premium Flower', category: 'Flower', description: 'Hand-trimmed, hand-cured' },
-    { name: 'House Pre-Rolls', category: 'Pre-Rolls', description: 'Made fresh weekly' },
-    { name: 'Artisan Edibles', category: 'Edibles', description: 'Made by local makers' },
-    { name: 'Vape Cartridges', category: 'Concentrates', description: 'Lab-tested, pure' },
+    {
+        name: 'Premium Flower',
+        category: 'Flower',
+        description: 'Hand-trimmed, hand-cured small batches.',
+        bgImage: 'https://images.unsplash.com/photo-1603909223429-69bb7101f420?auto=format&fit=crop&w=1200&q=80',
+        align: 'left'
+    },
+    {
+        name: 'House Pre-Rolls',
+        category: 'Pre-Rolls',
+        description: 'Cones rolled fresh weekly by our team.',
+        bgImage: '/images/cannabis-pre-rolls.jpg', align: 'right'
+    },
+    {
+        name: 'Artisan Edibles',
+        category: 'Edibles',
+        description: 'Locally made, precisely dosed provisions.',
+        bgImage: 'https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=1200&q=80',
+        align: 'left'
+    },
+    {
+        name: 'Vape Cartridges',
+        category: 'Concentrates',
+        description: 'Pure, lab-tested full-spectrum distillates.',
+        bgImage: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1200&q=80',
+        align: 'right'
+    },
 ]
 
 export function FeaturedPreview() {
@@ -14,41 +37,51 @@ export function FeaturedPreview() {
             <div className="max-w-7xl mx-auto px-6 md:px-8 py-20 md:py-28">
 
                 {/* Header */}
-                <div className="mb-12 md:mb-16">
-                    <p className="text-xs tracking-[0.4em] uppercase text-primary mb-3">
+                <div className="mb-16 md:mb-20">
+                    <p className="text-xs tracking-[0.4em] uppercase text-primary mb-3 font-body font-medium">
                         This Week's Selection
                     </p>
-                    <h2 className="text-4xl md:text-5xl text-text mb-4">
+                    <h2 className="text-4xl md:text-5xl font-heading font-medium text-text mb-4">
                         Featured
                     </h2>
-                    <p className="text-text-muted max-w-2xl">
+                    <p className="text-text-muted max-w-2xl font-body font-light">
                         A small selection of what's on shelves right now. Stop in for the full menu.
                     </p>
                 </div>
 
-                {/* Product Cards Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                {/* Vertical Stack Layout */}
+                <div className="flex flex-col gap-8 mb-16">
                     {placeholderProducts.map((product) => (
                         <div
                             key={product.name}
-                            className="bg-bg border border-border p-6 hover:border-primary transition-colors group cursor-pointer"
+                            className="relative w-full h-70 rounded-3xl overflow-hidden group cursor-pointer border border-border/40 shadow-xs hover:shadow-xl transition-all duration-500"
                         >
-                            {/* Placeholder image area */}
-                            <div className="aspect-square bg-border/30 mb-4 flex items-center justify-center">
-                                <span className="text-xs tracking-[0.3em] uppercase text-text-muted">
-                                    Product Image
-                                </span>
-                            </div>
+                            {/* Colorful Background Image Layer */}
+                            <div
+                                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                                style={{ backgroundImage: `url(${product.bgImage})` }}
+                            />
 
-                            <p className="text-xs tracking-[0.3em] uppercase text-text-muted mb-2">
-                                {product.category}
-                            </p>
-                            <h3 className="text-lg text-text mb-1 group-hover:text-primary transition-colors">
-                                {product.name}
-                            </h3>
-                            <p className="text-sm text-text-muted">
-                                {product.description}
-                            </p>
+                            {/* Deep, Rich Overlay Gradient for text readability */}
+                            <div className="absolute inset-0 bg-linear-to-r from-bg/95 via-bg/70 to-transparent dark:from-bg/95 dark:via-bg/80 dark:to-transparent/30" />
+
+                            {/* Content Layer */}
+                            <div className={`absolute inset-0 p-8 md:p-12 flex flex-col justify-center max-w-xl text-left`}>
+                                <span className="text-[10px] font-bold font-body tracking-widest text-accent uppercase mb-2">
+                                    {product.category}
+                                </span>
+                                <h3 className="text-2xl md:text-3xl text-text font-heading font-medium tracking-wide mb-2 group-hover:text-primary transition-colors">
+                                    {product.name}
+                                </h3>
+                                <p className="text-sm md:text-base text-text-muted/90 font-body font-light max-w-md leading-relaxed">
+                                    {product.description}
+                                </p>
+
+                                {/* Elegant inline price flag */}
+                                <p className="text-sm font-heading font-semibold text-text mt-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                                    Explore Lineup →
+                                </p>
+                            </div>
                         </div>
                     ))}
                 </div>
@@ -58,7 +91,7 @@ export function FeaturedPreview() {
                     href="/menu"
                     className="group inline-flex items-center gap-3 text-text hover:text-primary transition-colors"
                 >
-                    <span className="tracking-wide">Browse Full Menu</span>
+                    <span className="font-body text-sm tracking-wide font-medium">Browse Full Menu</span>
                     <span className="text-xl transition-transform group-hover:translate-x-1">→</span>
                 </Link>
             </div>

@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import ProductCard from '../components/ProductCard'
 
 type Category = 'flower' | 'vapes' | 'edibles' | 'prerolls' | 'concentrates'
 type Strain = 'sativa' | 'indica' | 'hybrid'
@@ -180,10 +181,11 @@ export default function MenuPage() {
                     </p>
                     <h1 className="text-4xl md:text-5xl mb-4">Menu</h1>
                     <p className="text-text-muted text-lg max-w-2xl">
-                        Welcome to our daily counter. Explore our small-batch flower, slow-cured pre-rolls, and locally crafted provisions, all mindfully harvested for your ritual.
+                        Welcome to our daily daily counter. Explore our small-batch flower, slow-cured pre-rolls, and locally crafted provisions, all mindfully harvested for your ritual.
                     </p>
                 </div>
             </div>
+
             {/* Filter Strip Container */}
             <div className="sticky top-(--header-height,0px) z-20 bg-bg/95 backdrop-blur-md border-b border-border/80 shadow-xs">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
@@ -305,68 +307,22 @@ export default function MenuPage() {
                                 : undefined
                             const categoryLabel = categories.find((c) => c.name === product.category)?.label
 
+                            // Adapt data structure to feed into global ProductCard layout requirements
+                            const cardData = {
+                                name: product.name,
+                                description: product.description,
+                                category: categoryLabel,
+                                strain: product.strain,
+                                brand: product.brand,
+                                tierColor: currentTier?.color,
+                                price: 0.00 // Placeholder price until hooked into Sanity
+                            }
+
                             return (
-                                <div
+                                <ProductCard
                                     key={`${product.category}-${product.name}`}
-                                    className="bg-surface border border-border/70 p-6 rounded-2xl hover:border-accent hover:shadow-lg transition-all duration-300 group cursor-pointer flex flex-col justify-between relative shadow-[0_4px_20px_-4px_rgba(26,46,31,0.03)]"
-                                >
-                                    <div>
-                                        {/* Image Box */}
-                                        <div className="aspect-4/3 bg-bg/40 border border-border/40 mb-5 flex items-center justify-center rounded-xl relative overflow-hidden">
-                                            <span className="text-[10px] font-body tracking-widest text-text-muted/60 uppercase">
-                                                Apothecary Jar Display
-                                            </span>
-
-                                            {/* Tier Tag Overlay */}
-                                            {currentTier && (
-                                                <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2 py-1 rounded-md bg-surface/90 border border-border/40 text-[10px] font-medium font-body tracking-wide text-text-muted shadow-xs">
-                                                    <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: currentTier.color }} />
-                                                    {currentTier.label}
-                                                </div>
-                                            )}
-                                        </div>
-
-                                        {/* Taxonomy Flags */}
-                                        <div className="flex items-center gap-2 mb-2">
-                                            <span className="text-[10px] font-medium font-body tracking-wider text-accent uppercase">
-                                                {categoryLabel}
-                                            </span>
-                                            {product.strain && (
-                                                <>
-                                                    <span className="text-border text-[10px] select-none">•</span>
-                                                    <span className="text-[10px] font-bold font-body tracking-widest uppercase text-primary">
-                                                        {product.strain}
-                                                    </span>
-                                                </>
-                                            )}
-                                        </div>
-
-                                        {/* Product Title — Explicitly Styled with Georgia Serif Headers */}
-                                        <h3 className="text-xl text-text font-heading font-medium tracking-wide mb-1.5 group-hover:text-primary transition-colors">
-                                            {product.name}
-                                        </h3>
-
-                                        {/* Product Description */}
-                                        <p className="text-sm text-text-muted/90 font-body font-light line-clamp-2 leading-relaxed mb-4">
-                                            {product.description}
-                                        </p>
-                                    </div>
-
-                                    {/* Card Shelf Partition Footer */}
-                                    <div className="pt-4 border-t border-border/50 flex items-center justify-between">
-                                        <div className="min-w-0">
-                                            {product.brand && (
-                                                <span className="text-[10px] font-medium font-body tracking-wide text-text-muted bg-bg/70 px-2 py-0.5 border border-border/50 rounded-md">
-                                                    {product.brand}
-                                                </span>
-                                            )}
-                                        </div>
-                                        {/* Price Flag — Set to font-heading to carry the elegant typography theme throughout */}
-                                        <p className="text-lg font-heading font-semibold text-text group-hover:text-accent transition-colors">
-                                            $0.00
-                                        </p>
-                                    </div>
-                                </div>
+                                    product={cardData}
+                                />
                             )
                         })}
                     </div>

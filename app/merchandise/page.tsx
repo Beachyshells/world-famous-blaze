@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
+import ProductCard from '../components/ProductCard'
 
 // Placeholder merch data
 const merchProducts = [
@@ -123,55 +124,27 @@ export default function MerchandisePage() {
 
                             {/* Scalable Brand Dropdown Selection Field */}
                             <div className="relative" ref={dropdownRef}>
-                                {/* Scalable Brand Dropdown Selection Field */}
-                                <div className="relative" ref={dropdownRef}>
-                                    <button
-                                        onClick={() => setIsBrandDropdownOpen(!isBrandDropdownOpen)}
-                                        className={`px-4 py-2 rounded-xl text-xs font-medium font-body tracking-wide transition-all duration-200 border cursor-pointer flex items-center gap-2 ${selectedBrands.length > 0
-                                            ? 'bg-accent/10 border-accent text-accent font-semibold'
-                                            : 'bg-surface border-border text-text-muted hover:text-text hover:border-primary/60'
-                                            }`}
+                                <button
+                                    onClick={() => setIsBrandDropdownOpen(!isBrandDropdownOpen)}
+                                    className={`px-4 py-2 rounded-xl text-xs font-medium font-body tracking-wide transition-all duration-200 border cursor-pointer flex items-center gap-2 ${selectedBrands.length > 0
+                                        ? 'bg-accent/10 border-accent text-accent font-semibold'
+                                        : 'bg-surface border-border text-text-muted hover:text-text hover:border-primary/60'
+                                        }`}
+                                >
+                                    <span>Brand {selectedBrands.length > 0 && `(${selectedBrands.length})`}</span>
+
+                                    {/* Dropdown Arrow Icon */}
+                                    <svg
+                                        className={`w-3 h-3 text-text-muted/80 transition-transform duration-200 ${isBrandDropdownOpen ? 'rotate-180' : ''}`}
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
                                     >
-                                        <span>Brand {selectedBrands.length > 0 && `(${selectedBrands.length})`}</span>
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                </button>
 
-                                        {/* Dropdown Arrow Icon */}
-                                        <svg
-                                            className={`w-3 h-3 text-text-muted/80 transition-transform duration-200 ${isBrandDropdownOpen ? 'rotate-180' : ''}`}
-                                            fill="none"
-                                            viewBox="0 0 24 24"
-                                            stroke="currentColor"
-                                        >
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                                        </svg>
-                                    </button>
-
-                                    {/* 2. The Floating Dropdown Menu Panel */}
-                                    {isBrandDropdownOpen && (
-                                        <div className="absolute left-0 mt-2 w-64 bg-surface border border-border rounded-xl shadow-xl z-50 p-2 max-h-64 overflow-y-auto">
-                                            {brands.map((brand) => {
-                                                const isChecked = selectedBrands.includes(brand)
-                                                return (
-                                                    <button
-                                                        key={brand}
-                                                        onClick={() => toggleFilter(brand, selectedBrands, setSelectedBrands)}
-                                                        className={`w-full text-left px-3 py-2 rounded-lg text-xs font-body transition-colors cursor-pointer flex items-center justify-between ${isChecked
-                                                            ? 'bg-bg text-primary font-medium'
-                                                            : 'text-text-muted hover:bg-bg/50 hover:text-text'
-                                                            }`}
-                                                    >
-                                                        <span>{brand}</span>
-                                                        {isChecked && (
-                                                            <svg className="w-3.5 h-3.5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                                                            </svg>
-                                                        )}
-                                                    </button>
-                                                )
-                                            })}
-                                        </div>
-                                    )}
-                                </div>
-
+                                {/* Floating Dropdown Menu Panel */}
                                 {isBrandDropdownOpen && (
                                     <div className="absolute left-0 mt-2 w-64 bg-surface border border-border rounded-xl shadow-xl z-50 p-2 max-h-64 overflow-y-auto animate-in fade-in slide-in-from-top-1 duration-200">
                                         {brands.map((brand) => {
@@ -238,49 +211,23 @@ export default function MerchandisePage() {
 
                 {filtered.length > 0 ? (
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {filtered.map((item) => (
-                            <div
-                                key={item.name}
-                                className="bg-surface border border-border/70 p-6 rounded-2xl hover:border-accent hover:shadow-lg transition-all duration-300 group cursor-pointer flex flex-col justify-between relative shadow-[0_4px_20px_-4px_rgba(26,46,31,0.03)]"
-                            >
-                                <div>
-                                    {/* Mirrored Display Image Box */}
-                                    <div className="aspect-square bg-bg/40 border border-border/40 mb-5 flex items-center justify-center rounded-xl relative overflow-hidden">
-                                        <span className="text-[10px] font-body tracking-widest text-text-muted/60 uppercase">
-                                            Merch Image Display
-                                        </span>
-                                    </div>
+                        {filtered.map((item) => {
+                            // Structuring object schema variables safely for global ProductCard delivery
+                            const formattedProduct = {
+                                name: item.name,
+                                description: item.description,
+                                category: item.type,
+                                brand: item.brand,
+                                price: item.price
+                            }
 
-                                    {/* Material and Origin Flag Metadata */}
-                                    <div className="flex items-center gap-2 mb-2">
-                                        <span className="text-[10px] font-medium font-body tracking-wider text-accent uppercase">
-                                            {item.type}
-                                        </span>
-                                        <span className="text-border text-[10px] select-none">•</span>
-                                        <span className="text-[10px] font-bold font-body tracking-widest uppercase text-primary">
-                                            {item.brand}
-                                        </span>
-                                    </div>
-
-                                    {/* Synced Brand Typography Headers */}
-                                    <h3 className="text-xl text-text font-heading font-medium tracking-wide mb-1.5 group-hover:text-primary transition-colors">
-                                        {item.name}
-                                    </h3>
-
-                                    {/* Description Body Layer */}
-                                    <p className="text-sm text-text-muted/90 font-body font-light line-clamp-2 leading-relaxed mb-4">
-                                        {item.description}
-                                    </p>
-                                </div>
-
-                                {/* Bottom Retail Shelf and Asset Price Divider */}
-                                <div className="pt-4 border-t border-border/50 flex items-center justify-end">
-                                    <p className="text-lg font-heading font-semibold text-text group-hover:text-accent transition-colors">
-                                        ${item.price.toFixed(2)}
-                                    </p>
-                                </div>
-                            </div>
-                        ))}
+                            return (
+                                <ProductCard
+                                    key={item.name}
+                                    product={formattedProduct}
+                                />
+                            )
+                        })}
                     </div>
                 ) : (
                     <div className="text-center py-24 border border-dashed border-border/80 rounded-2xl bg-surface/30">
