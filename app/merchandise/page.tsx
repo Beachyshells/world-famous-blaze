@@ -1,8 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 
-// Placeholder merch data — will pull from Sanity in Phase 7
+// Placeholder merch data
 const merchProducts = [
     { name: 'WFB Sticker Pack', type: 'Accessories', brand: 'World Famous Blaze', price: 5, description: '5-piece die-cut sticker set' },
     { name: 'Logo Lighter', type: 'Accessories', brand: 'World Famous Blaze', price: 8, description: 'Refillable, branded lighter' },
@@ -23,7 +23,7 @@ const merchProducts = [
 ]
 
 const types = ['Apparel', 'Accessories', 'Storage', 'Bundles']
-const brands = ['World Famous Blaze', 'Local Craft Co']
+const brands = ['World Famous Blaze', 'Local Craft Co', 'High End Goods Co', 'Artisan Glassworks']
 const priceRanges = [
     { label: 'Under $20', min: 0, max: 19.99 },
     { label: '$20–$50', min: 20, max: 50 },
@@ -34,6 +34,20 @@ export default function MerchandisePage() {
     const [selectedTypes, setSelectedTypes] = useState<string[]>([])
     const [selectedBrands, setSelectedBrands] = useState<string[]>([])
     const [selectedPrices, setSelectedPrices] = useState<string[]>([])
+    const [isBrandDropdownOpen, setIsBrandDropdownOpen] = useState(false)
+
+    const dropdownRef = useRef<HTMLDivElement>(null)
+
+    // Close dropdown when clicking outside
+    useEffect(() => {
+        function handleClickOutside(event: MouseEvent) {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+                setIsBrandDropdownOpen(false)
+            }
+        }
+        document.addEventListener('mousedown', handleClickOutside)
+        return () => document.removeEventListener('mousedown', handleClickOutside)
+    }, [])
 
     const toggleFilter = (
         value: string,
@@ -55,7 +69,6 @@ export default function MerchandisePage() {
         setSelectedPrices([])
     }
 
-    // Filter products based on all active selections
     const filtered = merchProducts.filter((product) => {
         const matchesType = selectedTypes.length === 0 || selectedTypes.includes(product.type)
         const matchesBrand = selectedBrands.length === 0 || selectedBrands.includes(product.brand)
@@ -69,126 +82,211 @@ export default function MerchandisePage() {
     })
 
     return (
-        <div className="min-h-screen">
+        <div className="w-full">
             {/* Page Header */}
             <div className="bg-surface border-b border-border">
                 <div className="max-w-7xl mx-auto px-6 md:px-8 py-16 md:py-24">
-                    <p className="text-xs tracking-[0.3em] uppercase text-primary mb-2">
+                    <p className="text-xs tracking-[0.3em] uppercase text-primary font-body font-medium mb-3">
                         Branded Gear
                     </p>
-                    <h1 className="text-4xl md:text-5xl mb-4">Merchandise</h1>
-                    <p className="text-text-muted text-lg max-w-2xl">
+                    <h1 className="text-4xl md:text-5xl font-heading font-medium tracking-wide text-text mb-4">
+                        Merchandise
+                    </h1>
+                    <p className="text-text-muted text-lg max-w-2xl font-body font-light leading-relaxed">
                         Show your support with World Famous Blaze gear. Apparel, accessories, and more from the shop.
                     </p>
                 </div>
             </div>
 
-            {/* Sticky Filter Bar */}
-            <div className="sticky top-0 z-30 bg-bg/90 backdrop-blur-md border-b border-border">
-                <div className="max-w-7xl mx-auto px-6 md:px-8 py-4 space-y-3">
-                    {/* Type Pills */}
-                    <div className="flex flex-wrap items-center gap-2">
-                        <span className="text-xs tracking-[0.2em] uppercase text-text-muted mr-1">Type</span>
-                        {types.map((type) => (
-                            <button
-                                key={type}
-                                onClick={() => toggleFilter(type, selectedTypes, setSelectedTypes)}
-                                className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${selectedTypes.includes(type)
-                                    ? 'bg-primary text-white'
-                                    : 'bg-surface border border-border text-text-muted hover:text-text hover:border-primary'
-                                    }`}
-                            >
-                                {type}
-                            </button>
-                        ))}
-                    </div>
+            {/* Apothecary-style Sticky Filter Strip */}
+            <div className="sticky top-[var(--header-height,0px)] z-20 bg-bg/95 backdrop-blur-md border-b border-border/80 shadow-xs">
+                <div className="max-w-7xl mx-auto px-6 md:px-8 py-4">
+                    <div className="flex flex-wrap items-center justify-between gap-4">
 
-                    {/* Brand Pills */}
-                    <div className="flex flex-wrap items-center gap-2">
-                        <span className="text-xs tracking-[0.2em] uppercase text-text-muted mr-1">Brand</span>
-                        {brands.map((brand) => (
-                            <button
-                                key={brand}
-                                onClick={() => toggleFilter(brand, selectedBrands, setSelectedBrands)}
-                                className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${selectedBrands.includes(brand)
-                                    ? 'bg-primary text-white'
-                                    : 'bg-surface border border-border text-text-muted hover:text-text hover:border-primary'
-                                    }`}
-                            >
-                                {brand}
-                            </button>
-                        ))}
-                    </div>
+                        {/* Interactive Selection Groups */}
+                        <div className="flex flex-wrap items-center gap-2.5">
+                            {/* Product Types */}
+                            {types.map((type) => (
+                                <button
+                                    key={type}
+                                    onClick={() => toggleFilter(type, selectedTypes, setSelectedTypes)}
+                                    className={`px-4 py-2 rounded-xl text-xs font-medium font-body tracking-wide transition-all duration-200 border cursor-pointer ${selectedTypes.includes(type)
+                                        ? 'bg-text text-surface border-text font-semibold'
+                                        : 'bg-surface border-border text-text-muted hover:text-text hover:border-primary/60'
+                                        }`}
+                                >
+                                    {type}
+                                </button>
+                            ))}
 
-                    {/* Price Pills */}
-                    <div className="flex flex-wrap items-center gap-2">
-                        <span className="text-xs tracking-[0.2em] uppercase text-text-muted mr-1">Price</span>
-                        {priceRanges.map((range) => (
-                            <button
-                                key={range.label}
-                                onClick={() => toggleFilter(range.label, selectedPrices, setSelectedPrices)}
-                                className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${selectedPrices.includes(range.label)
-                                    ? 'bg-primary text-white'
-                                    : 'bg-surface border border-border text-text-muted hover:text-text hover:border-primary'
-                                    }`}
-                            >
-                                {range.label}
-                            </button>
-                        ))}
-                    </div>
+                            <span className="w-px h-5 bg-border/80 mx-1 hidden sm:inline-block" />
 
-                    {/* Clear All */}
-                    {hasFilters && (
-                        <button
-                            onClick={clearAll}
-                            className="text-xs text-accent hover:text-text transition-colors underline"
-                        >
-                            Clear all filters
-                        </button>
-                    )}
+                            {/* Scalable Brand Dropdown Selection Field */}
+                            <div className="relative" ref={dropdownRef}>
+                                {/* Scalable Brand Dropdown Selection Field */}
+                                <div className="relative" ref={dropdownRef}>
+                                    <button
+                                        onClick={() => setIsBrandDropdownOpen(!isBrandDropdownOpen)}
+                                        className={`px-4 py-2 rounded-xl text-xs font-medium font-body tracking-wide transition-all duration-200 border cursor-pointer flex items-center gap-2 ${selectedBrands.length > 0
+                                            ? 'bg-accent/10 border-accent text-accent font-semibold'
+                                            : 'bg-surface border-border text-text-muted hover:text-text hover:border-primary/60'
+                                            }`}
+                                    >
+                                        <span>Brand {selectedBrands.length > 0 && `(${selectedBrands.length})`}</span>
+
+                                        {/* Dropdown Arrow Icon */}
+                                        <svg
+                                            className={`w-3 h-3 text-text-muted/80 transition-transform duration-200 ${isBrandDropdownOpen ? 'rotate-180' : ''}`}
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                        >
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+
+                                    {/* 2. The Floating Dropdown Menu Panel */}
+                                    {isBrandDropdownOpen && (
+                                        <div className="absolute left-0 mt-2 w-64 bg-surface border border-border rounded-xl shadow-xl z-50 p-2 max-h-64 overflow-y-auto">
+                                            {brands.map((brand) => {
+                                                const isChecked = selectedBrands.includes(brand)
+                                                return (
+                                                    <button
+                                                        key={brand}
+                                                        onClick={() => toggleFilter(brand, selectedBrands, setSelectedBrands)}
+                                                        className={`w-full text-left px-3 py-2 rounded-lg text-xs font-body transition-colors cursor-pointer flex items-center justify-between ${isChecked
+                                                            ? 'bg-bg text-primary font-medium'
+                                                            : 'text-text-muted hover:bg-bg/50 hover:text-text'
+                                                            }`}
+                                                    >
+                                                        <span>{brand}</span>
+                                                        {isChecked && (
+                                                            <svg className="w-3.5 h-3.5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                                            </svg>
+                                                        )}
+                                                    </button>
+                                                )
+                                            })}
+                                        </div>
+                                    )}
+                                </div>
+
+                                {isBrandDropdownOpen && (
+                                    <div className="absolute left-0 mt-2 w-64 bg-surface border border-border rounded-xl shadow-xl z-50 p-2 max-h-64 overflow-y-auto animate-in fade-in slide-in-from-top-1 duration-200">
+                                        {brands.map((brand) => {
+                                            const isChecked = selectedBrands.includes(brand)
+                                            return (
+                                                <button
+                                                    key={brand}
+                                                    onClick={() => toggleFilter(brand, selectedBrands, setSelectedBrands)}
+                                                    className={`w-full text-left px-3 py-2 rounded-lg text-xs font-body transition-colors cursor-pointer flex items-center justify-between ${isChecked
+                                                        ? 'bg-bg text-primary font-medium'
+                                                        : 'text-text-muted hover:bg-bg/50 hover:text-text'
+                                                        }`}
+                                                >
+                                                    <span>{brand}</span>
+                                                    {isChecked && (
+                                                        <svg className="w-3.5 h-3.5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                                        </svg>
+                                                    )}
+                                                </button>
+                                            )
+                                        })}
+                                    </div>
+                                )}
+                            </div>
+
+                            <span className="w-px h-5 bg-border/80 mx-1 hidden sm:inline-block" />
+
+                            {/* Price Threshold Ranges */}
+                            {priceRanges.map((range) => (
+                                <button
+                                    key={range.label}
+                                    onClick={() => toggleFilter(range.label, selectedPrices, setSelectedPrices)}
+                                    className={`px-4 py-2 rounded-xl text-xs font-medium font-body tracking-wide border transition-all duration-200 cursor-pointer ${selectedPrices.includes(range.label)
+                                        ? 'bg-text text-surface border-text font-semibold'
+                                        : 'bg-surface border-border text-text-muted hover:text-text hover:border-primary/60'
+                                        }`}
+                                >
+                                    {range.label}
+                                </button>
+                            ))}
+                        </div>
+
+                        {/* Reset Toggle Option */}
+                        {hasFilters && (
+                            <button
+                                onClick={clearAll}
+                                className="text-xs font-medium font-body tracking-wide text-accent hover:text-danger transition-colors py-2 px-1 cursor-pointer"
+                            >
+                                Clear Shelves
+                            </button>
+                        )}
+                    </div>
                 </div>
             </div>
 
-            {/* Products Grid */}
+            {/* Merchandise Catalog Display Shelf */}
             <div className="max-w-7xl mx-auto px-6 md:px-8 py-12 md:py-16">
-                <p className="text-sm text-text-muted mb-8">
-                    Showing {filtered.length} item{filtered.length !== 1 ? 's' : ''}
-                </p>
+                <div className="border-b border-border/60 pb-6 mb-10">
+                    <p className="text-xs font-body italic text-text-muted/80">
+                        {filtered.length} small-batch items cataloged
+                    </p>
+                </div>
 
                 {filtered.length > 0 ? (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                         {filtered.map((item) => (
                             <div
                                 key={item.name}
-                                className="bg-surface border border-border p-6 hover:border-primary transition-colors group cursor-pointer"
+                                className="bg-surface border border-border/70 p-6 rounded-2xl hover:border-accent hover:shadow-lg transition-all duration-300 group cursor-pointer flex flex-col justify-between relative shadow-[0_4px_20px_-4px_rgba(26,46,31,0.03)]"
                             >
-                                {/* Placeholder image */}
-                                <div className="aspect-square bg-bg border border-border/30 mb-4 flex items-center justify-center rounded">
-                                    <span className="text-xs tracking-[0.3em] uppercase text-text-muted">
-                                        Merch Image
-                                    </span>
+                                <div>
+                                    {/* Mirrored Display Image Box */}
+                                    <div className="aspect-square bg-bg/40 border border-border/40 mb-5 flex items-center justify-center rounded-xl relative overflow-hidden">
+                                        <span className="text-[10px] font-body tracking-widest text-text-muted/60 uppercase">
+                                            Merch Image Display
+                                        </span>
+                                    </div>
+
+                                    {/* Material and Origin Flag Metadata */}
+                                    <div className="flex items-center gap-2 mb-2">
+                                        <span className="text-[10px] font-medium font-body tracking-wider text-accent uppercase">
+                                            {item.type}
+                                        </span>
+                                        <span className="text-border text-[10px] select-none">•</span>
+                                        <span className="text-[10px] font-bold font-body tracking-widest uppercase text-primary">
+                                            {item.brand}
+                                        </span>
+                                    </div>
+
+                                    {/* Synced Brand Typography Headers */}
+                                    <h3 className="text-xl text-text font-heading font-medium tracking-wide mb-1.5 group-hover:text-primary transition-colors">
+                                        {item.name}
+                                    </h3>
+
+                                    {/* Description Body Layer */}
+                                    <p className="text-sm text-text-muted/90 font-body font-light line-clamp-2 leading-relaxed mb-4">
+                                        {item.description}
+                                    </p>
                                 </div>
 
-                                {/* Product Info */}
-                                <div className="flex items-center gap-2 mb-2">
-                                    <span className="text-xs tracking-[0.2em] uppercase text-text-muted">
-                                        {item.type} · {item.brand}
-                                    </span>
+                                {/* Bottom Retail Shelf and Asset Price Divider */}
+                                <div className="pt-4 border-t border-border/50 flex items-center justify-end">
+                                    <p className="text-lg font-heading font-semibold text-text group-hover:text-accent transition-colors">
+                                        ${item.price.toFixed(2)}
+                                    </p>
                                 </div>
-                                <h3 className="text-lg text-text mb-1 group-hover:text-primary transition-colors">
-                                    {item.name}
-                                </h3>
-                                <p className="text-sm text-text-muted mb-3">
-                                    {item.description}
-                                </p>
-                                <p className="text-lg text-text font-heading">
-                                    ${item.price.toFixed(2)}
-                                </p>
                             </div>
                         ))}
                     </div>
                 ) : (
-                    <p className="text-text-muted">No items match your filters.</p>
+                    <div className="text-center py-24 border border-dashed border-border/80 rounded-2xl bg-surface/30">
+                        <p className="text-text-muted text-sm font-heading italic mb-1">Our shelves are empty here.</p>
+                        <p className="text-xs text-text-muted/60 font-body">Try refining your selection options above.</p>
+                    </div>
                 )}
             </div>
         </div>
