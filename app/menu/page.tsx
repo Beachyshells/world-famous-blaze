@@ -14,22 +14,20 @@ const categories = [
     { name: 'concentrates' as Category, label: 'Concentrates' },
 ]
 
-const strainOptions: { name: Strain; label: string }[] = [
-    { name: 'sativa', label: 'Sativa' },
-    { name: 'indica', label: 'Indica' },
-    { name: 'hybrid', label: 'Hybrid' },
+const strainOptions: { name: Strain; label: string; activeClass: string }[] = [
+    { name: 'sativa', label: 'Sativa', activeClass: 'bg-success/10 border-success text-success' },
+    { name: 'indica', label: 'Indica', activeClass: 'bg-primary/10 border-primary text-primary' },
+    { name: 'hybrid', label: 'Hybrid', activeClass: 'bg-accent/10 border-accent text-accent' },
 ]
 
-const tierOptions: { name: Tier; color: string }[] = [
-    { name: 'yellow', color: '#ecc94b' },
-    { name: 'blue', color: '#4299e1' },
-    { name: 'pink', color: '#ed64a6' },
-    { name: 'white', color: '#ffffff' },
+const tierOptions: { name: Tier; color: string; label: string }[] = [
+    { name: 'yellow', color: '#ecc94b', label: 'Select Growth' },
+    { name: 'blue', color: '#4299e1', label: 'Boutique Batch' },
+    { name: 'pink', color: '#ed64a6', label: 'Reserve Tier' },
+    { name: 'white', color: '#ffffff', label: 'Private Estate' },
 ]
 
 const vapeBrands = ['Brand A', 'Brand B', 'Brand C']
-
-// ── Placeholder data — will pull from Sanity in Phase 7 ──
 
 interface Product {
     name: string
@@ -74,19 +72,15 @@ const allProducts: Product[] = [
     { name: 'Signature Blend', description: 'High potency hybrid', category: 'flower', strain: 'hybrid', tier: 'pink' },
     { name: 'Premium Hybrid Reserve', description: 'Our finest hybrid selection', category: 'flower', strain: 'hybrid', tier: 'white' },
 
-    // ── Vapes — Sativa ──
+    // ── Vapes ──
     { name: 'Citrus Burst Cart', description: 'Bright, energizing pull', category: 'vapes', strain: 'sativa', brand: 'Brand A' },
     { name: 'Daytime Vape', description: 'Smooth and light', category: 'vapes', strain: 'sativa', brand: 'Brand B' },
     { name: 'Uplift Cart', description: 'Clean extraction, potent', category: 'vapes', strain: 'sativa', brand: 'Brand A' },
     { name: 'Solar Flare', description: 'Full spectrum sativa', category: 'vapes', strain: 'sativa', brand: 'Brand C' },
-
-    // ── Vapes — Indica ──
     { name: 'Nighttime Cart', description: 'Relaxing, smooth draw', category: 'vapes', strain: 'indica', brand: 'Brand B' },
     { name: 'Chill Vape', description: 'Mellow indica pull', category: 'vapes', strain: 'indica', brand: 'Brand A' },
     { name: 'Deep Relax Cart', description: 'Full body effects', category: 'vapes', strain: 'indica', brand: 'Brand C' },
     { name: 'Moonlight Vape', description: 'Rich flavor, heavy hit', category: 'vapes', strain: 'indica', brand: 'Brand B' },
-
-    // ── Vapes — Hybrid ──
     { name: 'Balanced Cart', description: 'Best of both worlds', category: 'vapes', strain: 'hybrid', brand: 'Brand B' },
     { name: 'Anytime Vape', description: 'Versatile, smooth', category: 'vapes', strain: 'hybrid', brand: 'Brand A' },
     { name: 'Premium Hybrid Cart', description: 'Full spectrum blend', category: 'vapes', strain: 'hybrid', brand: 'Brand A' },
@@ -148,21 +142,17 @@ export default function MenuPage() {
         setSelectedBrands([])
     }
 
-    // Show strain pills for Flower, Vapes, Pre-Rolls (or if nothing selected)
     const showStrainFilter =
         selectedCategories.length === 0 ||
         selectedCategories.some((c) => ['flower', 'vapes', 'prerolls'].includes(c))
 
-    // Show color tier dots ONLY for Flower
     const showTierFilter =
         selectedCategories.length === 0 ||
         selectedCategories.includes('flower')
 
-    // Show brand pills ONLY for Vapes
     const showBrandFilter =
         selectedCategories.includes('vapes')
 
-    // Filter products
     const filtered = allProducts.filter((product) => {
         const matchesCategory =
             selectedCategories.length === 0 || selectedCategories.includes(product.category)
@@ -182,173 +172,209 @@ export default function MenuPage() {
     })
 
     return (
-        <div className="min-h-screen">
-            {/* Page Header */}
+        <div className="w-full">
             <div className="bg-surface border-b border-border">
                 <div className="max-w-7xl mx-auto px-6 md:px-8 py-16 md:py-24">
                     <p className="text-xs tracking-[0.3em] uppercase text-primary mb-2">
-                        Our Selection
+                        Curated Selection
                     </p>
                     <h1 className="text-4xl md:text-5xl mb-4">Menu</h1>
                     <p className="text-text-muted text-lg max-w-2xl">
-                        Browse our current selection. Tap to filter, tap again to remove.
+                        Welcome to our daily counter. Explore our small-batch flower, slow-cured pre-rolls, and locally crafted provisions, all mindfully harvested for your ritual.
                     </p>
                 </div>
             </div>
+            {/* Filter Strip Container */}
+            <div className="sticky top-(--header-height,0px) z-20 bg-bg/95 backdrop-blur-md border-b border-border/80 shadow-xs">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+                    <div className="flex flex-wrap items-center justify-between gap-4">
 
-            {/* Top Sticky Bar — Category + Strain + Brand */}
-            <div className="sticky top-0 z-30 bg-bg/90 backdrop-blur-md border-b border-border">
-                <div className="max-w-7xl mx-auto px-6 md:px-8 py-4">
-                    <div className="flex flex-wrap items-center gap-2">
-                        {/* Category Pills */}
-                        {categories.map((cat) => (
-                            <button
-                                key={cat.name}
-                                onClick={() => toggleFilter(cat.name, selectedCategories, setSelectedCategories)}
-                                className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${selectedCategories.includes(cat.name)
-                                    ? 'bg-text text-bg'
-                                    : 'bg-surface border border-border text-text-muted hover:text-text hover:border-primary'
-                                    }`}
-                            >
-                                {cat.label}
-                            </button>
-                        ))}
-
-                        {/* Divider before Strain */}
-                        {showStrainFilter && (
-                            <span className="w-px h-6 bg-border mx-1" />
-                        )}
-
-                        {/* Strain Pills */}
-                        {showStrainFilter && strainOptions.map((strain) => (
-                            <button
-                                key={strain.name}
-                                onClick={() => toggleFilter(strain.name, selectedStrains, setSelectedStrains)}
-                                className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${selectedStrains.includes(strain.name)
-                                    ? 'bg-primary text-white'
-                                    : 'bg-surface border border-border text-text-muted hover:text-text hover:border-primary'
-                                    }`}
-                            >
-                                {strain.label}
-                            </button>
-                        ))}
-
-                        {/* Divider before Brand */}
-                        {showBrandFilter && (
-                            <span className="w-px h-6 bg-border mx-1" />
-                        )}
-
-                        {/* Brand Pills — Vapes only */}
-                        {showBrandFilter && vapeBrands.map((brand) => (
-                            <button
-                                key={brand}
-                                onClick={() => toggleFilter(brand, selectedBrands, setSelectedBrands)}
-                                className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${selectedBrands.includes(brand)
-                                    ? 'bg-accent text-white'
-                                    : 'bg-surface border border-border text-text-muted hover:text-text hover:border-primary'
-                                    }`}
-                            >
-                                {brand}
-                            </button>
-                        ))}
-
-                        {/* Clear All */}
-                        {hasFilters && (
-                            <>
-                                <span className="w-px h-6 bg-border mx-1" />
+                        {/* Smooth Organic Control Pills */}
+                        <div className="flex flex-wrap items-center gap-2.5">
+                            {/* Categories */}
+                            {categories.map((cat) => (
                                 <button
-                                    onClick={clearAll}
-                                    className="px-4 py-2 rounded-full text-sm text-accent hover:text-text transition-colors"
+                                    key={cat.name}
+                                    onClick={() => toggleFilter(cat.name, selectedCategories, setSelectedCategories)}
+                                    className={`px-4 py-2 rounded-xl text-xs font-medium font-body tracking-wide transition-all duration-200 border cursor-pointer ${selectedCategories.includes(cat.name)
+                                        ? 'bg-text text-surface border-text font-semibold'
+                                        : 'bg-surface border-border text-text-muted hover:text-text hover:border-primary/60'
+                                        }`}
                                 >
-                                    Clear all
+                                    {cat.label}
                                 </button>
-                            </>
+                            ))}
+
+                            {showStrainFilter && <span className="w-px h-5 bg-border/80 mx-1 hidden sm:inline-block" />}
+
+                            {/* Strains */}
+                            {showStrainFilter && strainOptions.map((strain) => {
+                                const isActive = selectedStrains.includes(strain.name)
+                                return (
+                                    <button
+                                        key={strain.name}
+                                        onClick={() => toggleFilter(strain.name, selectedStrains, setSelectedStrains)}
+                                        className={`px-4 py-2 rounded-xl text-xs font-medium font-body tracking-wide border transition-all duration-200 cursor-pointer ${isActive
+                                            ? strain.activeClass + ' font-semibold'
+                                            : 'bg-surface border-border text-text-muted hover:text-text hover:border-primary/60'
+                                            }`}
+                                    >
+                                        {strain.label}
+                                    </button>
+                                )
+                            })}
+
+                            {showBrandFilter && <span className="w-px h-5 bg-border/80 mx-1 hidden sm:inline-block" />}
+
+                            {/* Brands */}
+                            {showBrandFilter && vapeBrands.map((brand) => (
+                                <button
+                                    key={brand}
+                                    onClick={() => toggleFilter(brand, selectedBrands, setSelectedBrands)}
+                                    className={`px-4 py-2 rounded-xl text-xs font-medium font-body tracking-wide border transition-all duration-200 cursor-pointer ${selectedBrands.includes(brand)
+                                        ? 'bg-accent/10 border-accent text-accent font-semibold'
+                                        : 'bg-surface border-border text-text-muted hover:text-text hover:border-primary/60'
+                                        }`}
+                                >
+                                    {brand}
+                                </button>
+                            ))}
+                        </div>
+
+                        {/* Text Filter Reset Trigger */}
+                        {hasFilters && (
+                            <button
+                                onClick={clearAll}
+                                className="text-xs font-medium font-body tracking-wide text-accent hover:text-danger transition-colors py-2 px-1 cursor-pointer"
+                            >
+                                Clear Shelves
+                            </button>
                         )}
                     </div>
                 </div>
             </div>
 
-            {/* Products Section */}
-            <div className="max-w-7xl mx-auto px-6 md:px-8 py-12 md:py-16">
+            {/* Catalog Grid Area */}
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
-                {/* Tier Color Dots — ONLY for Flower */}
-                {showTierFilter && (
-                    <div className="flex items-center gap-4 mb-8">
-                        {tierOptions.map((tier) => (
-                            <button
-                                key={tier.name}
-                                onClick={() => toggleFilter(tier.name, selectedTiers, setSelectedTiers)}
-                                className={`w-10 h-10 rounded-full border-2 transition-all ${selectedTiers.includes(tier.name)
-                                    ? 'border-text scale-110 shadow-lg'
-                                    : 'border-border hover:border-primary hover:scale-105'
-                                    }`}
-                                style={{ backgroundColor: tier.color }}
-                                aria-label={`${tier.name} tier`}
-                            />
-                        ))}
-                        <span className="text-sm text-text-muted ml-auto">
-                            {filtered.length} product{filtered.length !== 1 ? 's' : ''}
-                        </span>
-                    </div>
-                )}
+                {/* Meta Sorting Details Row */}
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border/60 pb-6 mb-10">
+                    {showTierFilter ? (
+                        <div className="flex flex-wrap items-center gap-3">
+                            <span className="text-xs font-medium font-heading italic text-text-muted mr-1">
+                                Filter by Curation Grade:
+                            </span>
+                            <div className="flex flex-wrap items-center gap-2">
+                                {tierOptions.map((tier) => {
+                                    const isActive = selectedTiers.includes(tier.name)
+                                    return (
+                                        <button
+                                            key={tier.name}
+                                            onClick={() => toggleFilter(tier.name, selectedTiers, setSelectedTiers)}
+                                            className={`flex items-center gap-2 px-3 py-1.5 rounded-lg border text-xs transition-all cursor-pointer ${isActive
+                                                ? 'border-text bg-surface text-text font-medium'
+                                                : 'border-border bg-surface/50 text-text-muted hover:border-primary/60'
+                                                }`}
+                                            aria-label={`${tier.name} tier`}
+                                        >
+                                            <span
+                                                className="w-2.5 h-2.5 rounded-full ring-2 ring-border/20"
+                                                style={{ backgroundColor: tier.color }}
+                                            />
+                                            <span className="font-body text-[11px] tracking-wide">{tier.label}</span>
+                                        </button>
+                                    )
+                                })}
+                            </div>
+                        </div>
+                    ) : (
+                        <div />
+                    )}
 
-                {/* Product count when tier dots aren't showing */}
-                {!showTierFilter && (
-                    <p className="text-sm text-text-muted mb-8">
-                        {filtered.length} product{filtered.length !== 1 ? 's' : ''}
+                    <p className="text-xs font-body italic text-text-muted/80">
+                        {filtered.length} small-batch items cataloged
                     </p>
-                )}
+                </div>
 
-                {/* Product Grid */}
+                {/* Main Product Shelf Container */}
                 {filtered.length > 0 ? (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                         {filtered.map((product) => {
-                            const tierColor = product.tier
-                                ? tierOptions.find((t) => t.name === product.tier)?.color
+                            const currentTier = product.tier
+                                ? tierOptions.find((t) => t.name === product.tier)
                                 : undefined
                             const categoryLabel = categories.find((c) => c.name === product.category)?.label
 
                             return (
                                 <div
                                     key={`${product.category}-${product.name}`}
-                                    className="bg-surface border border-border p-6 hover:border-primary transition-colors group cursor-pointer"
+                                    className="bg-surface border border-border/70 p-6 rounded-2xl hover:border-accent hover:shadow-lg transition-all duration-300 group cursor-pointer flex flex-col justify-between relative shadow-[0_4px_20px_-4px_rgba(26,46,31,0.03)]"
                                 >
-                                    {/* Placeholder image */}
-                                    <div className="aspect-square bg-bg border border-border/30 mb-4 flex items-center justify-center rounded">
-                                        <span className="text-xs tracking-[0.3em] uppercase text-text-muted">
-                                            Product Image
-                                        </span>
+                                    <div>
+                                        {/* Image Box */}
+                                        <div className="aspect-4/3 bg-bg/40 border border-border/40 mb-5 flex items-center justify-center rounded-xl relative overflow-hidden">
+                                            <span className="text-[10px] font-body tracking-widest text-text-muted/60 uppercase">
+                                                Apothecary Jar Display
+                                            </span>
+
+                                            {/* Tier Tag Overlay */}
+                                            {currentTier && (
+                                                <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2 py-1 rounded-md bg-surface/90 border border-border/40 text-[10px] font-medium font-body tracking-wide text-text-muted shadow-xs">
+                                                    <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: currentTier.color }} />
+                                                    {currentTier.label}
+                                                </div>
+                                            )}
+                                        </div>
+
+                                        {/* Taxonomy Flags */}
+                                        <div className="flex items-center gap-2 mb-2">
+                                            <span className="text-[10px] font-medium font-body tracking-wider text-accent uppercase">
+                                                {categoryLabel}
+                                            </span>
+                                            {product.strain && (
+                                                <>
+                                                    <span className="text-border text-[10px] select-none">•</span>
+                                                    <span className="text-[10px] font-bold font-body tracking-widest uppercase text-primary">
+                                                        {product.strain}
+                                                    </span>
+                                                </>
+                                            )}
+                                        </div>
+
+                                        {/* Product Title — Explicitly Styled with Georgia Serif Headers */}
+                                        <h3 className="text-xl text-text font-heading font-medium tracking-wide mb-1.5 group-hover:text-primary transition-colors">
+                                            {product.name}
+                                        </h3>
+
+                                        {/* Product Description */}
+                                        <p className="text-sm text-text-muted/90 font-body font-light line-clamp-2 leading-relaxed mb-4">
+                                            {product.description}
+                                        </p>
                                     </div>
 
-                                    {/* Product Info */}
-                                    <div className="flex items-center gap-2 mb-2">
-                                        {tierColor && (
-                                            <span
-                                                className="w-3 h-3 rounded-full border border-border/50"
-                                                style={{ backgroundColor: tierColor }}
-                                            />
-                                        )}
-                                        <span className="text-xs tracking-[0.2em] uppercase text-text-muted">
-                                            {categoryLabel}
-                                            {product.strain ? ` · ${product.strain}` : ''}
-                                        </span>
+                                    {/* Card Shelf Partition Footer */}
+                                    <div className="pt-4 border-t border-border/50 flex items-center justify-between">
+                                        <div className="min-w-0">
+                                            {product.brand && (
+                                                <span className="text-[10px] font-medium font-body tracking-wide text-text-muted bg-bg/70 px-2 py-0.5 border border-border/50 rounded-md">
+                                                    {product.brand}
+                                                </span>
+                                            )}
+                                        </div>
+                                        {/* Price Flag — Set to font-heading to carry the elegant typography theme throughout */}
+                                        <p className="text-lg font-heading font-semibold text-text group-hover:text-accent transition-colors">
+                                            $0.00
+                                        </p>
                                     </div>
-                                    <h3 className="text-lg text-text mb-1 group-hover:text-primary transition-colors">
-                                        {product.name}
-                                    </h3>
-                                    <p className="text-sm text-text-muted mb-1">
-                                        {product.description}
-                                    </p>
-                                    {product.brand && (
-                                        <p className="text-xs text-text-muted mb-2">{product.brand}</p>
-                                    )}
-                                    <p className="text-lg text-text font-heading">$0.00</p>
                                 </div>
                             )
                         })}
                     </div>
                 ) : (
-                    <p className="text-text-muted">No products match your filters.</p>
+                    <div className="text-center py-24 border border-dashed border-border/80 rounded-2xl bg-surface/30">
+                        <p className="text-text-muted text-sm font-heading italic mb-1">Our shelves are empty here.</p>
+                        <p className="text-xs text-text-muted/60 font-body">Try refining your selection options above.</p>
+                    </div>
                 )}
             </div>
         </div>
