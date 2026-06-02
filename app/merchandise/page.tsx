@@ -100,7 +100,7 @@ export default function MerchandisePage() {
             </div>
 
             {/* Apothecary-style Sticky Filter Strip */}
-            <div className="sticky top-[var(--header-height,0px)] z-20 bg-bg/95 backdrop-blur-md border-b border-border/80 shadow-xs">
+            <div className="sticky top-(--header-height,0px) z-20 bg-bg/95 backdrop-blur-md border-b border-border/80 shadow-xs">
                 <div className="max-w-7xl mx-auto px-6 md:px-8 py-4">
                     <div className="flex flex-wrap items-center justify-between gap-4">
 
