@@ -58,6 +58,8 @@ const allProducts: Product[] = [
     { name: 'Night Owl', description: 'Relaxing, calming effects', category: 'flower', strain: 'indica', tier: 'yellow' },
     { name: 'Purple Haze', description: 'Mellow vibes, smooth finish', category: 'flower', strain: 'indica', tier: 'yellow' },
     { name: 'Deep Sleep', description: 'Evening relaxation', category: 'flower', strain: 'indica', tier: 'yellow' },
+    { name: 'Mellow Night', description: 'Gentle wind-down, easy price', category: 'flower', strain: 'indica', tier: 'green' },
+    { name: 'Couch Potato', description: 'Heavy relax, light wallet', category: 'flower', strain: 'indica', tier: 'green' },
     { name: 'Premium Indica Blend', description: 'Hand-selected, lab-tested', category: 'flower', strain: 'indica', tier: 'blue' },
     { name: 'Midnight Moon', description: 'Rich, earthy flavors', category: 'flower', strain: 'indica', tier: 'blue' },
     { name: 'Rest & Restore', description: 'Potent relaxation', category: 'flower', strain: 'indica', tier: 'blue' },
@@ -69,6 +71,8 @@ const allProducts: Product[] = [
     { name: 'Balanced Blend', description: 'Even sativa/indica mix', category: 'flower', strain: 'hybrid', tier: 'yellow' },
     { name: 'Perfect Harmony', description: 'Best of both worlds', category: 'flower', strain: 'hybrid', tier: 'yellow' },
     { name: 'Steady Vibe', description: 'Reliable, consistent effects', category: 'flower', strain: 'hybrid', tier: 'yellow' },
+    { name: 'Everyday Hybrid', description: 'Balanced and budget-friendly', category: 'flower', strain: 'hybrid', tier: 'green' },
+    { name: 'Chill Mix', description: 'Smooth blend, easy on the pocket', category: 'flower', strain: 'hybrid', tier: 'green' },
     { name: 'Premium Hybrid Blend', description: 'Hand-selected, lab-tested', category: 'flower', strain: 'hybrid', tier: 'blue' },
     { name: 'True Balance', description: 'Perfectly proportioned', category: 'flower', strain: 'hybrid', tier: 'blue' },
     { name: 'All-Day Hybrid', description: 'Versatile, adaptable', category: 'flower', strain: 'hybrid', tier: 'blue' },
@@ -206,7 +210,7 @@ export default function MenuContent() {
                                 <button
                                     key={cat.name}
                                     onClick={() => toggleFilter(cat.name, selectedCategories, setSelectedCategories)}
-                                    className={`px-4 py-2 rounded-xl text-xs font-medium font-body tracking-wide transition-all duration-200 border cursor-pointer ${selectedCategories.includes(cat.name)
+                                    className={`px-4 py-2 rounded-full text-xs font-medium font-body tracking-wide transition-all duration-200 border cursor-pointer ${selectedCategories.includes(cat.name)
                                         ? 'bg-text text-surface border-text font-semibold'
                                         : 'bg-surface border-border text-text-muted hover:text-text hover:border-primary/60'
                                         }`}
@@ -223,7 +227,7 @@ export default function MenuContent() {
                                     <button
                                         key={strain.name}
                                         onClick={() => toggleFilter(strain.name, selectedStrains, setSelectedStrains)}
-                                        className={`px-4 py-2 rounded-xl text-xs font-medium font-body tracking-wide border transition-all duration-200 cursor-pointer ${isActive
+                                        className={`px-4 py-2 rounded-full text-xs font-medium font-body tracking-wide border transition-all duration-200 cursor-pointer ${isActive
                                             ? strain.activeClass + ' font-semibold'
                                             : 'bg-surface border-border text-text-muted hover:text-text hover:border-primary/60'
                                             }`}
@@ -239,7 +243,7 @@ export default function MenuContent() {
                                 <button
                                     key={brand}
                                     onClick={() => toggleFilter(brand, selectedBrands, setSelectedBrands)}
-                                    className={`px-4 py-2 rounded-xl text-xs font-medium font-body tracking-wide border transition-all duration-200 cursor-pointer ${selectedBrands.includes(brand)
+                                    className={`px-4 py-2 rounded-full text-xs font-medium font-body tracking-wide border transition-all duration-200 cursor-pointer ${selectedBrands.includes(brand)
                                         ? 'bg-accent/10 border-accent text-accent font-semibold'
                                         : 'bg-surface border-border text-text-muted hover:text-text hover:border-primary/60'
                                         }`}
