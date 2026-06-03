@@ -19,6 +19,12 @@ const articles = [
         description: 'The best of both worlds. Balanced effects that sit right between energizing and relaxing.',
         href: '/learn/hybrid',
     },
+    {
+        title: 'Your First Visit',
+        category: 'Shop Learn',
+        description: 'What to expect when you walk in, how the whole thing works, and all the ways to win.',
+        href: '/learn/first-visit',
+    },
 ]
 
 export default function LearnPage() {
