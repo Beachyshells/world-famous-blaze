@@ -7,28 +7,28 @@ const placeholderProducts = [
         category: 'Flower',
         description: 'Hand-trimmed, hand-cured small batches.',
         bgImage: '/images/cannabis-flower.jpg',
-        align: 'left'
+        href: '/menu?category=flower',
     },
     {
         name: 'House Pre-Rolls',
         category: 'Pre-Rolls',
         description: 'Cones rolled fresh weekly by our team.',
         bgImage: '/images/cannabis-pre-rolls.jpg',
-        align: 'right'
+        href: '/menu?category=prerolls',
     },
     {
         name: 'Artisan Edibles',
         category: 'Edibles',
         description: 'Locally made, precisely dosed provisions.',
         bgImage: '/images/cannabis-edibles.jpg',
-        align: 'left'
+        href: '/menu?category=edibles',
     },
     {
         name: 'Vape Cartridges',
         category: 'Concentrates',
         description: 'Pure, lab-tested full-spectrum distillates.',
         bgImage: '/images/cannabis-vape-cartridges.jpg',
-        align: 'right'
+        href: '/menu?category=vapes',
     },
 ]
 
@@ -39,51 +39,50 @@ export function FeaturedPreview() {
 
                 {/* Header */}
                 <div className="mb-16 md:mb-20">
-                    <p className="text-xs tracking-[0.4em] uppercase text-primary mb-3 font-body font-medium">
-                        This Week's Selection
+                    <p className="text-xs tracking-[0.4em] uppercase text-primary mb-3">
+                        This Week&#39;s Selection
                     </p>
-                    <h2 className="text-4xl md:text-5xl font-heading font-medium text-text mb-4">
+                    <h2 className="text-4xl md:text-5xl font-heading text-text mb-4">
                         Featured
                     </h2>
-                    <p className="text-text-muted max-w-2xl font-body font-light">
-                        A small selection of what's on shelves right now. Stop in for the full menu.
+                    <p className="text-text-muted max-w-2xl">
+                        A small selection of what&#39;s on shelves right now. Stop in for the full menu.
                     </p>
                 </div>
 
                 {/* Vertical Stack Layout */}
                 <div className="flex flex-col gap-8 mb-16">
                     {placeholderProducts.map((product) => (
-                        <div
+                        <Link
                             key={product.name}
-                            className="relative w-full h-70 rounded-3xl overflow-hidden group cursor-pointer border border-border shadow-xs hover:shadow-xl transition-all duration-500"
+                            href={product.href}
+                            className="relative w-full h-70 overflow-hidden group cursor-pointer border border-border shadow-md hover:shadow-xl transition-all duration-500 block"
                         >
-                            {/* Colorful Background Image Layer */}
+                            {/* Background Image Layer */}
                             <div
                                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
                                 style={{ backgroundImage: `url(${product.bgImage})` }}
                             />
 
-                            {/* Deep, Rich Overlay Gradient for text readability */}
+                            {/* Overlay Gradient */}
                             <div className="absolute inset-0 bg-linear-to-r from-bg/95 via-bg/70 to-transparent dark:from-bg/95 dark:via-bg/80 dark:to-transparent/30" />
 
                             {/* Content Layer */}
-                            <div className={`absolute inset-0 p-8 md:p-12 flex flex-col justify-center max-w-xl text-left`}>
-                                <span className="text-[10px] font-bold font-body tracking-widest text-accent uppercase mb-2">
+                            <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-center max-w-xl text-left">
+                                <span className="text-xs tracking-[0.3em] uppercase text-accent mb-2">
                                     {product.category}
                                 </span>
-                                <h3 className="text-2xl md:text-3xl text-text font-heading font-medium tracking-wide mb-2 group-hover:text-primary transition-colors">
+                                <h3 className="text-2xl md:text-3xl text-text font-heading tracking-wide mb-2 group-hover:text-primary transition-colors">
                                     {product.name}
                                 </h3>
-                                <p className="text-sm md:text-base text-text-muted/90 font-body font-light max-w-md leading-relaxed">
+                                <p className="text-sm md:text-base text-text-muted max-w-md leading-relaxed">
                                     {product.description}
                                 </p>
-
-                                {/* Elegant inline price flag */}
-                                <p className="text-sm font-heading font-semibold text-text mt-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                                <p className="text-sm font-heading text-text mt-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
                                     Explore Lineup →
                                 </p>
                             </div>
-                        </div>
+                        </Link>
                     ))}
                 </div>
 
@@ -92,7 +91,7 @@ export function FeaturedPreview() {
                     href="/menu"
                     className="group inline-flex items-center gap-3 text-text hover:text-primary transition-colors"
                 >
-                    <span className="font-body text-sm tracking-wide font-medium">Browse Full Menu</span>
+                    <span className="text-sm tracking-wide">Browse Full Menu</span>
                     <span className="text-xl transition-transform group-hover:translate-x-1">→</span>
                 </Link>
             </div>

@@ -18,7 +18,7 @@ export function MerchandisePreview() {
                     <p className="text-xs tracking-[0.4em] uppercase text-primary mb-3">
                         Branded Gear
                     </p>
-                    <h2 className="text-4xl md:text-5xl text-text mb-4">
+                    <h2 className="text-4xl md:text-5xl font-heading text-text mb-4">
                         Merchandise
                     </h2>
                     <p className="text-text-muted max-w-2xl">
@@ -29,9 +29,10 @@ export function MerchandisePreview() {
                 {/* Merchandise Cards Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
                     {placeholderMerchandise.map((item) => (
-                        <div
+                        <Link
                             key={item.name}
-                            className="bg-bg border border-border p-6 hover:border-primary transition-colors group cursor-pointer"
+                            href="/merchandise"
+                            className="bg-bg border border-border p-6 hover:border-primary transition-colors group cursor-pointer block"
                         >
                             {/* Placeholder image area */}
                             <div className="aspect-square bg-border/30 mb-4 flex items-center justify-center">
@@ -49,7 +50,7 @@ export function MerchandisePreview() {
                             <p className="text-sm text-text-muted">
                                 {item.description}
                             </p>
-                        </div>
+                        </Link>
                     ))}
                 </div>
 
@@ -58,7 +59,7 @@ export function MerchandisePreview() {
                     href="/merchandise"
                     className="group inline-flex items-center gap-3 text-text hover:text-primary transition-colors"
                 >
-                    <span className="tracking-wide">Browse All Merchandise</span>
+                    <span className="text-sm tracking-wide">Browse All Merchandise</span>
                     <span className="text-xl transition-transform group-hover:translate-x-1">→</span>
                 </Link>
             </div>
