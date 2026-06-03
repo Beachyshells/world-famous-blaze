@@ -22,7 +22,7 @@ export function ThemeToggle() {
     return (
         <button
             onClick={handleToggle}
-            className="fixed top-4 right-4 z-50 px-4 py-2 bg-surface border border-border rounded text-text hover:bg-primary hover:text-bg transition-colors"
+            className="px-3 py-1.5 bg-surface border border-border text-text text-sm hover:bg-primary hover:text-bg transition-colors"
             aria-label="Toggle dark mode"
         >
             {isDark ? '☀️ Light' : '🌙 Dark'}

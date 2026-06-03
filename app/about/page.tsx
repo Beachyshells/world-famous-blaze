@@ -1,3 +1,6 @@
+import Link from 'next/link'
+
+
 export default function AboutPage() {
     return (
         <div className="min-h-screen">
@@ -132,9 +135,9 @@ export default function AboutPage() {
                                 {(member.name || member.role || member.bio) && (
                                     <div className="p-4">
                                         {member.name && member.slug ? (
-                                            <a href={`/team/${member.slug}`} className="text-lg font-heading text-text hover:text-primary transition-colors">
+                                            <Link href={`/team/${member.slug}`} className="text-lg font-heading text-text hover:text-primary transition-colors">
                                                 {member.name}
-                                            </a>
+                                            </Link>
                                         ) : member.name ? (
                                             <h3 className="text-lg font-heading text-text">
                                                 {member.name}

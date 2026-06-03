@@ -57,25 +57,25 @@ export function Footer() {
                     <h3 className="text-xs tracking-[0.3em] uppercase text-text-muted mb-4">Connect</h3>
                     <ul className="space-y-2 text-sm">
                         <li>
-                            <a
-                                href={`mailto:${s.email}`}
-                                className="text-text hover:text-primary transition-colors"
-                            >
-                                {s.email}
-                            </a>
+                            <Link href="/about" className="text-text hover:text-primary transition-colors">
+                                About Us
+                            </Link>
                         </li>
-                        {s.socialLinks.map((social) => (
-                            <li key={social.platform}>
-                                <a
-                                    href={social.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-text hover:text-primary transition-colors"
-                                >
-                                    {social.platform}
-                                </a>
-                            </li>
-                        ))}
+                        <li>
+                            <Link href="/contact" className="text-text hover:text-primary transition-colors">
+                                Contact Us
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/privacy" className="text-text hover:text-primary transition-colors">
+                                Privacy Policy
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/terms" className="text-text hover:text-primary transition-colors">
+                                Terms of Use
+                            </Link>
+                        </li>
                     </ul>
                 </div>
 
