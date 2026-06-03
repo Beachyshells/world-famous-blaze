@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useSearchParams } from 'next/navigation'
 import ProductCard from '../components/ProductCard'
 
 type Category = 'flower' | 'vapes' | 'edibles' | 'prerolls' | 'concentrates'
@@ -117,6 +118,17 @@ export default function MenuPage() {
     const [selectedStrains, setSelectedStrains] = useState<Strain[]>([])
     const [selectedTiers, setSelectedTiers] = useState<Tier[]>([])
     const [selectedBrands, setSelectedBrands] = useState<string[]>([])
+
+
+    const searchParams = useSearchParams()
+
+    // Pre-select category if coming from homepage preview
+    useEffect(() => {
+        const categoryParam = searchParams.get('category')
+        if (categoryParam && categories.some((c) => c.name === categoryParam)) {
+            setSelectedCategories([categoryParam as Category])
+        }
+    }, [searchParams])
 
     const toggleFilter = <T extends string>(
         value: T,
