@@ -1,6 +1,7 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+
+import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import ProductCard from '../components/ProductCard'
 
@@ -113,7 +114,7 @@ const allProducts: Product[] = [
     { name: 'Signature Live Rosin', description: 'Our finest concentrate', category: 'concentrates' },
 ]
 
-export default function MenuPage() {
+function MenuContent() {
     const [selectedCategories, setSelectedCategories] = useState<Category[]>([])
     const [selectedStrains, setSelectedStrains] = useState<Strain[]>([])
     const [selectedTiers, setSelectedTiers] = useState<Tier[]>([])
@@ -346,5 +347,13 @@ export default function MenuPage() {
                 )}
             </div>
         </div>
+    )
+
+}
+export default function MenuPage() {
+    return (
+        <Suspense>
+            <MenuContent />
+        </Suspense>
     )
 }
