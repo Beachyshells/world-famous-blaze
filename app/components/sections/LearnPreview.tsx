@@ -6,7 +6,7 @@ const placeholderArticles = [
         category: 'THC Products',
         title: 'Sativa, Indica, Hybrid — Explained Honestly',
         excerpt: 'What these terms actually mean for the experience — and what they don\'t.',
-        href: '/learn'
+        href: '/learn/sativa'
     },
     {
         category: 'Shop Learn',
@@ -32,7 +32,7 @@ export function LearnPreview() {
                     <p className="text-xs tracking-[0.4em] uppercase text-primary mb-3">
                         Knowledge
                     </p>
-                    <h2 className="text-4xl md:text-5xl text-text mb-4">
+                    <h2 className="text-4xl md:text-5xl font-heading text-text mb-4">
                         Learn With Us
                     </h2>
                     <p className="text-text-muted">
@@ -44,20 +44,24 @@ export function LearnPreview() {
                 {/* Article Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
                     {placeholderArticles.map((article) => (
-                        <article
+                        <Link
                             key={article.title}
-                            className="border border-border p-8 hover:border-primary transition-colors group cursor-pointer"
+                            href={article.href}
+                            className="border border-border p-8 hover:border-primary shadow-md hover:shadow-xl transition-all duration-300 group cursor-pointer block"
                         >
                             <p className="text-xs tracking-[0.3em] uppercase text-primary mb-4">
                                 {article.category}
                             </p>
-                            <h3 className="text-xl text-text mb-3 leading-snug group-hover:text-primary transition-colors">
+                            <h3 className="text-xl font-heading text-text mb-3 leading-snug group-hover:text-primary transition-colors">
                                 {article.title}
                             </h3>
-                            <p className="text-sm text-text-muted leading-relaxed">
+                            <p className="text-sm text-text-muted leading-relaxed mb-6">
                                 {article.excerpt}
                             </p>
-                        </article>
+                            <span className="text-sm text-primary opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 inline-block">
+                                Read More →
+                            </span>
+                        </Link>
                     ))}
                 </div>
 
@@ -66,7 +70,7 @@ export function LearnPreview() {
                     href="/learn"
                     className="group inline-flex items-center gap-3 text-text hover:text-primary transition-colors"
                 >
-                    <span className="tracking-wide">Browse All Articles</span>
+                    <span className="text-sm tracking-wide">Browse All Articles</span>
                     <span className="text-xl transition-transform group-hover:translate-x-1">→</span>
                 </Link>
             </div>
