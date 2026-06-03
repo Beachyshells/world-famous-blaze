@@ -65,20 +65,20 @@ export function FeaturedPreview() {
                             />
 
                             {/* Overlay Gradient */}
-                            <div className="absolute inset-0 bg-linear-to-r from-bg/95 via-bg/70 to-transparent dark:from-bg/95 dark:via-bg/80 dark:to-transparent/30" />
-
+                            <div className="absolute inset-0 bg-linear-to-r from-[#1a1a1a]/90 via-[#1a1a1a]/50 to-transparent" />
+                            {/* Content Layer */}
                             {/* Content Layer */}
                             <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-center max-w-xl text-left">
-                                <span className="text-xs tracking-[0.3em] uppercase text-accent mb-2">
+                                <span className="text-xs tracking-[0.3em] uppercase text-[#d4ab7a] mb-2">
                                     {product.category}
                                 </span>
-                                <h3 className="text-2xl md:text-3xl text-text font-heading tracking-wide mb-2 group-hover:text-primary transition-colors">
+                                <h3 className="text-2xl md:text-3xl text-white font-heading tracking-wide mb-2 group-hover:text-[#9aab8c] transition-colors">
                                     {product.name}
                                 </h3>
-                                <p className="text-sm md:text-base text-text-muted max-w-md leading-relaxed">
+                                <p className="text-sm md:text-base text-white/70 max-w-md leading-relaxed">
                                     {product.description}
                                 </p>
-                                <p className="text-sm font-heading text-text mt-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                                <p className="text-sm font-heading text-white mt-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
                                     Explore Lineup →
                                 </p>
                             </div>

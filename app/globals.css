@@ -5,7 +5,7 @@
    ============================================ */
 :root {
   /* Theme-aware colors */
-  --color-bg: #faf7f0;           /* warm cream background */
+  --color-bg: #f0f4ef;           /* light sage background */
   --color-surface: #ffffff;       /* cards, modals */
   --color-text: #1a2e1f;          /* dark green-black body text */
   --color-text-muted: #5c6e60;    /* softer body text */

@@ -9,6 +9,7 @@ interface CardProduct {
     brand?: string
     tierColor?: string
     tierLabel?: string
+    image?: string
 }
 
 interface ProductCardProps {
@@ -17,17 +18,39 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
     return (
-        <div className="bg-surface border border-border p-6 hover:border-primary hover:shadow-lg transition-all duration-300 group cursor-pointer flex flex-col justify-between shadow-[0_4px_20px_-4px_rgba(26,46,31,0.03)] h-full">
+        <div className="bg-surface border border-border p-4 hover:border-primary hover:shadow-lg transition-all duration-300 group cursor-pointer flex flex-col justify-between shadow-[0_4px_20px_-4px_rgba(26,46,31,0.03)] h-full">
             <div>
                 {/* Image Frame */}
-                <div className="aspect-square bg-bg border border-border mb-4 flex items-center justify-center relative overflow-hidden">
-                    <span className="text-xs tracking-[0.3em] uppercase text-text-muted">
-                        Product Image
-                    </span>
+                <div className="aspect-4/3 bg-[#1a1a1a] mb-4 flex items-center justify-center relative overflow-hidden">
+                    {product.image ? (
+                        <img
+                            src={product.image}
+                            alt={product.name}
+                            className="w-full h-full object-cover"
+                        />
+                    ) : (
+                        <div className="flex flex-col items-center gap-2">
+                            <svg
+                                className="w-8 h-8 text-white/15"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                strokeWidth={1}
+                            >
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0022.5 18.75V5.25A2.25 2.25 0 0020.25 3H3.75A2.25 2.25 0 001.5 5.25v13.5A2.25 2.25 0 003.75 21z" />
+                            </svg>
+                            <span className="text-[10px] tracking-[0.3em] uppercase text-white/20">
+                                No Image Available
+                            </span>
+                        </div>
+                    )}
+
+                    {/* Dark gradient overlay */}
+                    <div className="absolute inset-0 bg-linear-to-t from-[#1a1a1a]/80 via-[#1a1a1a]/30 to-transparent pointer-events-none" />
 
                     {/* Tier Tag Overlay (Flower only) */}
-                    {product.tierColor && product.tierLabel && (
-                        <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2 py-1 bg-surface border border-border text-xs font-medium tracking-wide text-text-muted shadow-sm">
+                    {product.tierColor && (
+                        <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2 py-1 bg-[#1a1a1a]/80 border border-white/10 text-xs font-medium tracking-wide text-white/70 shadow-sm z-10">
                             <span className="w-2 h-2 rounded-full" style={{ backgroundColor: product.tierColor }} />
                             {product.tierLabel}
                         </div>
@@ -36,7 +59,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
                 {/* Category & Strain/Brand */}
                 <div className="flex items-center gap-2 mb-2">
-                    <span className="text-xs tracking-[0.2em] uppercase text-text-muted">
+                    <span className="text-xs tracking-[0.2em] uppercase text-accent">
                         {product.category || 'Gear'}
                     </span>
                     {(product.brand || product.strain) && (
@@ -50,7 +73,7 @@ export default function ProductCard({ product }: ProductCardProps) {
                 </div>
 
                 {/* Product Name */}
-                <h3 className="text-lg text-text font-heading mb-1 group-hover:text-primary transition-colors line-clamp-1">
+                <h3 className="text-base text-text font-heading mb-1 group-hover:text-primary transition-colors line-clamp-1">
                     {product.name}
                 </h3>
 
@@ -62,7 +85,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
             {/* Price */}
             <div className="pt-4 border-t border-border flex items-center justify-end mt-auto">
-                <p className="text-lg text-text font-heading">
+                <p className="text-base text-text font-heading">
                     ${product.price ? product.price.toFixed(2) : '0.00'}
                 </p>
             </div>

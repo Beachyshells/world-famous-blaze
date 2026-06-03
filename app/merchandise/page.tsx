@@ -6,7 +6,7 @@ const merchCategories = [
         category: 'Essentials',
         description: 'Precision grinders, custom rolling trays, papers, wraps, and daily tools.',
         bgImage: 'https://images.pexels.com/photos/3850588/pexels-photo-3850588.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-        href: '#essentials', // Or point wherever you want these to go later
+        href: '#essentials',
     },
     {
         name: 'Premium Glass & Rigs',
@@ -26,23 +26,29 @@ const merchCategories = [
 
 export default function MerchandisePage() {
     return (
-        <section className="bg-surface border-b border-border min-h-screen pt-24 pb-16">
-            <div className="max-w-7xl mx-auto px-6 md:px-8 py-12">
-
-                {/* Header Block matching home style */}
-                <div className="mb-16 md:mb-20">
-                    <p className="text-xs tracking-[0.4em] uppercase text-primary mb-3">
-                        Fully Stocked Accessory Hub
+        <div className="min-h-screen">
+            {/* Hero Header with Image */}
+            <div className="relative overflow-hidden border-b border-border">
+                <div
+                    className="absolute inset-0 bg-cover bg-center"
+                    style={{ backgroundImage: `url(${merchCategories[0].bgImage})` }}
+                />
+                <div className="absolute inset-0 bg-linear-to-r from-[#1a1a1a]/90 via-[#1a1a1a]/50 to-transparent" />
+                <div className="relative max-w-7xl mx-auto px-6 md:px-8 py-20 md:py-28 z-10">
+                    <p className="text-xs tracking-[0.3em] uppercase text-[#d4ab7a] mb-2">
+                        Fully Stocked
                     </p>
-                    <h1 className="text-4xl md:text-5xl font-heading text-text mb-4">
+                    <h1 className="text-4xl md:text-5xl font-heading text-white mb-4">
                         Gear & Accessories
                     </h1>
-                    <p className="text-text-muted max-w-2xl">
-                        From high-end glassware and everyday smoking essentials to signature mugs and live shop plants—we have absolutely everything you need.
+                    <p className="text-white/60 text-lg max-w-2xl">
+                        From high-end glassware and everyday smoking essentials to signature mugs and live shop plants — we have everything you need.
                     </p>
                 </div>
+            </div>
 
-                {/* Vertical Stack Layout Mirroring Homepage */}
+            {/* Category Banners */}
+            <div className="max-w-7xl mx-auto px-6 md:px-8 py-16 md:py-24">
                 <div className="flex flex-col gap-8">
                     {merchCategories.map((product) => (
                         <Link
@@ -56,28 +62,28 @@ export default function MerchandisePage() {
                                 style={{ backgroundImage: `url(${product.bgImage})` }}
                             />
 
-                            {/* Overlay Gradient (Deep Left-to-Right Fade) */}
-                            <div className="absolute inset-0 bg-linear-to-r from-neutral-950 via-neutral-950/70 to-transparent dark:from-neutral-950 dark:via-neutral-950/80 dark:to-transparent/30" />
+                            {/* Overlay Gradient */}
+                            <div className="absolute inset-0 bg-linear-to-r from-[#1a1a1a]/90 via-[#1a1a1a]/50 to-transparent" />
+
                             {/* Content Layer */}
                             <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-center max-w-xl text-left">
-                                <span className="text-xs tracking-[0.3em] uppercase text-primary mb-2">
+                                <span className="text-xs tracking-[0.3em] uppercase text-[#d4ab7a] mb-2">
                                     {product.category}
                                 </span>
-                                <h3 className="text-2xl md:text-3xl text-primary font-heading tracking-wide mb-2 group-hover:text-primary transition-colors">
+                                <h3 className="text-2xl md:text-3xl text-white font-heading tracking-wide mb-2 group-hover:text-[#9aab8c] transition-colors">
                                     {product.name}
                                 </h3>
-                                <p className="text-sm md:text-base text-text-muted max-w-md leading-relaxed">
+                                <p className="text-sm md:text-base text-white/70 max-w-md leading-relaxed">
                                     {product.description}
                                 </p>
-                                <p className="text-sm tracking-widest font-heading text-success mt-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                                <p className="text-sm font-heading text-white mt-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
                                     Explore Selections →
                                 </p>
                             </div>
                         </Link>
                     ))}
                 </div>
-
             </div>
-        </section>
+        </div>
     )
 }

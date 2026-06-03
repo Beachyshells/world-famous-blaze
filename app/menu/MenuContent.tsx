@@ -2,11 +2,13 @@
 
 import { useState, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
-import ProductCard from '../components/ProductCard' // Make sure this path points correctly to your ProductCard component!
+import ProductCard from '../components/ProductCard'
 
 type Category = 'flower' | 'vapes' | 'edibles' | 'prerolls' | 'concentrates'
 type Strain = 'sativa' | 'indica' | 'hybrid'
 type Tier = 'yellow' | 'green' | 'blue' | 'pink' | 'white'
+
+
 const categories = [
     { name: 'flower' as Category, label: 'Flower' },
     { name: 'vapes' as Category, label: 'Vapes' },
@@ -15,10 +17,10 @@ const categories = [
     { name: 'concentrates' as Category, label: 'Concentrates' },
 ]
 
-const strainOptions: { name: Strain; label: string; activeClass: string }[] = [
-    { name: 'sativa', label: 'Sativa', activeClass: 'bg-success/10 border-success text-success' },
-    { name: 'indica', label: 'Indica', activeClass: 'bg-primary/10 border-primary text-primary' },
-    { name: 'hybrid', label: 'Hybrid', activeClass: 'bg-accent/10 border-accent text-accent' },
+const strainOptions: { name: Strain; label: string }[] = [
+    { name: 'sativa', label: 'Sativa' },
+    { name: 'indica', label: 'Indica' },
+    { name: 'hybrid', label: 'Hybrid' },
 ]
 
 const tierOptions: { name: Tier; color: string; label: string }[] = [
@@ -124,6 +126,7 @@ export default function MenuContent() {
     const [selectedStrains, setSelectedStrains] = useState<Strain[]>([])
     const [selectedTiers, setSelectedTiers] = useState<Tier[]>([])
     const [selectedBrands, setSelectedBrands] = useState<string[]>([])
+    const [brandDropdownOpen, setBrandDropdownOpen] = useState(false)
 
     const searchParams = useSearchParams()
 
@@ -167,9 +170,6 @@ export default function MenuContent() {
         selectedCategories.length === 0 ||
         selectedCategories.includes('flower')
 
-    const showBrandFilter =
-        selectedCategories.includes('vapes')
-
     const filtered = allProducts.filter((product) => {
         const matchesCategory =
             selectedCategories.length === 0 || selectedCategories.includes(product.category)
@@ -190,151 +190,210 @@ export default function MenuContent() {
 
     return (
         <div className="w-full">
-            <div className="bg-surface border-b border-border">
-                <div className="max-w-7xl mx-auto px-6 md:px-8 py-16 md:py-24">
-                    <p className="text-xs tracking-[0.3em] uppercase text-primary mb-2">
+            {/* Hero Header with Image */}
+            <div className="relative overflow-hidden border-b border-border">
+                <div
+                    className="absolute inset-0 bg-cover bg-center"
+                    style={{ backgroundImage: 'url(/images/cannabis-menu-hero-background.jpg)' }}
+                />
+                <div className="absolute inset-0 bg-linear-to-r from-[#1a1a1a]/90 via-[#1a1a1a]/50 to-transparent" />
+                <div className="relative max-w-7xl mx-auto px-6 md:px-8 py-20 md:py-28 z-10">
+                    <p className="text-xs tracking-[0.3em] uppercase text-[#d4ab7a] mb-2">
                         Curated Selection
                     </p>
-                    <h1 className="text-4xl md:text-5xl mb-4">Menu</h1>
-                    <p className="text-text-muted text-lg max-w-2xl">
-                        Browse our current selection. Tap to filter, tap again to remove.                    </p>
+                    <h1 className="text-4xl md:text-5xl font-heading text-white mb-4">Menu</h1>
+                    <p className="text-white/60 text-lg max-w-2xl">
+                        Browse our current selection. Tap to filter, tap again to remove.
+                    </p>
                 </div>
             </div>
 
-            {/* Filter Strip Container */}
-            <div className="sticky top-(--header-height,0px) z-20 bg-bg/95 backdrop-blur-md border-b border-border/80 shadow-xs">
+            {/* Filter Bar */}
+            <div className="sticky top-0 z-20 bg-surface/95 backdrop-blur-md border-b border-border">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
                     <div className="flex flex-wrap items-center justify-between gap-4">
                         <div className="flex flex-wrap items-center gap-2.5">
+                            {/* Category Pills */}
                             {categories.map((cat) => (
-                                <button
-                                    key={cat.name}
-                                    onClick={() => toggleFilter(cat.name, selectedCategories, setSelectedCategories)}
-                                    className={`px-4 py-2 rounded-full text-xs font-medium font-body tracking-wide transition-all duration-200 border cursor-pointer ${selectedCategories.includes(cat.name)
-                                        ? 'bg-text text-surface border-text font-semibold'
-                                        : 'bg-surface border-border text-text-muted hover:text-text hover:border-primary/60'
-                                        }`}
-                                >
-                                    {cat.label}
-                                </button>
+                                <div key={cat.name} className="relative">
+                                    <button
+                                        onClick={() => {
+                                            if (cat.name === 'vapes') {
+                                                if (selectedCategories.includes('vapes')) {
+                                                    toggleFilter(cat.name, selectedCategories, setSelectedCategories)
+                                                    setSelectedBrands([])
+                                                    setBrandDropdownOpen(false)
+                                                } else {
+                                                    toggleFilter(cat.name, selectedCategories, setSelectedCategories)
+                                                    setBrandDropdownOpen(true)
+                                                }
+                                            } else {
+                                                toggleFilter(cat.name, selectedCategories, setSelectedCategories)
+                                            }
+                                        }}
+                                        className={`px-4 py-2 rounded-full text-xs font-medium tracking-wide transition-all duration-200 border cursor-pointer ${selectedCategories.includes(cat.name)
+                                            ? 'bg-text text-bg border-text font-semibold shadow-inner'
+                                            : 'bg-surface border-border text-text-muted hover:text-text hover:border-primary shadow-sm hover:shadow-md'
+                                            }`}
+                                    >
+                                        {cat.label}
+                                        {cat.name === 'vapes' && selectedCategories.includes('vapes') && (
+                                            <span
+                                                className="ml-1.5 inline-block cursor-pointer"
+                                                onClick={(e) => {
+                                                    e.stopPropagation()
+                                                    setBrandDropdownOpen(!brandDropdownOpen)
+                                                }}
+                                            >
+                                                ▾
+                                            </span>
+                                        )}
+                                    </button>
+
+                                    {/* Brand dropdown */}
+                                    {cat.name === 'vapes' && selectedCategories.includes('vapes') && brandDropdownOpen && (
+                                        <div className="absolute top-full left-0 mt-2 bg-surface border border-border shadow-lg z-30 min-w-[160px]">
+                                            <button
+                                                onClick={() => {
+                                                    setSelectedBrands([])
+                                                    setBrandDropdownOpen(false)
+                                                }}
+                                                className={`block w-full text-left px-4 py-2.5 text-xs tracking-wide transition-colors ${selectedBrands.length === 0
+                                                    ? 'text-accent font-semibold bg-accent/5'
+                                                    : 'text-text-muted hover:text-text hover:bg-bg'
+                                                    }`}
+                                            >
+                                                All Brands
+                                            </button>
+                                            {vapeBrands.map((brand) => (
+                                                <button
+                                                    key={brand}
+                                                    onClick={() => {
+                                                        setSelectedBrands([brand])
+                                                        setBrandDropdownOpen(false)
+                                                    }}
+                                                    className={`block w-full text-left px-4 py-2.5 text-xs tracking-wide transition-colors ${selectedBrands.includes(brand)
+                                                        ? 'text-accent font-semibold bg-accent/5'
+                                                        : 'text-text-muted hover:text-text hover:bg-bg'
+                                                        }`}
+                                                >
+                                                    {brand}
+                                                </button>
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
                             ))}
 
-                            {showStrainFilter && <span className="w-px h-5 bg-border/80 mx-1 hidden sm:inline-block" />}
+                            {showStrainFilter && <span className="w-px h-5 bg-border mx-1 hidden sm:inline-block" />}
 
+                            {/* Strain Pills */}
                             {showStrainFilter && strainOptions.map((strain) => {
                                 const isActive = selectedStrains.includes(strain.name)
                                 return (
                                     <button
                                         key={strain.name}
                                         onClick={() => toggleFilter(strain.name, selectedStrains, setSelectedStrains)}
-                                        className={`px-4 py-2 rounded-full text-xs font-medium font-body tracking-wide border transition-all duration-200 cursor-pointer ${isActive
-                                            ? strain.activeClass + ' font-semibold'
-                                            : 'bg-surface border-border text-text-muted hover:text-text hover:border-primary/60'
+                                        className={`px-4 py-2 rounded-full text-xs font-medium tracking-wide border transition-all duration-200 cursor-pointer ${isActive
+                                            ? 'bg-primary text-white border-primary font-semibold shadow-inner'
+                                            : 'bg-surface border-border text-text-muted hover:text-text hover:border-primary shadow-sm hover:shadow-md'
                                             }`}
                                     >
                                         {strain.label}
                                     </button>
                                 )
                             })}
-
-                            {showBrandFilter && <span className="w-px h-5 bg-border/80 mx-1 hidden sm:inline-block" />}
-
-                            {showBrandFilter && vapeBrands.map((brand) => (
-                                <button
-                                    key={brand}
-                                    onClick={() => toggleFilter(brand, selectedBrands, setSelectedBrands)}
-                                    className={`px-4 py-2 rounded-full text-xs font-medium font-body tracking-wide border transition-all duration-200 cursor-pointer ${selectedBrands.includes(brand)
-                                        ? 'bg-accent/10 border-accent text-accent font-semibold'
-                                        : 'bg-surface border-border text-text-muted hover:text-text hover:border-primary/60'
-                                        }`}
-                                >
-                                    {brand}
-                                </button>
-                            ))}
                         </div>
 
                         {hasFilters && (
                             <button
                                 onClick={clearAll}
-                                className="text-xs font-medium font-body tracking-wide text-accent hover:text-danger transition-colors py-2 px-1 cursor-pointer"
+                                className="text-xs font-medium tracking-wide text-accent hover:text-danger transition-colors py-2 px-1 cursor-pointer"
                             >
-                                Clear All
+                                Clear all
                             </button>
                         )}
                     </div>
                 </div>
             </div>
 
-            {/* Catalog Grid Area */}
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border/60 pb-6 mb-10">
-                    {showTierFilter ? (
-                        <div className="flex flex-wrap items-center gap-3">
-                            <span className="text-xs font-medium font-heading italic text-text-muted mr-1">
-                                Filter by Curation Grade:                            </span>
-                            <div className="flex flex-wrap items-center gap-2">
-                                {tierOptions.map((tier) => {
-                                    const isActive = selectedTiers.includes(tier.name)
-                                    return (
-                                        <button
-                                            key={tier.name}
-                                            onClick={() => toggleFilter(tier.name, selectedTiers, setSelectedTiers)}
-                                            className={`flex items-center gap-2 px-3 py-1.5 rounded-lg border text-xs transition-all cursor-pointer ${isActive
-                                                ? 'border-text bg-surface text-text font-medium'
-                                                : 'border-border bg-surface/50 text-text-muted hover:border-primary/60'
-                                                }`}
-                                            aria-label={`${tier.name} tier`}
-                                        >
-                                            <span
-                                                className="w-2.5 h-2.5 rounded-full ring-2 ring-border/20"
-                                                style={{ backgroundColor: tier.color }}
-                                            />
-                                            <span className="font-body text-[11px] tracking-wide">{tier.label}</span>
-                                        </button>
-                                    )
-                                })}
+            {/* Tier + Product Grid */}
+            <div className="bg-bg">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                    {/* Tier Row */}
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border pb-6 mb-10">
+                        {showTierFilter ? (
+                            <div className="flex flex-wrap items-center gap-3">
+                                <span className="text-xs tracking-[0.2em] uppercase text-text-muted mr-1">
+                                    Tier:
+                                </span>
+                                <div className="flex flex-wrap items-center gap-2">
+                                    {tierOptions.map((tier) => {
+                                        const isActive = selectedTiers.includes(tier.name)
+                                        return (
+                                            <button
+                                                key={tier.name}
+                                                onClick={() => toggleFilter(tier.name, selectedTiers, setSelectedTiers)}
+                                                className={`flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs transition-all cursor-pointer ${isActive
+                                                    ? 'border-text bg-surface text-text font-medium shadow-inner'
+                                                    : 'border-border bg-surface text-text-muted hover:border-primary shadow-sm hover:shadow-md'
+                                                    }`}
+                                                aria-label={`${tier.name} tier`}
+                                            >
+                                                <span
+                                                    className="w-3 h-3 rounded-full border border-border/50"
+                                                    style={{ backgroundColor: tier.color }}
+                                                />
+                                                <span className="text-xs tracking-wide">{tier.label}</span>
+                                            </button>
+                                        )
+                                    })}
+                                </div>
                             </div>
+                        ) : (
+                            <div />
+                        )}
+
+                        <p className="text-xs text-text-muted">
+                            {filtered.length} product{filtered.length !== 1 ? 's' : ''}
+                        </p>
+                    </div>
+
+                    {/* Product Grid */}
+                    {filtered.length > 0 ? (
+                        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
+                            {filtered.map((product) => {
+                                const currentTier = product.tier
+                                    ? tierOptions.find((t) => t.name === product.tier)
+                                    : undefined
+                                const categoryLabel = categories.find((c) => c.name === product.category)?.label
+
+                                const cardData = {
+                                    name: product.name,
+                                    description: product.description,
+                                    category: categoryLabel,
+                                    strain: product.strain,
+                                    brand: product.brand,
+                                    tierColor: currentTier?.color,
+                                    tierLabel: currentTier?.label,
+                                    price: 0.00
+                                }
+
+                                return (
+                                    <ProductCard
+                                        key={`${product.category}-${product.name}`}
+                                        product={cardData}
+                                    />
+                                )
+                            })}
                         </div>
                     ) : (
-                        <div />
+                        <div className="text-center py-24 border border-dashed border-border bg-surface">
+                            <p className="text-text-muted text-sm mb-1">No products match your filters.</p>
+                            <p className="text-xs text-text-muted">Try removing some filters above.</p>
+                        </div>
                     )}
-
-                    <p className="text-xs font-body italic text-text-muted/80">
-                        {filtered.length} product{filtered.length !== 1 ? 's' : ''}                    </p>
                 </div>
-
-                {filtered.length > 0 ? (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {filtered.map((product) => {
-                            const currentTier = product.tier
-                                ? tierOptions.find((t) => t.name === product.tier)
-                                : undefined
-                            const categoryLabel = categories.find((c) => c.name === product.category)?.label
-
-                            const cardData = {
-                                name: product.name,
-                                description: product.description,
-                                category: categoryLabel,
-                                strain: product.strain,
-                                brand: product.brand,
-                                tierColor: currentTier?.color,
-                                price: 0.00
-                            }
-
-                            return (
-                                <ProductCard
-                                    key={`${product.category}-${product.name}`}
-                                    product={cardData}
-                                />
-                            )
-                        })}
-                    </div>
-                ) : (
-                    <div className="text-center py-24 border border-dashed border-border bg-surface/30">
-                        <p className="text-text-muted text-sm mb-1">No products match your filters.</p>
-                        <p className="text-xs text-text-muted">Try removing some filters above.</p>
-                    </div>
-                )}
             </div>
         </div>
     )
