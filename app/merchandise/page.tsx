@@ -5,21 +5,21 @@ const merchCategories = [
         name: 'Smoking Essentials',
         category: 'Essentials',
         description: 'Precision grinders, custom rolling trays, papers, wraps, and daily tools.',
-        bgImage: 'https://images.pexels.com/photos/3850588/pexels-photo-3850588.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        bgImage: '/images/merch-smoking-essentials.jpg',
         href: '#essentials',
     },
     {
         name: 'Premium Glass & Rigs',
         category: 'Glassware',
         description: 'High-end bongs, rigs, bubblers, and specialized glassware for every setup.',
-        bgImage: 'https://images.pexels.com/photos/4051016/pexels-photo-4051016.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        bgImage: '/images/merch-premium-glass.jpg',
         href: '#glass',
     },
     {
         name: 'Lifestyle Products',
         category: 'Curated Gear',
         description: 'Signature coffee mugs, live plants, and custom lifestyle pieces around the shop.',
-        bgImage: 'https://images.pexels.com/photos/3094208/pexels-photo-3094208.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        bgImage: '/images/merch-lifestyle-products.jpg',
         href: '#lifestyle',
     },
 ]
@@ -28,24 +28,29 @@ export default function MerchandisePage() {
     return (
         <div className="min-h-screen">
             {/* Hero Header with Image */}
-            <div className="relative overflow-hidden border-b border-border">
+            <section className="relative overflow-hidden border-b border-border">
+                {/* Background Image Layer */}
                 <div
-                    className="absolute inset-0 bg-cover bg-center"
-                    style={{ backgroundImage: `url(${merchCategories[0].bgImage})` }}
+                    className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 hover:scale-102"
+                    style={{ backgroundImage: 'url(/images/merch-hero-background.jpg)' }}
                 />
+                {/* Overlay Gradient */}
                 <div className="absolute inset-0 bg-linear-to-r from-[#1a1a1a]/90 via-[#1a1a1a]/50 to-transparent" />
                 <div className="relative max-w-7xl mx-auto px-6 md:px-8 py-20 md:py-28 z-10">
                     <p className="text-xs tracking-[0.3em] uppercase text-[#d4ab7a] mb-2">
                         Fully Stocked
                     </p>
-                    <h1 className="text-4xl md:text-5xl font-heading text-white mb-4">
+                    <h1 className="text-5xl md:text-6xl font-heading tracking-wide text-white mb-4">
                         Gear & Accessories
                     </h1>
-                    <p className="text-white/60 text-lg max-w-2xl">
+                    <p className="text-white/70 text-lg max-w-2xl">
                         From high-end glassware and everyday smoking essentials to signature mugs and live shop plants — we have everything you need.
                     </p>
                 </div>
-            </div>
+            </section>
+
+
+
 
             {/* Category Banners */}
             <div className="max-w-7xl mx-auto px-6 md:px-8 py-16 md:py-24">

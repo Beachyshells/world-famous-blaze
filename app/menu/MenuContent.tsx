@@ -201,7 +201,7 @@ export default function MenuContent() {
                     <p className="text-xs tracking-[0.3em] uppercase text-[#d4ab7a] mb-2">
                         Curated Selection
                     </p>
-                    <h1 className="text-4xl md:text-5xl font-heading text-white mb-4">Menu</h1>
+                    <h1 className="text-5xl md:text-6xl font-heading text-white mb-4">Menu</h1>
                     <p className="text-white/60 text-lg max-w-2xl">
                         Browse our current selection. Tap to filter, tap again to remove.
                     </p>
