@@ -43,12 +43,12 @@ export default function TeamMemberLayout({
 
                 {/* Section 1: Hero image + overlapping text */}
                 <div className="relative mb-24">
-                    <div className="w-full md:w-2/3 aspect-[16/10] bg-surface border border-border shadow-lg flex items-center justify-center overflow-hidden">
+                    <div className="w-full md:w-2/3 aspect-16/10 bg-surface border border-border shadow-lg flex items-center justify-center overflow-hidden">
                         <span className="text-xs tracking-[0.3em] uppercase text-text-muted">
                             Hero Photo
                         </span>
                     </div>
-                    <div className="md:absolute md:bottom-[-40px] md:right-0 md:w-1/2 bg-bg/95 backdrop-blur-sm border border-border shadow-lg p-8 md:p-10 mt-6 md:mt-0">
+                    <div className="md:absolute md:-bottom-10 md:right-0 md:w-1/2 bg-bg/95 backdrop-blur-sm border border-border shadow-lg p-8 md:p-10 mt-6 md:mt-0">
                         <p className="text-xs tracking-[0.3em] uppercase text-primary mb-3">
                             The Beginning
                         </p>
@@ -63,12 +63,12 @@ export default function TeamMemberLayout({
 
                 {/* Section 2: Two staggered images */}
                 <div className="relative mb-24 flex flex-col md:flex-row gap-6">
-                    <div className="md:w-1/2 md:mt-16 aspect-[3/4] bg-surface border border-border shadow-lg flex items-center justify-center overflow-hidden">
+                    <div className="md:w-1/2 md:mt-16 aspect-3/4 bg-surface border border-border shadow-lg flex items-center justify-center overflow-hidden">
                         <span className="text-xs tracking-[0.3em] uppercase text-text-muted">
                             Photo 2
                         </span>
                     </div>
-                    <div className="md:w-1/2 md:-mt-8 aspect-[3/4] bg-surface border border-border shadow-lg flex items-center justify-center overflow-hidden">
+                    <div className="md:w-1/2 md:-mt-8 aspect-3/4 bg-surface border border-border shadow-lg flex items-center justify-center overflow-hidden">
                         <span className="text-xs tracking-[0.3em] uppercase text-text-muted">
                             Photo 3
                         </span>
@@ -89,12 +89,12 @@ export default function TeamMemberLayout({
 
                 {/* Section 4: Wide image + overlapping text from opposite side */}
                 <div className="relative mb-24">
-                    <div className="w-full md:w-2/3 md:ml-auto aspect-[16/10] bg-surface border border-border shadow-lg flex items-center justify-center overflow-hidden">
+                    <div className="w-full md:w-2/3 md:ml-auto aspect-16/10 bg-surface border border-border shadow-lg flex items-center justify-center overflow-hidden">
                         <span className="text-xs tracking-[0.3em] uppercase text-text-muted">
                             Action Photo
                         </span>
                     </div>
-                    <div className="md:absolute md:bottom-[-40px] md:left-0 md:w-1/2 bg-bg/95 backdrop-blur-sm border border-border shadow-lg p-8 md:p-10 mt-6 md:mt-0">
+                    <div className="md:absolute md:-bottom-10 md:left-0 md:w-1/2 bg-bg/95 backdrop-blur-sm border border-border shadow-lg p-8 md:p-10 mt-6 md:mt-0">
                         <p className="text-xs tracking-[0.3em] uppercase text-primary mb-3">
                             The Mission
                         </p>
@@ -116,22 +116,22 @@ export default function TeamMemberLayout({
                         Behind the Scenes
                     </h2>
                     <div className="grid grid-cols-12 gap-4">
-                        <div className="col-span-12 md:col-span-7 aspect-[16/10] bg-surface border border-border shadow-lg flex items-center justify-center overflow-hidden">
+                        <div className="col-span-12 md:col-span-7 aspect-16/10 bg-surface border border-border shadow-lg flex items-center justify-center overflow-hidden">
                             <span className="text-xs tracking-[0.3em] uppercase text-text-muted">Photo 4</span>
                         </div>
                         <div className="col-span-6 md:col-span-5 aspect-square bg-surface border border-border shadow-lg flex items-center justify-center overflow-hidden">
                             <span className="text-xs tracking-[0.3em] uppercase text-text-muted">Photo 5</span>
                         </div>
-                        <div className="col-span-6 md:col-span-4 aspect-[4/5] bg-surface border border-border shadow-lg flex items-center justify-center overflow-hidden md:-mt-12">
+                        <div className="col-span-6 md:col-span-4 aspect-4/5 bg-surface border border-border shadow-lg flex items-center justify-center overflow-hidden md:-mt-12">
                             <span className="text-xs tracking-[0.3em] uppercase text-text-muted">Photo 6</span>
                         </div>
-                        <div className="col-span-12 md:col-span-8 aspect-[16/9] bg-surface border border-border shadow-lg flex items-center justify-center overflow-hidden md:-mt-8">
+                        <div className="col-span-12 md:col-span-8 aspect-16/10 bg-surface border border-border shadow-lg flex items-center justify-center overflow-hidden md:-mt-8">
                             <span className="text-xs tracking-[0.3em] uppercase text-text-muted">Photo 7</span>
                         </div>
-                        <div className="col-span-7 md:col-span-5 aspect-[3/4] bg-surface border border-border shadow-lg flex items-center justify-center overflow-hidden md:-mt-16">
+                        <div className="col-span-7 md:col-span-5 aspect-3/4 bg-surface border border-border shadow-lg flex items-center justify-center overflow-hidden md:-mt-16">
                             <span className="text-xs tracking-[0.3em] uppercase text-text-muted">Photo 8</span>
                         </div>
-                        <div className="col-span-5 md:col-span-7 aspect-[16/10] bg-surface border border-border shadow-lg flex items-center justify-center overflow-hidden">
+                        <div className="col-span-5 md:col-span-7 aspect-16/10 bg-surface border border-border shadow-lg flex items-center justify-center overflow-hidden">
                             <span className="text-xs tracking-[0.3em] uppercase text-text-muted">Photo 9</span>
                         </div>
                     </div>
