@@ -22,7 +22,7 @@ export function MerchandisePreview() {
                         Merchandise
                     </h2>
                     <p className="text-text-muted max-w-2xl">
-                        Show your support with World Famous Blaze gear. Apparel, accessories, and more from the shop.
+                        Gear up with apparel, custom accessories, premium glass, and lifestyle essentials.
                     </p>
                 </div>
 

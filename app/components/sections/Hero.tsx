@@ -2,8 +2,19 @@ import Link from 'next/link'
 
 export function Hero() {
     return (
-        <section className="relative bg-bg border-b border-border">
-            <div className="max-w-7xl mx-auto px-6 md:px-8 py-24 md:py-22 ">
+        <section className="relative bg-bg border-b border-border overflow-hidden">
+
+            {/* Background Image Layer */}
+            <div
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 hover:scale-102"
+                style={{ backgroundImage: 'url(/images/hero-background.jpg)' }}
+            />
+
+            {/* Overlay Gradient */}
+            <div className="absolute inset-0 bg-linear-to-r from-neutral-950 via-neutral-950/70 to-transparent" />
+
+            {/* Content Container - Wrapped in 'dark' so your global design tokens render light */}
+            <div className="dark relative max-w-7xl mx-auto px-6 md:px-8 py-24 md:py-22 z-10">
 
                 <p className="text-xs tracking-[0.4em] uppercase text-primary mb-6">
                     Premium Cannabis  ·  Authentic Service
