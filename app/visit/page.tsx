@@ -30,7 +30,7 @@ export default function VisitPage() {
                 <div className="max-w-7xl mx-auto px-6 md:px-8 py-20 md:py-28">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                         <div>
-                            <h1 className="text-4xl md:text-5xl font-heading text-white mb-6 uppercase">
+                            <h1 className="text-5xl md:text-6xl font-heading text-white mb-6 uppercase">
                                 World Famous <span className="text-transparent bg-clip-text bg-linear-to-t from-[#ef4444] via-[#f97316] to-[#ffffff]">Blaze</span>
                             </h1>
                             <p className="text-xs tracking-[0.3em] uppercase text-[#d4ab7a] mb-4">
@@ -46,19 +46,29 @@ export default function VisitPage() {
                         <div className="flex flex-col gap-6">
                             <a
                                 href="tel:+15183581023"
-                                className="border border-white/10 bg-white/5 p-8 hover:bg-white/10 transition-all duration-300 group block"
+                                className="border border-white/10 rounded-[5px] bg-white/10 p-8 hover:bg-white/20 transition-all duration-300 group block"
                             >
-                                <p className="text-xs tracking-[0.3em] uppercase text-[#d4ab7a] mb-3">Call Us</p>
-                                <p className="text-3xl font-heading text-white group-hover:text-[#9aab8c] transition-colors">
+                                <h3 className="text-xs font-bold tracking-[0.2em] uppercase text-[#96d47a] mb-4">
+                                    Call Us
+                                </h3>
+                                <p className="text-3xl font-body group-hover:text-white text-[#9aab8c] transition-colors">
                                     (518) 358-1023
                                 </p>
-                                <p className="text-white/40 text-sm mt-2">Tap to call — we always pick up</p>
+                                <p className="text-neutral-400 text-sm mt-2">Tap to call — we always pick up</p>
                             </a>
-                            <div className="border border-white/10 bg-white/5 p-8">
-                                <p className="text-xs tracking-[0.3em] uppercase text-[#d4ab7a] mb-3">Location</p>
-                                <p className="text-xl font-heading text-white mb-1">2797 NY-95</p>
-                                <p className="text-white/40">Bombay, NY 12914</p>
-                                <p className="text-white/40 text-sm mt-2">Free parking on-site</p>
+                            <div className="bg-white/10 border border-neutral-800 rounded-[5px] p-8 transition-all hover:bg-white/20">
+                                <h3 className="text-xs font-bold tracking-[0.2em] uppercase text-[#96d47a] mb-4">
+                                    Visit Us
+                                </h3>
+                                <div className="space-y-1">
+                                    <p className="text-2xl font-semibold font-body text-white tracking-wider">2797 NY-95</p>
+                                    <p className="text-neutral-400">Bombay, NY 12914</p>
+                                </div>
+                                <div className="mt-6 pt-6 border-t border-neutral-800">
+                                    <span className="inline-flex items-center text-xs font-medium text-[#c7f708] bg-emerald-400/10 px-2.5 py-0.5 rounded-full">
+                                        Free Parking Available
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -66,7 +76,7 @@ export default function VisitPage() {
             </div>
 
             {/* What to Expect */}
-            <div className="bg-surface">
+            <div className="bg-bg">
                 <div className="max-w-7xl mx-auto px-6 md:px-8 py-20 md:py-28">
                     <div className="max-w-3xl">
                         <p className="text-xs tracking-[0.3em] uppercase text-accent mb-8">
