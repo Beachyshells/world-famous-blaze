@@ -1,4 +1,10 @@
+import type { Metadata } from 'next'
 import LearnArticleLayout from '../LearnArticleLayout'
+
+export const metadata: Metadata = {
+    title: 'Your First Visit | World Famous Blaze',
+    description: 'What to expect on your first dispensary visit — how it works, loyalty rewards, and more.',
+}
 
 export default function FirstVisitPage() {
     return (

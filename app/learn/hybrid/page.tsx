@@ -1,4 +1,10 @@
+import type { Metadata } from 'next'
 import LearnArticleLayout from '../LearnArticleLayout'
+
+export const metadata: Metadata = {
+    title: 'Hybrid Strains | World Famous Blaze',
+    description: 'What hybrid strains are, how they feel, and why they are a great starting point.',
+}
 
 export default function HybridPage() {
     return (

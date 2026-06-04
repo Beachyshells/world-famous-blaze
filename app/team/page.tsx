@@ -1,5 +1,10 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 
+export const metadata: Metadata = {
+    title: 'Our Team | World Famous Blaze',
+    description: 'Meet the crew behind the counter at World Famous Blaze.',
+}
 // Placeholder — will pull from Sanity in Phase 7
 const teamMembers = [
     {

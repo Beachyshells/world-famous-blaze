@@ -2,21 +2,24 @@ import Link from 'next/link'
 
 const merchHighlights = [
     {
-        name: 'Apparel & Gear',
-        category: 'Apparel',
-        description: 'Hoodies, tees, snapbacks, and joggers. Rep World Famous Blaze everywhere you go.',
-        href: '/merchandise',
-    },
-    {
         name: 'Smoking Essentials',
-        category: 'Accessories',
-        description: 'Grinders, rolling trays, papers, wraps, and the daily tools every smoker needs.',
+        category: 'Essentials',
+        description: 'Precision grinders, custom rolling trays, papers, wraps, and daily tools.',
+        bgImage: '/images/merch-smoking-essentials.jpg',
         href: '/merchandise',
     },
     {
-        name: 'Glass & Storage',
+        name: 'Premium Glass & Rigs',
         category: 'Glassware',
-        description: 'Premium glass pieces, stash boxes, and airtight storage for your collection.',
+        description: 'High-end bongs, rigs, bubblers, and specialized glassware for every setup.',
+        bgImage: '/images/merch-premium-glass.jpg',
+        href: '/merchandise',
+    },
+    {
+        name: 'Lifestyle Products',
+        category: 'Curated Gear',
+        description: 'Signature coffee mugs, live plants, and custom lifestyle pieces around the shop.',
+        bgImage: '/images/merch-lifestyle-products.jpg',
         href: '/merchandise',
     },
 ]
@@ -45,10 +48,16 @@ export function MerchandisePreview() {
                         <Link
                             key={item.name}
                             href={item.href}
-                            className="relative w-full h-70 overflow-hidden group cursor-pointer border border-border shadow-md hover:shadow-xl transition-all duration-500 block bg-dark rounded-[5px]"
+                            className="relative w-full h-70 overflow-hidden group cursor-pointer border border-border shadow-md hover:shadow-xl transition-all duration-500 block rounded-[5px]"
                         >
-                            {/* Gradient overlay — works with or without an image */}
-                            <div className="absolute inset-0 bg-linear-to-r from-dark via-dark/80 to-dark/40" />
+                            {/* Background Image Layer */}
+                            <div
+                                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                                style={{ backgroundImage: `url(${item.bgImage})` }}
+                            />
+
+                            {/* Overlay Gradient */}
+                            <div className="absolute inset-0 bg-linear-to-r from-dark/90 via-dark/50 to-transparent" />
 
                             {/* Content Layer */}
                             <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-center max-w-xl text-left">
@@ -58,7 +67,7 @@ export function MerchandisePreview() {
                                 <h3 className="text-2xl md:text-3xl text-white font-heading tracking-wide mb-2 group-hover:text-primary transition-colors">
                                     {item.name}
                                 </h3>
-                                <p className="text-sm md:text-base text-white/60 max-w-md leading-relaxed">
+                                <p className="text-sm md:text-base text-white/70 max-w-md leading-relaxed">
                                     {item.description}
                                 </p>
                                 <p className="text-sm font-heading text-white mt-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">

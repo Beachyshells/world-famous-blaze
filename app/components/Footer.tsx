@@ -52,9 +52,36 @@ export function Footer() {
                     </address>
                 </div>
 
-                {/* COLUMN 2 — Connect */}
+                {/* COLUMN 2 — Quick Links */}
                 <div>
-                    <h3 className="text-xs tracking-[0.3em] uppercase text-text-muted mb-4">Connect</h3>
+                    <h3 className="text-xs tracking-[0.3em] uppercase text-text-muted mb-4">Quick Links</h3>
+                    <ul className="space-y-2 text-sm">
+                        <li>
+                            <Link href="/menu" className="text-text hover:text-primary transition-colors">
+                                Menu
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/merchandise" className="text-text hover:text-primary transition-colors">
+                                Merchandise
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/team" className="text-text hover:text-primary transition-colors">
+                                Our Team
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/learn" className="text-text hover:text-primary transition-colors">
+                                Learn
+                            </Link>
+                        </li>
+                    </ul>
+                </div>
+
+                {/* COLUMN 3 — Company */}
+                <div>
+                    <h3 className="text-xs tracking-[0.3em] uppercase text-text-muted mb-4">Company</h3>
                     <ul className="space-y-2 text-sm">
                         <li>
                             <Link href="/about" className="text-text hover:text-primary transition-colors">
@@ -63,29 +90,7 @@ export function Footer() {
                         </li>
                         <li>
                             <Link href="/contact" className="text-text hover:text-primary transition-colors">
-                                Contact Us
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="/privacy" className="text-text hover:text-primary transition-colors">
-                                Privacy Policy
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="/terms" className="text-text hover:text-primary transition-colors">
-                                Terms of Use
-                            </Link>
-                        </li>
-                    </ul>
-                </div>
-
-                {/* COLUMN 3 — Information */}
-                <div>
-                    <h3 className="text-xs tracking-[0.3em] uppercase text-text-muted mb-4">Information</h3>
-                    <ul className="space-y-2 text-sm">
-                        <li>
-                            <Link href="/about" className="text-text hover:text-primary transition-colors">
-                                About Us
+                                Contact
                             </Link>
                         </li>
                         <li>
@@ -127,12 +132,13 @@ export function Footer() {
                                 Cannabis products may only be used legally by adults 21 and older. Please review the following warnings before use:
                             </p>
                         </div>
-                        <ul className="text-xs text-text-muted space-y-1.5 leading-relaxed lg:grid lg:grid-cols-2 lg:gap-x-8 lg:space-y-0 lg:gap-y-1.5 ">                            {requiredWarnings.map((warning, i) => (
-                            <li key={i} className="flex gap-2">
-                                <span className="text-primary shrink-0">•</span>
-                                <span>{warning}</span>
-                            </li>
-                        ))}
+                        <ul className="text-xs text-text-muted space-y-1.5 leading-relaxed lg:grid lg:grid-cols-2 lg:gap-x-8 lg:space-y-0 lg:gap-y-1.5">
+                            {requiredWarnings.map((warning, i) => (
+                                <li key={i} className="flex gap-2">
+                                    <span className="text-primary shrink-0">•</span>
+                                    <span>{warning}</span>
+                                </li>
+                            ))}
                         </ul>
                     </div>
                 </div>
@@ -153,6 +159,6 @@ export function Footer() {
                     </p>
                 </div>
             </div>
-        </footer>
+        </footer >
     )
 }

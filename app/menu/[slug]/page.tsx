@@ -1,6 +1,7 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 
-// Placeholder product data — will pull from Sanity or POS in Phase 7
+
 const placeholderProducts: Record<string, {
     name: string
     category: string
@@ -53,6 +54,21 @@ const placeholderProducts: Record<string, {
         description: 'Clean, affordable concentrate',
         details: 'A no-frills shatter that delivers. Clean extraction, solid potency, and a smooth dab every time. Our most affordable concentrate option for daily users.',
     },
+}
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ slug: string }>
+}): Promise<Metadata> {
+    const { slug } = await params
+    const product = placeholderProducts[slug]
+    if (!product) {
+        return { title: 'Product Not Found | World Famous Blaze' }
+    }
+    return {
+        title: `${product.name} | World Famous Blaze`,
+        description: product.description,
+    }
 }
 
 export default async function ProductDetailPage({

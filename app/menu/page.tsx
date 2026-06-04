@@ -1,5 +1,11 @@
+import type { Metadata } from 'next'
 import { Suspense } from 'react'
 import MenuContent from './MenuContent'
+
+export const metadata: Metadata = {
+    title: 'Menu | World Famous Blaze',
+    description: 'Browse our full cannabis menu — flower, vapes, edibles, pre-rolls, and concentrates.',
+}
 
 export default function MenuPage() {
     return (

@@ -1,4 +1,10 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
+
+export const metadata: Metadata = {
+    title: 'Learn | World Famous Blaze',
+    description: 'Cannabis education — strains, shopping tips, and community resources from World Famous Blaze.',
+}
 
 const articles = [
     {

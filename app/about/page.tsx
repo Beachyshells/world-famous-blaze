@@ -1,5 +1,10 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 
+export const metadata: Metadata = {
+    title: 'About | World Famous Blaze',
+    description: 'Our story, our mission, and the team behind World Famous Blaze dispensary.',
+}
 
 export default function AboutPage() {
     return (

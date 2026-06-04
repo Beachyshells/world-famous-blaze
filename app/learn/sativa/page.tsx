@@ -1,4 +1,10 @@
+import type { Metadata } from 'next'
 import LearnArticleLayout from '../LearnArticleLayout'
+
+export const metadata: Metadata = {
+    title: 'Sativa Strains | World Famous Blaze',
+    description: 'What sativa strains are, how they feel, and when to reach for one.',
+}
 
 export default function SativaPage() {
     return (

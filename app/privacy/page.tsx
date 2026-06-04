@@ -1,3 +1,10 @@
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+    title: 'Privacy Policy | World Famous Blaze',
+    description: 'Privacy policy for World Famous Blaze dispensary.',
+}
+
 export default function PrivacyPage() {
     return (
         <div className="max-w-7xl mx-auto px-6 md:px-8 py-16 md:py-24">

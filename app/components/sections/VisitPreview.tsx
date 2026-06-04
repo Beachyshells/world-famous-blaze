@@ -21,16 +21,28 @@ export function VisitPreview() {
                 {/* Info Cards */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
                     <div className="bg-surface rounded-[5px] border border-border p-6 shadow-md hover:shadow-lg transition-all duration-300">
-                        <p className="text-xs tracking-[0.3em] uppercase text-accent mb-3">Hours</p>
-                        <p className="text-text text-xl font-heading mb-1">24/7</p>
-                        <p className="text-text-muted text-sm">We never close</p>
+                        <p className="text-xs tracking-[0.3em] uppercase text-accent mb-3">
+                            Hours
+                        </p>
+                        <p className="text-text text-xl font-heading mb-1">
+                            24/7
+                        </p>
+                        <p className="text-text-muted text-sm">
+                            We never close
+                        </p>
                     </div>
                     <div className="bg-surface rounded-[5px] border border-border p-6 shadow-md hover:shadow-lg transition-all duration-300">
                         <div className="flex items-center gap-4">
                             <div className="flex-1">
-                                <p className="text-xs tracking-[0.3em] uppercase text-accent mb-3">Address</p>
-                                <p className="text-text text-xl font-heading mb-1">2797 NY-95</p>
-                                <p className="text-text-muted text-sm">Bombay, NY 12914</p>
+                                <p className="text-xs tracking-[0.3em] uppercase text-accent mb-3">
+                                    Address
+                                </p>
+                                <p className="text-text text-xl font-heading mb-1">
+                                    2797 NY-95
+                                </p>
+                                <p className="text-text-muted text-sm">
+                                    Bombay, NY 12914
+                                </p>
                             </div>
                             <a
                                 href="https://www.google.com/maps/dir//2797+NY-95+Bombay+NY+12914"
@@ -51,11 +63,15 @@ export function VisitPreview() {
                         </div>
                     </div>
                     <div className="bg-surface rounded-[5px] border border-border p-6 shadow-md hover:shadow-lg transition-all duration-300">
-                        <p className="text-xs tracking-[0.3em] uppercase text-accent mb-3">Phone</p>
+                        <p className="text-xs tracking-[0.3em] uppercase text-accent mb-3">
+                            Phone
+                        </p>
                         <a href="tel:+15183581023" className="text-text text-xl font-heading hover:text-primary transition-colors block mb-1">
                             (518) 358-1023
                         </a>
-                        <p className="text-text-muted text-sm">Call or text anytime</p>
+                        <p className="text-text-muted text-sm">
+                            Call or text anytime
+                        </p>
                     </div>
                 </div>
 
@@ -65,9 +81,11 @@ export function VisitPreview() {
                     className="group inline-flex items-center gap-3 text-text hover:text-primary transition-colors"
                 >
                     <span className="text-sm tracking-wide">Get Directions & More Info</span>
-                    <span className="text-xl transition-transform group-hover:translate-x-1">→</span>
+                    <span className="text-xl transition-transform group-hover:translate-x-1">
+                        →
+                    </span>
                 </Link>
             </div>
-        </section >
+        </section>
     )
 }

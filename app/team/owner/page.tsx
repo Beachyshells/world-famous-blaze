@@ -1,4 +1,10 @@
+import type { Metadata } from 'next'
 import TeamMemberLayout from '../TeamMemberLayout'
+
+export const metadata: Metadata = {
+    title: 'Owner | World Famous Blaze',
+    description: 'Meet the founder of World Famous Blaze.',
+}
 
 export default function OwnerPage() {
     return (
