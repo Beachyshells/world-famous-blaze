@@ -28,7 +28,7 @@ export function MerchandisePreview() {
 
                 {/* Header */}
                 <div className="mb-16 md:mb-20">
-                    <p className="text-xs tracking-[0.4em] uppercase text-[#d4ab7a] mb-3">
+                    <p className="text-xs tracking-[0.4em] uppercase text-accent mb-3">
                         Branded Gear
                     </p>
                     <h2 className="text-4xl md:text-5xl font-heading text-text mb-4">
@@ -52,10 +52,10 @@ export function MerchandisePreview() {
 
                             {/* Content Layer */}
                             <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-center max-w-xl text-left">
-                                <span className="text-xs tracking-[0.3em] uppercase text-[#d4ab7a] mb-2">
+                                <span className="text-xs tracking-[0.3em] uppercase text-accent mb-2">
                                     {item.category}
                                 </span>
-                                <h3 className="text-2xl md:text-3xl text-white font-heading tracking-wide mb-2 group-hover:text-[#9aab8c] transition-colors">
+                                <h3 className="text-2xl md:text-3xl text-white font-heading tracking-wide mb-2 group-hover:text-primary transition-colors">
                                     {item.name}
                                 </h3>
                                 <p className="text-sm md:text-base text-white/60 max-w-md leading-relaxed">

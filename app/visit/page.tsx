@@ -33,7 +33,7 @@ export default function VisitPage() {
                             <h1 className="text-5xl md:text-6xl font-heading text-white mb-6 uppercase">
                                 World Famous <span className="text-transparent bg-clip-text bg-linear-to-t from-[#ef4444] via-[#f97316] to-[#ffffff]">Blaze</span>
                             </h1>
-                            <p className="text-xs tracking-[0.3em] uppercase text-[#d4ab7a] mb-4">
+                            <p className="text-xs tracking-[0.3em] uppercase text-accent mb-4">
                                 Always Open
                             </p>
                             <p className="text-7xl md:text-9xl font-heading text-white leading-none mb-4">
@@ -51,7 +51,7 @@ export default function VisitPage() {
                                 <h3 className="text-xs font-bold tracking-[0.2em] uppercase text-[#96d47a] mb-4">
                                     Call Us
                                 </h3>
-                                <p className="text-3xl font-body group-hover:text-white text-[#9aab8c] transition-colors">
+                                <p className="text-3xl font-body group-hover:text-white text-primary transition-colors">
                                     (518) 358-1023
                                 </p>
                                 <p className="text-neutral-400 text-sm mt-2">Tap to call — we always pick up</p>
@@ -114,7 +114,6 @@ export default function VisitPage() {
                                     </p>
                                 </div>
                             </div>
-
                             <div className="flex gap-6 items-start">
                                 <div className="w-12 h-12 flex items-center justify-center shrink-0">
                                     <span className="icon-image">

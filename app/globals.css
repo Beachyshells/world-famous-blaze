@@ -20,8 +20,7 @@
 
   /* Typography */
   --font-heading: 'Georgia', 'Times New Roman', serif;
-  --font-body: 'Inter', system-ui, sans-serif;
-  --font-mono: 'Geist Mono', monospace;
+  --font-body: 'Geist', system-ui, sans-serif;
 }
 
 /* ============================================

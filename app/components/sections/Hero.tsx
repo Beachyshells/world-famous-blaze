@@ -11,7 +11,7 @@ export function Hero() {
             {/* Overlay Gradient */}
             <div className="absolute inset-0 bg-linear-to-r from-dark/90 via-dark/50 to-transparent" />
             <div className="relative max-w-7xl mx-auto px-6 md:px-8 py-20 md:py-28 z-10">
-                <p className="text-xs tracking-[0.3em] uppercase text-[#d4ab7a] mb-2">
+                <p className="text-xs tracking-[0.3em] uppercase text-accent mb-2">
                     Premium Cannabis  ·  Authentic Service
                 </p>
                 <h1 className="text-5xl md:text-6xl font-heading tracking-wide text-white mb-4">                    World Famous Blaze

@@ -198,7 +198,7 @@ export default function MenuContent() {
                 />
                 <div className="absolute inset-0 bg-linear-to-r from-dark/90 via-dark/50 to-transparent" />
                 <div className="relative max-w-7xl mx-auto px-6 md:px-8 py-20 md:py-28 z-10">
-                    <p className="text-xs tracking-[0.3em] uppercase text-[#d4ab7a] mb-2">
+                    <p className="text-xs tracking-[0.3em] uppercase text-accent mb-2">
                         Curated Selection
                     </p>
                     <h1 className="text-5xl md:text-6xl font-heading text-white mb-4">Menu</h1>
@@ -209,7 +209,7 @@ export default function MenuContent() {
             </div>
 
             {/* Filter Bar */}
-            <div className="sticky top-0 z-20 bg-surface/95 backdrop-blur-md border-b border-border">
+            <div className="sticky top-18.5z-20 bg-surface/95 backdrop-blur-md border-b border-border">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
                     <div className="flex flex-wrap items-center justify-between gap-4">
                         <div className="flex flex-wrap items-center gap-2.5">
