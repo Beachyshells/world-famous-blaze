@@ -1,6 +1,6 @@
 import { FeaturedPreview } from './components/sections/FeaturedPreview'
 import { Hero } from './components/sections/Hero'
-import { StoryPreview } from './components/sections/StoryPreview'
+import { StoryPreview } from './components/sections/AboutPreview'
 import { VisitPreview } from './components/sections/VisitPreview'
 import { LearnPreview } from './components/sections/LearnPreview'
 import { MerchandisePreview } from './components/sections/MerchandisePreview'

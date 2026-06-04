@@ -196,7 +196,7 @@ export default function MenuContent() {
                     className="absolute inset-0 bg-cover bg-center"
                     style={{ backgroundImage: 'url(/images/cannabis-menu-hero-background.jpg)' }}
                 />
-                <div className="absolute inset-0 bg-linear-to-r from-[#1a1a1a]/90 via-[#1a1a1a]/50 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-r from-dark/90 via-dark/50 to-transparent" />
                 <div className="relative max-w-7xl mx-auto px-6 md:px-8 py-20 md:py-28 z-10">
                     <p className="text-xs tracking-[0.3em] uppercase text-[#d4ab7a] mb-2">
                         Curated Selection
@@ -252,7 +252,7 @@ export default function MenuContent() {
 
                                     {/* Brand dropdown */}
                                     {cat.name === 'vapes' && selectedCategories.includes('vapes') && brandDropdownOpen && (
-                                        <div className="absolute top-full left-0 mt-2 bg-surface border border-border shadow-lg z-30 min-w-[160px]">
+                                        <div className="absolute top-full left-0 mt-2 bg-surface border border-border shadow-lg z-30 min-w-40 rounded-[5px]">
                                             <button
                                                 onClick={() => {
                                                     setSelectedBrands([])

@@ -45,10 +45,10 @@ export function MerchandisePreview() {
                         <Link
                             key={item.name}
                             href={item.href}
-                            className="relative w-full h-70 overflow-hidden group cursor-pointer border border-border shadow-md hover:shadow-xl transition-all duration-500 block bg-[#1a1a1a]"
+                            className="relative w-full h-70 overflow-hidden group cursor-pointer border border-border shadow-md hover:shadow-xl transition-all duration-500 block bg-dark rounded-[5px]"
                         >
                             {/* Gradient overlay — works with or without an image */}
-                            <div className="absolute inset-0 bg-linear-to-r from-[#1a1a1a] via-[#1a1a1a]/80 to-[#2a2a2a]/40" />
+                            <div className="absolute inset-0 bg-linear-to-r from-dark via-dark/80 to-dark/40" />
 
                             {/* Content Layer */}
                             <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-center max-w-xl text-left">

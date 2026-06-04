@@ -34,7 +34,7 @@ const placeholderProducts = [
 
 export function FeaturedPreview() {
     return (
-        <section className="bg-surface border-b border-border">
+        <section className="bg-bg border-b border-border">
             <div className="max-w-7xl mx-auto px-6 md:px-8 py-20 md:py-28">
 
                 {/* Header */}
@@ -56,7 +56,7 @@ export function FeaturedPreview() {
                         <Link
                             key={product.name}
                             href={product.href}
-                            className="relative w-full h-70 overflow-hidden group cursor-pointer border border-border shadow-md hover:shadow-xl transition-all duration-500 block"
+                            className="relative w-full h-70 overflow-hidden group cursor-pointer border border-border shadow-md hover:shadow-xl transition-all duration-500 block rounded-[5px]"
                         >
                             {/* Background Image Layer */}
                             <div
@@ -65,8 +65,7 @@ export function FeaturedPreview() {
                             />
 
                             {/* Overlay Gradient */}
-                            <div className="absolute inset-0 bg-linear-to-r from-[#1a1a1a]/90 via-[#1a1a1a]/50 to-transparent" />
-                            {/* Content Layer */}
+                            <div className="absolute inset-0 bg-linear-to-r from-dark/90 via-dark/50 to-transparent" />                            {/* Content Layer */}
                             {/* Content Layer */}
                             <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-center max-w-xl text-left">
                                 <span className="text-xs tracking-[0.3em] uppercase text-[#d4ab7a] mb-2">

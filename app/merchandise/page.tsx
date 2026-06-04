@@ -35,7 +35,7 @@ export default function MerchandisePage() {
                     style={{ backgroundImage: 'url(/images/merch-hero-background.jpg)' }}
                 />
                 {/* Overlay Gradient */}
-                <div className="absolute inset-0 bg-linear-to-r from-[#1a1a1a]/90 via-[#1a1a1a]/50 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-r from-dark/90 via-dark/50 to-transparent" />
                 <div className="relative max-w-7xl mx-auto px-6 md:px-8 py-20 md:py-28 z-10">
                     <p className="text-xs tracking-[0.3em] uppercase text-[#d4ab7a] mb-2">
                         Fully Stocked
@@ -68,7 +68,7 @@ export default function MerchandisePage() {
                             />
 
                             {/* Overlay Gradient */}
-                            <div className="absolute inset-0 bg-linear-to-r from-[#1a1a1a]/90 via-[#1a1a1a]/50 to-transparent" />
+                            <div className="absolute inset-0 bg-linear-to-r from-dark/90 via-dark/50 to-transparent" />
 
                             {/* Content Layer */}
                             <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-center max-w-xl text-left">

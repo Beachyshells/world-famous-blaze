@@ -26,7 +26,7 @@ export function Header() {
                     href="/"
                     className="text-xl md:text-2xl font-semibold tracking-tight text-text hover:text-primary transition-colors shrink-0"
                 >
-                    World-Famous-Blaze
+                    World Famous Blaze
                 </Link>
 
                 {/* Desktop nav */}

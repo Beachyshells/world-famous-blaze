@@ -21,7 +21,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         <div className="bg-surface border border-border p-4 hover:border-primary hover:shadow-lg transition-all duration-300 group cursor-pointer flex flex-col justify-between shadow-[0_4px_20px_-4px_rgba(26,46,31,0.03)] h-full">
             <div>
                 {/* Image Frame */}
-                <div className="aspect-4/3 bg-[#1a1a1a] mb-4 flex items-center justify-center relative overflow-hidden">
+                <div className="aspect-4/3 bg-dark mb-4 flex items-center justify-center relative overflow-hidden">
                     {product.image ? (
                         <img
                             src={product.image}
@@ -46,11 +46,10 @@ export default function ProductCard({ product }: ProductCardProps) {
                     )}
 
                     {/* Dark gradient overlay */}
-                    <div className="absolute inset-0 bg-linear-to-t from-[#1a1a1a]/80 via-[#1a1a1a]/30 to-transparent pointer-events-none" />
-
+                    <div className="absolute inset-0 bg-linear-to-t from-dark/80 via-dark/30 to-transparent pointer-events-none" />
                     {/* Tier Tag Overlay (Flower only) */}
                     {product.tierColor && (
-                        <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2 py-1 bg-[#1a1a1a]/80 border border-white/10 text-xs font-medium tracking-wide text-white/70 shadow-sm z-10">
+                        <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2 py-1 bg-dark/80 border border-white/10 text-xs font-medium tracking-wide text-white/70 shadow-sm z-10">
                             <span className="w-2 h-2 rounded-full" style={{ backgroundColor: product.tierColor }} />
                             {product.tierLabel}
                         </div>

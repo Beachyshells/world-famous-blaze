@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export function VisitPreview() {
     return (
-        <section className="bg-surface border-b border-border">
+        <section className="bg-bg border-b border-border">
             <div className="max-w-7xl mx-auto px-6 md:px-8 py-20 md:py-28">
 
                 {/* Header */}
