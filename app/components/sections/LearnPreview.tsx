@@ -29,20 +29,20 @@ export function LearnPreview() {
 
                 {/* Header */}
                 <div className="mb-12 md:mb-16 max-w-2xl">
-                    <p className="text-xs tracking-[0.4em] uppercase text-primary mb-3">
+                    <p className="text-xs tracking-[0.4em] uppercase text-accent mb-3">
                         Knowledge
                     </p>
-                    <h2 className="text-4xl md:text-5xl font-heading text-text mb-4">
+                    <h2 className="text-4xl md:text-5xl text-text font-heading mb-4">
                         Learn With Us
                     </h2>
-                    <p className="text-text-muted">
+                    <p className="text-text-muted max-w-2xl tracking-wider leading-relaxed">
                         Three ways to learn. About the plant, about the shop, and about the community
                         that makes this place what it is.
                     </p>
                 </div>
 
                 {/* Article Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <div className="grid grid-cols-1 md:grid-cols-3 bg-surface gap-6 mb-12">
                     {placeholderArticles.map((article) => (
                         <Link
                             key={article.title}

@@ -122,15 +122,22 @@ export function Footer() {
                     </div>
 
                     {/* Required Warnings */}
-                    <div className="border-t border-border pt-6">
+                    <div className="flex flex-col gap-4 border-t border-border pt-6">
                         <p className="text-xs tracking-[0.3em] uppercase text-text-muted text-center">
                             Required Disclosures
                         </p>
-                        <div className="flex items-start gap-12 mb-4">
-                            <span className="mb-3 text-primary text-lg shrink-0">⚠️</span>
-                            <p className="text-xs text-text-muted leading-relaxed">
-                                Cannabis products may only be used legally by adults 21 and older. Please review the following warnings before use:
-                            </p>
+                        <div className="flex items-baseline justify-center gap-4">
+                            {/* Icon clamped to the text */}
+                            <div className="text-primary text-2xl shrink-0">
+                                ⚠️
+                            </div>
+
+                            {/* Max-width container that hugs the text */}
+                            <div className="max-w-2xl">
+                                <p className="text-xs text-text-muted">
+                                    Cannabis products may only be used legally by adults 21 and older. Please review the following warnings before use:
+                                </p>
+                            </div>
                         </div>
                         <ul className="text-xs text-text-muted space-y-1.5 leading-relaxed lg:grid lg:grid-cols-2 lg:gap-x-8 lg:space-y-0 lg:gap-y-1.5">
                             {requiredWarnings.map((warning, i) => (

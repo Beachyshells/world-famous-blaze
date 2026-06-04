@@ -30,14 +30,14 @@ export function MerchandisePreview() {
             <div className="max-w-7xl mx-auto px-6 md:px-8 py-20 md:py-28">
 
                 {/* Header */}
-                <div className="mb-16 md:mb-20">
+                <div className="mb-12 md:mb-16 max-w-2xl">
                     <p className="text-xs tracking-[0.4em] uppercase text-accent mb-3">
                         Branded Gear
                     </p>
-                    <h2 className="text-4xl md:text-5xl font-heading text-text mb-4">
+                    <h2 className="text-4xl md:text-5xl text-text font-heading mb-4">
                         Merchandise
                     </h2>
-                    <p className="text-text-muted max-w-2xl">
+                    <p className="text-text-muted max-w-2xl tracking-wider leading-relaxed">
                         More than just a smoke shop. Gear up with apparel, accessories, and lifestyle essentials.
                     </p>
                 </div>
