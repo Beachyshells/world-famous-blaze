@@ -1,67 +1,14 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { allProducts, categories, tierOptions } from '../data'
 
-
-const placeholderProducts: Record<string, {
-    name: string
-    category: string
-    strain?: string
-    tier?: { name: string; color: string }
-    brand?: string
-    description: string
-    details: string
-}> = {
-    'sunny-haze': {
-        name: 'Sunny Haze',
-        category: 'Flower',
-        strain: 'Sativa',
-        tier: { name: 'Yellow', color: '#ecc94b' },
-        description: 'Energizing citrus notes',
-        details: 'A bright, uplifting sativa that hits with citrus on the inhale and a smooth, clean finish. Popular with daytime smokers who want to stay active and focused. Hand-trimmed, small-batch flower from our current rotation.',
-    },
-    'night-owl': {
-        name: 'Night Owl',
-        category: 'Flower',
-        strain: 'Indica',
-        tier: { name: 'Yellow', color: '#ecc94b' },
-        description: 'Relaxing, calming effects',
-        details: 'A mellow indica built for the end of the day. Earthy flavor with a slow onset that settles into full-body relaxation. Great for unwinding without getting knocked out immediately.',
-    },
-    'citrus-burst-cart': {
-        name: 'Citrus Burst Cart',
-        category: 'Vapes',
-        strain: 'Sativa',
-        brand: 'Brand A',
-        description: 'Bright, energizing pull',
-        details: 'A clean-hitting sativa cartridge with a strong citrus profile. Full spectrum extraction for a well-rounded effect. Compatible with standard 510-thread batteries.',
-    },
-    'house-joint': {
-        name: 'House Joint',
-        category: 'Pre-Rolls',
-        strain: 'Sativa',
-        description: 'Solid everyday smoke',
-        details: 'Our house sativa pre-roll. Rolled fresh weekly by the team using flower from our current menu. A reliable, no-fuss joint for when you just want something good without overthinking it.',
-    },
-    'gummy-bears-10pk': {
-        name: 'Gummy Bears 10pk',
-        category: 'Edibles',
-        description: 'Classic fruity flavors',
-        details: 'Ten gummies per pack, each precisely dosed for a consistent experience. Mixed fruit flavors. Great for new users who want to start slow or experienced users who want a familiar, reliable edible.',
-    },
-    'basic-shatter': {
-        name: 'Basic Shatter',
-        category: 'Concentrates',
-        description: 'Clean, affordable concentrate',
-        details: 'A no-frills shatter that delivers. Clean extraction, solid potency, and a smooth dab every time. Our most affordable concentrate option for daily users.',
-    },
-}
 export async function generateMetadata({
     params,
 }: {
     params: Promise<{ slug: string }>
 }): Promise<Metadata> {
     const { slug } = await params
-    const product = placeholderProducts[slug]
+    const product = allProducts.find((p) => p.slug === slug)
     if (!product) {
         return { title: 'Product Not Found | World Famous Blaze' }
     }
@@ -77,7 +24,7 @@ export default async function ProductDetailPage({
     params: Promise<{ slug: string }>
 }) {
     const { slug } = await params
-    const product = placeholderProducts[slug]
+    const product = allProducts.find((p) => p.slug === slug)
 
     if (!product) {
         return (
@@ -98,6 +45,11 @@ export default async function ProductDetailPage({
         )
     }
 
+    const categoryLabel = categories.find((c) => c.name === product.category)?.label
+    const currentTier = product.tier
+        ? tierOptions.find((t) => t.name === product.tier)
+        : undefined
+
     return (
         <div className="min-h-screen">
             {/* Header */}
@@ -111,7 +63,7 @@ export default async function ProductDetailPage({
                     </Link>
                     <div className="flex items-center gap-3 mb-2">
                         <p className="text-xs tracking-[0.3em] uppercase text-accent">
-                            {product.category}
+                            {categoryLabel}
                         </p>
                         {product.strain && (
                             <>
@@ -143,14 +95,14 @@ export default async function ProductDetailPage({
                     {/* Right — Details */}
                     <div>
                         {/* Tier */}
-                        {product.tier && (
+                        {currentTier && (
                             <div className="flex items-center gap-3 mb-6">
                                 <span
                                     className="w-4 h-4 rounded-full border border-border"
-                                    style={{ backgroundColor: product.tier.color }}
+                                    style={{ backgroundColor: currentTier.color }}
                                 />
                                 <span className="text-sm text-text-muted">
-                                    {product.tier.name} Tier
+                                    {currentTier.label} Tier
                                 </span>
                             </div>
                         )}
@@ -164,11 +116,13 @@ export default async function ProductDetailPage({
 
                         {/* Price */}
                         <div className="mb-8">
-                            <p className="text-3xl font-heading text-text">$0.00</p>
+                            <p className="text-3xl font-heading text-text">
+                                ${product.price ? product.price.toFixed(2) : '0.00'}
+                            </p>
                         </div>
 
-                        {/* Weight Options — Placeholder for owner input */}
-                        {product.category === 'Flower' && (
+                        {/* Weight Options — Flower only */}
+                        {product.category === 'flower' && (
                             <div className="mb-8">
                                 <p className="text-xs tracking-[0.2em] uppercase text-text-muted mb-3">
                                     Select Weight
@@ -196,12 +150,10 @@ export default async function ProductDetailPage({
                             </p>
                         </div>
 
-                        {/* Action Button — Placeholder */}
+                        {/* Action Button */}
                         <div className="border-t border-border pt-8">
                             <a
                                 href="/visit"
-
-                                rel="noopener noreferrer"
                                 className="block bg-primary text-bg px-8 py-4 text-center text-sm tracking-[0.2em] uppercase hover:opacity-90 transition-opacity cursor-pointer"
                             >
                                 Get Directions to Store
@@ -225,6 +177,6 @@ export default async function ProductDetailPage({
                     </p>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }

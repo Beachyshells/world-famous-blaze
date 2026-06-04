@@ -2,124 +2,18 @@
 
 import { useState, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
+import Link from 'next/link'
 import ProductCard from '../components/ProductCard'
-
-type Category = 'flower' | 'vapes' | 'edibles' | 'prerolls' | 'concentrates'
-type Strain = 'sativa' | 'indica' | 'hybrid'
-type Tier = 'yellow' | 'green' | 'blue' | 'pink' | 'white'
-
-
-const categories = [
-    { name: 'flower' as Category, label: 'Flower' },
-    { name: 'vapes' as Category, label: 'Vapes' },
-    { name: 'edibles' as Category, label: 'Edibles' },
-    { name: 'prerolls' as Category, label: 'Pre-Rolls' },
-    { name: 'concentrates' as Category, label: 'Concentrates' },
-]
-
-const strainOptions: { name: Strain; label: string }[] = [
-    { name: 'sativa', label: 'Sativa' },
-    { name: 'indica', label: 'Indica' },
-    { name: 'hybrid', label: 'Hybrid' },
-]
-
-const tierOptions: { name: Tier; color: string; label: string }[] = [
-    { name: 'yellow', color: '#ecc94b', label: 'Yellow' },
-    { name: 'green', color: '#48bb78', label: 'Green' },
-    { name: 'blue', color: '#4299e1', label: 'Blue' },
-    { name: 'pink', color: '#ed64a6', label: 'Pink' },
-    { name: 'white', color: '#ffffff', label: 'White' },
-]
-
-const vapeBrands = ['Brand A', 'Brand B', 'Brand C']
-
-interface Product {
-    name: string
-    description: string
-    category: Category
-    strain?: Strain
-    tier?: Tier
-    brand?: string
-}
-
-const allProducts: Product[] = [
-    // ── Flower — Sativa ──
-    { name: 'Sunny Haze', description: 'Energizing citrus notes', category: 'flower', strain: 'sativa', tier: 'yellow' },
-    { name: 'Lemon Dream', description: 'Uplifting, bright effects', category: 'flower', strain: 'sativa', tier: 'yellow' },
-    { name: 'Golden Hour', description: 'Smooth, daytime friendly', category: 'flower', strain: 'sativa', tier: 'yellow' },
-    { name: 'Green Light', description: 'Easy-going, everyday sativa', category: 'flower', strain: 'sativa', tier: 'green' },
-    { name: 'Budget Buzz', description: 'Solid quality, great price', category: 'flower', strain: 'sativa', tier: 'green' },
-    { name: 'Premium Sativa Blend', description: 'Hand-selected, lab-tested', category: 'flower', strain: 'sativa', tier: 'blue' },
-    { name: 'Tropical Sunrise', description: 'Exotic flavor profile', category: 'flower', strain: 'sativa', tier: 'blue' },
-    { name: 'Cloud Nine', description: 'Smooth smoke, potent effects', category: 'flower', strain: 'sativa', tier: 'blue' },
-    { name: 'Craft Sativa', description: 'Small-batch, premium quality', category: 'flower', strain: 'sativa', tier: 'pink' },
-    { name: 'Sunrise Reserve', description: 'High potency sativa', category: 'flower', strain: 'sativa', tier: 'pink' },
-    { name: 'Signature Sativa', description: 'Our finest sativa selection', category: 'flower', strain: 'sativa', tier: 'white' },
-
-    // ── Flower — Indica ──
-    { name: 'Night Owl', description: 'Relaxing, calming effects', category: 'flower', strain: 'indica', tier: 'yellow' },
-    { name: 'Purple Haze', description: 'Mellow vibes, smooth finish', category: 'flower', strain: 'indica', tier: 'yellow' },
-    { name: 'Deep Sleep', description: 'Evening relaxation', category: 'flower', strain: 'indica', tier: 'yellow' },
-    { name: 'Mellow Night', description: 'Gentle wind-down, easy price', category: 'flower', strain: 'indica', tier: 'green' },
-    { name: 'Couch Potato', description: 'Heavy relax, light wallet', category: 'flower', strain: 'indica', tier: 'green' },
-    { name: 'Premium Indica Blend', description: 'Hand-selected, lab-tested', category: 'flower', strain: 'indica', tier: 'blue' },
-    { name: 'Midnight Moon', description: 'Rich, earthy flavors', category: 'flower', strain: 'indica', tier: 'blue' },
-    { name: 'Rest & Restore', description: 'Potent relaxation', category: 'flower', strain: 'indica', tier: 'blue' },
-    { name: 'Craft Indica', description: 'Small-batch, premium quality', category: 'flower', strain: 'indica', tier: 'pink' },
-    { name: 'Twilight Reserve', description: 'High potency indica', category: 'flower', strain: 'indica', tier: 'pink' },
-    { name: 'Signature Indica', description: 'Our finest indica selection', category: 'flower', strain: 'indica', tier: 'white' },
-
-    // ── Flower — Hybrid ──
-    { name: 'Balanced Blend', description: 'Even sativa/indica mix', category: 'flower', strain: 'hybrid', tier: 'yellow' },
-    { name: 'Perfect Harmony', description: 'Best of both worlds', category: 'flower', strain: 'hybrid', tier: 'yellow' },
-    { name: 'Steady Vibe', description: 'Reliable, consistent effects', category: 'flower', strain: 'hybrid', tier: 'yellow' },
-    { name: 'Everyday Hybrid', description: 'Balanced and budget-friendly', category: 'flower', strain: 'hybrid', tier: 'green' },
-    { name: 'Chill Mix', description: 'Smooth blend, easy on the pocket', category: 'flower', strain: 'hybrid', tier: 'green' },
-    { name: 'Premium Hybrid Blend', description: 'Hand-selected, lab-tested', category: 'flower', strain: 'hybrid', tier: 'blue' },
-    { name: 'True Balance', description: 'Perfectly proportioned', category: 'flower', strain: 'hybrid', tier: 'blue' },
-    { name: 'All-Day Hybrid', description: 'Versatile, adaptable', category: 'flower', strain: 'hybrid', tier: 'blue' },
-    { name: 'Craft Hybrid', description: 'Small-batch, premium quality', category: 'flower', strain: 'hybrid', tier: 'pink' },
-    { name: 'Signature Blend', description: 'High potency hybrid', category: 'flower', strain: 'hybrid', tier: 'pink' },
-    { name: 'Premium Hybrid Reserve', description: 'Our finest hybrid selection', category: 'flower', strain: 'hybrid', tier: 'white' },
-
-    // ── Vapes ──
-    { name: 'Citrus Burst Cart', description: 'Bright, energizing pull', category: 'vapes', strain: 'sativa', brand: 'Brand A' },
-    { name: 'Daytime Vape', description: 'Smooth and light', category: 'vapes', strain: 'sativa', brand: 'Brand B' },
-    { name: 'Uplift Cart', description: 'Clean extraction, potent', category: 'vapes', strain: 'sativa', brand: 'Brand A' },
-    { name: 'Solar Flare', description: 'Full spectrum sativa', category: 'vapes', strain: 'sativa', brand: 'Brand C' },
-    { name: 'Nighttime Cart', description: 'Relaxing, smooth draw', category: 'vapes', strain: 'indica', brand: 'Brand B' },
-    { name: 'Chill Vape', description: 'Mellow indica pull', category: 'vapes', strain: 'indica', brand: 'Brand A' },
-    { name: 'Deep Relax Cart', description: 'Full body effects', category: 'vapes', strain: 'indica', brand: 'Brand C' },
-    { name: 'Moonlight Vape', description: 'Rich flavor, heavy hit', category: 'vapes', strain: 'indica', brand: 'Brand B' },
-    { name: 'Balanced Cart', description: 'Best of both worlds', category: 'vapes', strain: 'hybrid', brand: 'Brand B' },
-    { name: 'Anytime Vape', description: 'Versatile, smooth', category: 'vapes', strain: 'hybrid', brand: 'Brand A' },
-    { name: 'Premium Hybrid Cart', description: 'Full spectrum blend', category: 'vapes', strain: 'hybrid', brand: 'Brand A' },
-    { name: 'Harmony Vape', description: 'Perfectly balanced', category: 'vapes', strain: 'hybrid', brand: 'Brand C' },
-
-    // ── Pre-Rolls ──
-    { name: 'House Joint', description: 'Solid everyday smoke', category: 'prerolls', strain: 'sativa' },
-    { name: 'Sativa 3-Pack', description: 'Three sativa joints', category: 'prerolls', strain: 'sativa' },
-    { name: 'Indica House Joint', description: 'Relaxing evening roll', category: 'prerolls', strain: 'indica' },
-    { name: 'Indica 3-Pack', description: 'Three indica joints', category: 'prerolls', strain: 'indica' },
-    { name: 'Hybrid Pre-Roll', description: 'Balanced, smooth burn', category: 'prerolls', strain: 'hybrid' },
-    { name: 'Infused Hybrid Joint', description: 'Kief-dusted for extra punch', category: 'prerolls', strain: 'hybrid' },
-
-    // ── Edibles ──
-    { name: 'Gummy Bears 10pk', description: 'Classic fruity flavors', category: 'edibles' },
-    { name: 'Chocolate Bar', description: 'Milk chocolate, smooth dose', category: 'edibles' },
-    { name: 'Premium Gummies', description: 'Craft flavors, precise dosing', category: 'edibles' },
-    { name: 'Infused Honey Sticks', description: 'Natural, versatile', category: 'edibles' },
-    { name: 'Artisan Chocolates', description: 'Small-batch, rich flavor', category: 'edibles' },
-    { name: 'Signature Edible Collection', description: 'Our finest selection', category: 'edibles' },
-
-    // ── Concentrates ──
-    { name: 'Basic Shatter', description: 'Clean, affordable concentrate', category: 'concentrates' },
-    { name: 'House Wax', description: 'Smooth, easy to work with', category: 'concentrates' },
-    { name: 'Premium Badder', description: 'Terp-rich, potent', category: 'concentrates' },
-    { name: 'Live Resin', description: 'Fresh frozen extraction', category: 'concentrates' },
-    { name: 'Craft Rosin', description: 'Solventless, small-batch', category: 'concentrates' },
-    { name: 'Signature Live Rosin', description: 'Our finest concentrate', category: 'concentrates' },
-]
+import {
+    allProducts,
+    categories,
+    strainOptions,
+    tierOptions,
+    vapeBrands,
+    type Category,
+    type Strain,
+    type Tier,
+} from './data'
 
 export default function MenuContent() {
     const [selectedCategories, setSelectedCategories] = useState<Category[]>([])
@@ -209,7 +103,7 @@ export default function MenuContent() {
             </div>
 
             {/* Filter Bar */}
-            <div className="sticky top-18.5z-20 bg-surface/95 backdrop-blur-md border-b border-border">
+            <div className="sticky top-0 z-20 bg-surface/95 backdrop-blur-md border-b border-border">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
                     <div className="flex flex-wrap items-center justify-between gap-4">
                         <div className="flex flex-wrap items-center gap-2.5">
@@ -376,13 +270,14 @@ export default function MenuContent() {
                                     brand: product.brand,
                                     tierColor: currentTier?.color,
                                     tierLabel: currentTier?.label,
-                                    price: 0.00
+                                    price: product.price,
                                 }
 
                                 return (
                                     <ProductCard
                                         key={`${product.category}-${product.name}`}
                                         product={cardData}
+                                        href={`/menu/${product.slug}`}
                                     />
                                 )
                             })}

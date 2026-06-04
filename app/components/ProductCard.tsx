@@ -1,5 +1,7 @@
 'use client'
 
+import Link from 'next/link'
+
 interface CardProduct {
     name: string
     description: string
@@ -14,11 +16,12 @@ interface CardProduct {
 
 interface ProductCardProps {
     product: CardProduct
+    href?: string
 }
 
-export default function ProductCard({ product }: ProductCardProps) {
-    return (
-        <div className="bg-surface rounded-[5px] border border-border p-4 hover:border-primary hover:shadow-lg transition-all duration-300 group cursor-pointer flex flex-col justify-between shadow-[0_4px_20px_-4px_rgba(26,46,31,0.03)] h-full">
+export default function ProductCard({ product, href }: ProductCardProps) {
+    const content = (
+        <div className="bg-surface border border-border p-4 hover:border-primary hover:shadow-lg transition-all duration-300 group cursor-pointer flex flex-col justify-between shadow-[0_4px_20px_-4px_rgba(26,46,31,0.03)] h-full">
             <div>
                 {/* Image Frame */}
                 <div className="aspect-4/3 bg-dark mb-4 flex items-center justify-center relative overflow-hidden">
@@ -72,22 +75,28 @@ export default function ProductCard({ product }: ProductCardProps) {
                 </div>
 
                 {/* Product Name */}
-                <h3 className="text-base text-text font-heading mb-1 group-hover:text-primary transition-colors line-clamp-1">
+                <h3 className="text-base text-text font-heading tracking-wide mb-1 group-hover:text-primary transition-colors line-clamp-1">
                     {product.name}
                 </h3>
 
                 {/* Description */}
-                <p className="text-sm text-text-muted line-clamp-2 leading-relaxed mb-4">
+                <p className="text-sm text-text-muted line-clamp-2 tracking-wide mb-4">
                     {product.description}
                 </p>
             </div>
 
             {/* Price */}
             <div className="pt-4 border-t border-border flex items-center justify-end mt-auto">
-                <p className="text-base text-text font-heading">
+                <p className="text-base text-text tracking-widest font-heading">
                     ${product.price ? product.price.toFixed(2) : '0.00'}
                 </p>
             </div>
         </div>
     )
+
+    if (href) {
+        return <Link href={href}>{content}</Link>
+    }
+
+    return content
 }
