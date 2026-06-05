@@ -166,6 +166,6 @@ export function Footer() {
                     </p>
                 </div>
             </div>
-        </footer >
+        </footer>
     )
 }

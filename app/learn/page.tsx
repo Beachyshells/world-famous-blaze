@@ -90,7 +90,22 @@ export default function LearnPage() {
                     </div>
                 </div>
             </section>
-
+            <section className="bg-surface">
+                <div className="max-w-7xl mx-auto px-6 md:px-8 py-16 md:py-24 text-center">
+                    <p className="text-xs tracking-[0.3em] uppercase text-primary mb-3">
+                        Ready to Shop?
+                    </p>
+                    <h2 className="text-2xl font-heading text-text mb-4">
+                        See what's on the shelf
+                    </h2>
+                    <Link
+                        href="/menu"
+                        className="bg-primary text-bg px-8 py-3 text-sm tracking-[0.2em] uppercase hover:opacity-90 transition-opacity inline-block"
+                    >
+                        Browse the Menu
+                    </Link>
+                </div>
+            </section>
 
         </div>
     )

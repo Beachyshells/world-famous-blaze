@@ -174,6 +174,6 @@ export function AgeGate() {
                 )}
 
             </div>
-        </div >
+        </div>
     )
 }

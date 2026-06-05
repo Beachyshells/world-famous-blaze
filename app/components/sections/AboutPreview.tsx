@@ -12,7 +12,7 @@ export function StoryPreview() {
                         <p className="text-xs tracking-[0.4em] uppercase text-primary mb-3">
                             About
                         </p>
-                        <h2 className="text-4xl md:text-5xl text-text leading-[1.1]">
+                        <h2 className="text-4xl md:text-5xl text-text font-heading leading-[1.1]">
                             Built in the Community
                         </h2>
                     </div>
