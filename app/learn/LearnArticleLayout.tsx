@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 const allArticles = [
-    { title: 'Your First Visit', href: '/learn/first-visit', category: 'Shop Learn' },
+    { title: 'Your First Visit', href: '/learn/first-visit', category: 'Shop Guide' },
     { title: 'Sativa', href: '/learn/sativa', category: 'Strains' },
     { title: 'Indica', href: '/learn/indica', category: 'Strains' },
     { title: 'Hybrid', href: '/learn/hybrid', category: 'Strains' },
@@ -33,11 +33,11 @@ export default function LearnArticleLayout({
             <div className="absolute inset-0 bg-bg/80 pointer-events-none" />
 
             {/* Article Header */}
-            <div className="relative bg-surface/70 backdrop-blur-md border-b border-border">
-                <div className="max-w-7xl mx-auto px-6 md:px-8 py-16 md:py-24">
+            <section className="relative bg-surface/70 backdrop-blur-md border-b border-border">
+                <div className="max-w-7xl mx-auto px-6 md:px-8 py-20 md:py-28">
                     <Link
                         href="/learn"
-                        className="text-xs tracking-[0.3em] uppercase text-primary hover:text-accent transition-colors mb-4 inline-block"
+                        className="text-xs tracking-[0.3em] uppercase text-primary hover:text-accent transition-colors mb-6 inline-block"
                     >
                         ← Back to Learn
                     </Link>
@@ -49,14 +49,14 @@ export default function LearnArticleLayout({
                         {subtitle}
                     </p>
                 </div>
-            </div>
+            </section>
 
             {/* Content Area: Article + Sidebar */}
             <div className="relative max-w-7xl mx-auto px-6 md:px-8 py-16 md:py-24">
                 <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-12 lg:gap-16">
 
-                    {/* Main Content — Frosted Glass Card */}
-                    <div className="bg-surface/70 backdrop-blur-xl border border-border shadow-lg p-8 md:p-12">
+                    {/* Main Content */}
+                    <article className="bg-surface/70 backdrop-blur-xl border border-border shadow-lg p-8 md:p-12 rounded-[5px]">
                         <div className="max-w-3xl space-y-6 text-text-muted leading-relaxed text-lg">
                             {children}
                         </div>
@@ -67,12 +67,12 @@ export default function LearnArticleLayout({
                                 The information on this page is for educational purposes only. It is not medical advice. Cannabis affects everyone differently. Consult a healthcare professional with any medical questions. World Famous Blaze makes no claims about the medical benefits of any product.
                             </p>
                         </div>
-                    </div>
+                    </article>
 
-                    {/* Sidebar — Article Navigation */}
-                    <div className="lg:sticky lg:top-24 lg:self-start">
-                        <div className="bg-surface/70 backdrop-blur-xl border border-border shadow-lg p-6">
-                            <p className="text-xs tracking-[0.3em] uppercase text-primary mb-4">
+                    {/* Sidebar */}
+                    <aside className="lg:sticky lg:top-24 lg:self-start">
+                        <div className="bg-surface/70 backdrop-blur-xl border border-border shadow-lg p-6 rounded-[5px]">
+                            <p className="text-xs tracking-[0.3em] uppercase text-accent mb-4">
                                 Articles
                             </p>
                             <nav className="space-y-1">
@@ -82,7 +82,7 @@ export default function LearnArticleLayout({
                                         <Link
                                             key={article.href}
                                             href={article.href}
-                                            className={`block px-4 py-3 transition-all ${isActive
+                                            className={`block px-4 py-3 transition-all rounded-[5px] ${isActive
                                                 ? 'bg-primary/10 border-l-2 border-primary text-text'
                                                 : 'text-text-muted hover:text-text hover:bg-surface/50'
                                                 }`}
@@ -90,15 +90,25 @@ export default function LearnArticleLayout({
                                             <span className="text-[10px] tracking-[0.2em] uppercase text-text-muted block mb-0.5">
                                                 {article.category}
                                             </span>
-                                            <span className="text-sm">
+                                            <span className="text-sm font-heading">
                                                 {article.title}
                                             </span>
                                         </Link>
                                     )
                                 })}
                             </nav>
+
+                            {/* CTA */}
+                            <div className="border-t border-border mt-4 pt-4">
+                                <Link
+                                    href="/menu"
+                                    className="block text-center bg-primary text-bg px-4 py-3 text-xs tracking-[0.2em] uppercase hover:opacity-90 transition-opacity rounded-[5px]"
+                                >
+                                    Browse the Menu
+                                </Link>
+                            </div>
                         </div>
-                    </div>
+                    </aside>
                 </div>
             </div>
         </div>
