@@ -192,7 +192,7 @@ export default function FirstVisitPage() {
                         </div>
                         <div className="border border-white/10 bg-white/5 p-6 rounded-[5px]">
                             <p className="text-2xl font-heading text-white mb-1">$1</p>
-                            <p className="text-white/40 text-sm">Per dab</p>
+                            <p className="text-white/40 text-sm">One per visit</p>
                         </div>
                         <div className="border border-white/10 bg-white/5 p-6 rounded-[5px]">
                             <p className="text-2xl font-heading text-white mb-1">Every Visit</p>
@@ -252,7 +252,7 @@ export default function FirstVisitPage() {
                         Ready?
                     </p>
                     <h2 className="text-3xl md:text-4xl font-heading text-text mb-4">
-                        Come see what it&apos;s all about
+                        Come see what it's all about
                     </h2>
                     <p className="text-text-muted max-w-xl mx-auto mb-8 text-lg">
                         Open 24/7. Free parking. Friendly staff. Worst case, you leave with good weed.

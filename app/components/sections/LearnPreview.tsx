@@ -12,7 +12,7 @@ const placeholderArticles = [
         category: 'Shop Learn',
         title: 'Your First Visit: What to Expect',
         excerpt: 'How to read the menu, what to ask, and how the whole thing works.',
-        href: '/learn/first-visit'
+        href: '/visit/first-visit'
     },
     {
         category: 'Community Learn',

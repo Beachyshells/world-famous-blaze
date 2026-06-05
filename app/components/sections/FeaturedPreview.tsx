@@ -71,7 +71,7 @@ export function FeaturedPreview() {
                                 <span className="text-xs tracking-[0.3em] uppercase text-accent mb-2">
                                     {product.category}
                                 </span>
-                                <h3 className="text-2xl md:text-3xl text-white font-heading tracking-wide mb-2 group-hover:text-primarytransition-colors">
+                                <h3 className="text-2xl md:text-3xl text-white font-heading tracking-wide mb-2 group-hover:text-primary transition-colors">
                                     {product.name}
                                 </h3>
                                 <p className="text-sm md:text-base text-white/70 max-w-md leading-relaxed">

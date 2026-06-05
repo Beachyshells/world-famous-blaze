@@ -100,7 +100,7 @@ export default function VisitPage() {
             </section>
 
             {/* 4. What to Expect */}
-            < section className="bg-surface border-b border-border" >
+            <section className="bg-surface border-b border-border">
                 <div className="max-w-7xl mx-auto px-6 md:px-8 py-20 md:py-28">
                     <div className="max-w-3xl">
                         <p className="text-xs tracking-[0.3em] uppercase text-accent mb-3">
@@ -112,7 +112,7 @@ export default function VisitPage() {
 
                         <div className="space-y-10">
                             <div className="flex gap-6 items-start">
-                                <div className="w-10 h-10 flex items-center justify-center shrink-0 ">
+                                <div className="w-12 h-10 flex items-center justify-center shrink-0 ">
                                     <div className="w-12 h-12 flex items-center justify-center shrink-0">
                                         <img src="/images/marijuana.png" alt="" className="w-5 h-5" />
                                     </div>
@@ -126,7 +126,7 @@ export default function VisitPage() {
                             </div>
 
                             <div className="flex gap-6 items-start">
-                                <div className="w-10 h-10 flex items-center justify-center shrink-0">
+                                <div className="w-12 h-10 flex items-center justify-center shrink-0">
                                     <div className="w-12 h-12 flex items-center justify-center shrink-0">
                                         <img src="/images/marijuana.png" alt="" className="w-5 h-5" />
                                     </div>
