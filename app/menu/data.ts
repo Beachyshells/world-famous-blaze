@@ -17,11 +17,11 @@ export const strainOptions: { name: Strain; label: string }[] = [
 ]
 
 export const tierOptions: { name: Tier; color: string; label: string }[] = [
-    { name: 'yellow', color: '#ecc94b', label: 'Yellow' },
-    { name: 'green', color: '#48bb78', label: 'Green' },
-    { name: 'blue', color: '#4299e1', label: 'Blue' },
-    { name: 'pink', color: '#ed64a6', label: 'Pink' },
-    { name: 'white', color: '#ffffff', label: 'White' },
+    { name: 'yellow', color: '#ecc94b', label: '' },
+    { name: 'green', color: '#48bb78', label: '' },
+    { name: 'blue', color: '#4299e1', label: '' },
+    { name: 'pink', color: '#ed64a6', label: '' },
+    { name: 'white', color: '#ffffff', label: '' },
 ]
 
 

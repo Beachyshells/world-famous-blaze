@@ -24,9 +24,9 @@ export function Header() {
                 {/* Logo / Site name */}
                 <Link
                     href="/"
-                    className="text-xl md:text-2xl font-semibold tracking-tight text-text hover:text-primary transition-colors shrink-0"
+                    className="text-xl md:text-2xl uppercase font-semibold tracking-tight font-heading hover:text-primary transition-colors shrink-0"
                 >
-                    World Famous Blaze
+                    WFB
                 </Link>
 
                 {/* Desktop nav */}

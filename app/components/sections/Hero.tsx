@@ -14,7 +14,8 @@ export function Hero() {
                 <p className="text-xs tracking-[0.3em] uppercase text-accent mb-2">
                     Premium Cannabis  ·  Authentic Service
                 </p>
-                <h1 className="text-5xl md:text-6xl font-heading tracking-wide text-white mb-4">                    World Famous Blaze
+                <h1 className="text-5xl md:text-6xl uppercase font-heading tracking-wide text-white mb-4">
+                    World Famous Blaze
                 </h1>
                 <p className="text-white/70 text-lg max-w-2xl">
                     Carefully curated cannabis from trusted growers. Locally owned,

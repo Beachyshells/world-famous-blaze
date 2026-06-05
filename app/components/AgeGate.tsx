@@ -81,8 +81,7 @@ export function AgeGate() {
                         <p className="text-xs tracking-[0.3em] uppercase text-primary mb-2">
                             Age Verification Required
                         </p>
-                        <h1 className="text-3xl mb-4">Welcome</h1>
-                        <p className="text-text-muted mb-8 text-sm leading-relaxed">
+                        <h1 className="text-3xl font-heading mb-4">Welcome</h1>                        <p className="text-text-muted mb-8 text-sm leading-relaxed">
                             You must be 21 years of age or older to enter this site. Please
                             verify your date of birth to continue.
                         </p>
@@ -166,8 +165,8 @@ export function AgeGate() {
                         <p className="text-xs tracking-[0.3em] uppercase text-danger mb-4">
                             Access Denied
                         </p>
-                        <h1 className="text-3xl mb-4">We're Sorry</h1>
-                        <p className="text-text-muted leading-relaxed">
+                        <h1 className="text-3xl font-heading mb-4">We're Sorry</h1>
+                        <p className="text-text-muted mb-8 text-sm leading-relaxed">
                             You must be 21 years of age or older to enter this site. Please
                             come back when you're of legal age.
                         </p>
@@ -175,6 +174,6 @@ export function AgeGate() {
                 )}
 
             </div>
-        </div>
+        </div >
     )
 }

@@ -1,8 +1,3 @@
-'use client'
-
-import Link from 'next/link'
-import Lottie from 'lottie-react'
-import flameAnimation from '../../public/images/flame.json'
 
 
 export default function VisitPage() {
@@ -27,13 +22,13 @@ export default function VisitPage() {
 
             {/* Big Statement Section */}
             <div className="bg-dark">
-                <div className="max-w-7xl mx-auto px-6 md:px-8 py-20 md:py-28">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                        <div>
-                            <h1 className="text-5xl md:text-6xl font-heading text-white mb-6 uppercase">
-                                World Famous <span className="text-transparent bg-clip-text bg-linear-to-t from-[#ef4444] via-[#f97316] to-[#ffffff]">Blaze</span>
+                <div className="max-w-7xl mx-auto px-6 md:px-8 py-10 md:py-18">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+                        <div className="text-center md:text-left flex gap-6 flex-col">
+                            <h1 className="text-5xl md:text-6xl font-heading leading-tighter text-white mb-26 uppercase">
+                                World Famous <span className="flex text-transparent bg-clip-text bg-linear-to-t from-[#ef4444] via-[#f97316] to-[#ffffff]">Blaze</span>
                             </h1>
-                            <p className="text-xs tracking-[0.3em] uppercase text-accent mb-4">
+                            <p className="text-md tracking-[0.3em] uppercase text-accent mb-4">
                                 Always Open
                             </p>
                             <p className="text-7xl md:text-9xl font-heading text-white leading-none mb-4">
@@ -56,13 +51,17 @@ export default function VisitPage() {
                                 </p>
                                 <p className="text-neutral-400 text-sm mt-2">Tap to call — we always pick up</p>
                             </a>
-                            <div className="bg-white/10 border border-neutral-800 rounded-[5px] p-8 transition-all hover:bg-white/20">
+                            <div className="bg-white/10 border border-neutral-800 rounded-[5px] group block p-8 transition-all hover:bg-white/20">
                                 <h3 className="text-xs font-bold tracking-[0.2em] uppercase text-[#96d47a] mb-4">
                                     Visit Us
                                 </h3>
-                                <div className="space-y-1">
-                                    <p className="text-2xl font-semibold font-body text-white tracking-wider">2797 NY-95</p>
-                                    <p className="text-neutral-400">Bombay, NY 12914</p>
+                                <div className="space-y-1  cursor-pointer">
+                                    <p className="text-3xl font-body text-primary group-hover:text-white transition-colors">
+                                        2797 NY-95
+                                    </p>
+                                    <p className="text-neutral-400">
+                                        Bombay, NY 12914
+                                    </p>
                                 </div>
                                 <div className="mt-6 pt-6 border-t border-neutral-800">
                                     <span className="inline-flex items-center text-xs font-medium text-[#c7f708] bg-emerald-400/10 px-2.5 py-0.5 rounded-full">
@@ -79,7 +78,7 @@ export default function VisitPage() {
             <div className="bg-bg">
                 <div className="max-w-7xl mx-auto px-6 md:px-8 py-20 md:py-28">
                     <div className="max-w-3xl">
-                        <p className="text-xs tracking-[0.3em] uppercase text-accent mb-8">
+                        <p className="text-sm tracking-[0.3em] uppercase text-accent mb-8">
                             First Time?
                         </p>
                         <h2 className="text-3xl md:text-4xl font-heading text-text mb-8">
@@ -121,8 +120,7 @@ export default function VisitPage() {
                                     </span>
                                 </div>
                                 <div>
-                                    <h3 className="text-lg text-text mb-2">Browse & Choose</h3>
-                                    <p className="text-text-muted leading-relaxed">
+                                    <h3 className="text-lg font-heading text-text mb-2">Browse & Choose</h3>                                    <p className="text-text-muted leading-relaxed">
                                         Take your time. Check out the flower, ask about the tiers, see what's new. No pressure, no rushing.
                                     </p>
                                 </div>

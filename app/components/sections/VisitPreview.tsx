@@ -39,7 +39,6 @@ export function VisitPreview() {
                         <a href="tel:+15183581023" className="text-2xl font-heading block mb-2 hover:text-accent transition-colors">
                             (518) 358-1023
                         </a>
-                        <p className="text-text-muted text-sm italic">Call or text anytime</p>
                     </div>
                 </div>
 

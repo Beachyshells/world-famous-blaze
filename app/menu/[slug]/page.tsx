@@ -152,14 +152,17 @@ export default async function ProductDetailPage({
 
                         {/* Action Button */}
                         <div className="border-t border-border pt-8">
+                            <p className="text-xs tracking-[0.2em] uppercase text-text-muted mb-4 text-center">
+                                Click here to add this item to your wish list, then when you get to the store just let us know what you'd like to purchase!
+                            </p>
                             <a
                                 href="/visit"
-                                className="block bg-primary text-bg px-8 py-4 text-center text-sm tracking-[0.2em] uppercase hover:opacity-90 transition-opacity cursor-pointer"
+                                className="block bg-primary rounded-[5px]text-bg px-8 py-4 text-center text-sm tracking-[0.2em] uppercase hover:opacity-90 transition-opacity cursor-pointer"
                             >
-                                Get Directions to Store
+                                Add to wish list
                             </a>
                             <p className="text-xs text-text-muted mt-3 text-center">
-                                Online ordering coming soon. Stop in or call{' '}
+                                Stop in or call{' '}
                                 <a href="tel:+15183581023" className="text-primary hover:text-accent transition-colors">
                                     (518) 358-1023
                                 </a>

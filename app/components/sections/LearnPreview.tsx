@@ -42,7 +42,7 @@ export function LearnPreview() {
                 </div>
 
                 {/* Article Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-3 bg-surface gap-6 mb-12">
+                <div className="grid grid-cols-1 md:grid-cols-3 bg-bg gap-6 mb-12">
                     {placeholderArticles.map((article) => (
                         <Link
                             key={article.title}

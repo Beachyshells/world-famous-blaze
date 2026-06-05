@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
-import Link from 'next/link'
 import ProductCard from '../components/ProductCard'
 import {
     allProducts,
@@ -235,7 +234,7 @@ export default function MenuContent() {
                                                 aria-label={`${tier.name} tier`}
                                             >
                                                 <span
-                                                    className="w-3 h-3 rounded-full border border-border/50"
+                                                    className="w-3 h-3 rounded-full border border-text/30"
                                                     style={{ backgroundColor: tier.color }}
                                                 />
                                                 <span className="text-xs tracking-wide">{tier.label}</span>
