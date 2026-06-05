@@ -91,57 +91,7 @@ export default function LearnPage() {
                 </div>
             </section>
 
-            {/* Shop Guides — First Visit gets its own featured section */}
-            <section className="bg-surface border-b border-border">
-                <div className="max-w-7xl mx-auto px-6 md:px-8 py-16 md:py-24">
-                    <p className="text-xs tracking-[0.3em] uppercase text-accent mb-3">
-                        Shop Guides
-                    </p>
-                    <h2 className="text-2xl md:text-3xl font-heading text-text mb-8">
-                        Make the most of your visit
-                    </h2>
 
-                    <Link
-                        href="/learn/first-visit"
-                        className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-bg border border-border p-8 md:p-12 hover:border-primary shadow-md hover:shadow-xl transition-all duration-300 group cursor-pointer rounded-[5px]"
-                    >
-                        <div>
-                            <p className="text-xs tracking-[0.3em] uppercase text-accent mb-3">
-                                Shop Learn
-                            </p>
-                            <h3 className="text-2xl md:text-3xl font-heading text-text mb-4 group-hover:text-primary transition-colors">
-                                Your First Visit
-                            </h3>
-                            <p className="text-text-muted leading-relaxed mb-6">
-                                What to expect when you walk in, how the whole thing works, and all the ways to win. We walk you through checking in, browsing the menu, understanding our tier system, and making the most of the loyalty program.
-                            </p>
-                            <span className="text-sm text-primary opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 inline-block">
-                                Read the Guide →
-                            </span>
-                        </div>
-                        <div className="aspect-4/3 bg-dark rounded-[5px] flex items-center justify-center overflow-hidden">
-                            <span className="text-xs tracking-[0.3em] uppercase text-white/20">
-                                Photo Coming Soon
-                            </span>
-                        </div>
-                    </Link>
-                </div>
-            </section>
-
-            {/* More Coming Soon */}
-            <section className="bg-bg">
-                <div className="max-w-7xl mx-auto px-6 md:px-8 py-16 md:py-24 text-center">
-                    <p className="text-xs tracking-[0.3em] uppercase text-primary mb-3">
-                        More Coming Soon
-                    </p>
-                    <h2 className="text-2xl font-heading text-text mb-4">
-                        Shop guides, community resources, and more
-                    </h2>
-                    <p className="text-text-muted max-w-xl mx-auto">
-                        We&apos;re building out guides on how to shop smart, what to look for in quality products, and resources for the community. Check back soon.
-                    </p>
-                </div>
-            </section>
         </div>
     )
 }

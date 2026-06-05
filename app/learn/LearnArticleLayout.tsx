@@ -4,11 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 const allArticles = [
-    { title: 'Your First Visit', href: '/learn/first-visit', category: 'Shop Guide' },
-    { title: 'Sativa', href: '/learn/sativa', category: 'Strains' },
-    { title: 'Indica', href: '/learn/indica', category: 'Strains' },
-    { title: 'Hybrid', href: '/learn/hybrid', category: 'Strains' },
-]
+    { title: 'Sativa', href: '/learn/sativa', category: 'Strains' }]
 
 export default function LearnArticleLayout({
     children,

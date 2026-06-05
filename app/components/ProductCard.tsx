@@ -21,7 +21,7 @@ interface ProductCardProps {
 
 export default function ProductCard({ product, href }: ProductCardProps) {
     const content = (
-        <div className="bg-surface border border-border p-4 hover:border-primary hover:shadow-lg transition-all duration-300 group cursor-pointer flex flex-col justify-between shadow-[0_4px_20px_-4px_rgba(26,46,31,0.03)] h-full">
+        <div className="bg-surface border border-border rounded-[5px] p-4 hover:border-primary hover:shadow-lg transition-all duration-300 group cursor-pointer flex flex-col justify-between shadow-[0_4px_20px_-4px_rgba(26,46,31,0.03)] h-full">
             <div>
                 {/* Image Frame */}
                 <div className="aspect-4/3 bg-dark mb-4 flex items-center justify-center relative overflow-hidden">

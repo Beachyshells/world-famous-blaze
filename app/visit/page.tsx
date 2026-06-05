@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import FireBlaze from '../components/FireBlaze'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
     title: 'Visit | World Famous Blaze',
@@ -139,39 +140,45 @@ export default function VisitPage() {
                             </div>
 
                             <div className="flex gap-6 items-start">
-                                <div className="w-10 h-10 flex items-center justify-center shrink-0">
-                                    <div className="w-12 h-12 flex items-center justify-center shrink-0">
-                                        <img src="/images/marijuana.png" alt="" className="w-5 h-5" />
-                                    </div>
+                                <div className="w-12 h-12 flex items-center justify-center shrink-0">
+                                    <img src="/images/marijuana.png" alt="" className="w-5 h-5" />
                                 </div>
                                 <div>
                                     <h3 className="text-lg font-heading text-text mb-2">Browse & Choose</h3>
                                     <p className="text-text-muted leading-relaxed">
-                                        Take your time. Check out the flower, ask about the tiers, see what's new. No pressure, no rushing.
+                                        Take your time. Check out the flower, ask about the tiers, see what&apos;s new. No pressure, no rushing.
                                     </p>
                                 </div>
                             </div>
 
                             <div className="flex gap-6 items-start">
-                                <div className="w-10 h-10 flex items-center justify-center shrink-0">
-                                    <div className="w-12 h-12 flex items-center justify-center shrink-0">
-                                        <img src="/images/marijuana.png" alt="" className="w-5 h-5" />
-                                    </div>
+                                <div className="w-12 h-12 flex items-center justify-center shrink-0">
+                                    <img src="/images/marijuana.png" alt="" className="w-5 h-5" />
                                 </div>
                                 <div>
                                     <h3 className="text-lg font-heading text-text mb-2">Come Back Anytime</h3>
                                     <p className="text-text-muted leading-relaxed">
-                                        We're open 24/7 and we remember our regulars. First visit or fiftieth — you're always welcome.
+                                        We&apos;re open 24/7 and we remember our regulars. First visit or fiftieth — you&apos;re always welcome.
                                     </p>
                                 </div>
                             </div>
                         </div>
+
+                        <div className="pt-8 mt-4 border-t border-border">
+                            <Link
+                                href="/visit/first-visit"
+                                className="group inline-flex items-center gap-3 text-text hover:text-primary transition-colors"
+                            >
+                                <span className="text-sm tracking-wide">Read the full first visit guide — Dollar Dabs, loyalty rewards, and more</span>
+                                <span className="text-xl transition-transform group-hover:translate-x-1">→</span>
+                            </Link>
+                        </div>
                     </div>
                 </div>
-            </section >
+            </section>
 
             {/* 5. Map — utility, not the hero */}
-            < section className="border-b border-border" >
+            <section className="border-b border-border">
                 <div className="relative h-[40vh] md:h-[50vh]">
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2800!2d-74.7346!3d44.9419!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ccc5a6a3b3b3b3b%3A0x0!2s2797+NY-95%2C+Bombay%2C+NY+12914!5e0!3m2!1sen!2sus!4v1700000000000"
@@ -185,7 +192,7 @@ export default function VisitPage() {
                         className="absolute inset-0"
                     />
                 </div>
-            </section >
-        </div >
+            </section>
+        </div>
     )
 }
