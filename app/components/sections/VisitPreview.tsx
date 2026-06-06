@@ -28,7 +28,12 @@ export function VisitPreview() {
                     <div className="text-center">
                         <p className="text-xs tracking-[0.4em] uppercase text-accent mb-4">Address</p>
                         <p className="text-2xl font-heading mb-4">2797 NY-95</p>
-
+                        <div className="w-32 h-32 mx-auto overflow-hidden opacity-80">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2800!2d-74.7346!3d44.9419!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ccc5a6a3b3b3b3b%3A0x0!2s2797+NY-95%2C+Bombay%2C+NY+12914!5e0!3m2!1sen!2sus!4v1700000000000"
+                                className="w-full h-full border-0 pointer-events-none"
+                                title="World Famous Blaze map preview"
+                            />
+                        </div>
                     </div>
 
                     {/* Phone */}
