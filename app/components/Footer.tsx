@@ -15,7 +15,7 @@ const requiredWarnings = [
 const placeholderSettings = {
     storeName: 'World-Famous-Blaze',
     tagline: 'Premium cannabis. Authentic service.',
-    licenseNumber: 'License #PLACEHOLDER-0000',
+    licenseNumber: 'License #PLACEHOLDER-0000', //#2023-012-CCB
     jurisdictionStatement: 'Operating under jurisdiction authority. Replace with your operating jurisdiction.',
     phone: '(518) 358-1023',
     email: 'hello@worldfamousblaze.com',
