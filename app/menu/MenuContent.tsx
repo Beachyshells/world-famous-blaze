@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
 import ProductCard from '../components/ProductCard'
-import Link from 'next/link'
 
 import {
     allProducts,
@@ -15,7 +14,7 @@ import {
     type Strain,
     type Tier,
 } from './data'
-import DailyDealBanner from '../components/DailyDealBanner'
+import HeroDealCard from '../components/HeroDealCard'
 
 export default function MenuContent() {
     const [selectedCategories, setSelectedCategories] = useState<Category[]>([])
@@ -104,7 +103,7 @@ export default function MenuContent() {
                                 Browse our current selection. Tap to filter, tap again to remove.
                             </p>
                         </div>
-                        <DailyDealBanner />
+                        <HeroDealCard />
                     </div>
                 </div>
             </div>

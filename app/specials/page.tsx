@@ -20,7 +20,7 @@ export default function SpecialsPage() {
     const activeDeal = weeklyDeals.find((d) => d.day === activeDay)
 
     return (
-        <main className="min-h-screen bg-black text-white py-12 px-6">
+        <main className="min-h-screen bg-dark text-white py-12 px-6">
             <div className="max-w-2xl mx-auto">
                 {/* Logo Space */}
                 <div className="mb-16 text-center">
@@ -63,7 +63,7 @@ export default function SpecialsPage() {
                                 {activeDeal?.title}
                             </h2>
 
-                            <div className="inline-block border-2 border-accent rounded-med px-8 py-4 mb-10">
+                            <div className="inline-block border-2 border-accent rounded-md px-8 py-4 mb-10">
                                 <span className="text-accent text-3xl font-heading tracking-widest uppercase">
                                     {activeDeal?.discount}
                                 </span>
@@ -73,9 +73,8 @@ export default function SpecialsPage() {
                             <ul className="space-y-4 text-white/70 text-sm uppercase tracking-[0.2em] mb-12">
                                 {activeDeal?.promoFeatures?.map((feature, idx) => (
                                     <li key={idx} className="border-b border-white/5 pb-3">
-                                        {/* Now feature.slug and feature.text are recognized! */}
-                                        {idx === 1 ? (
-                                            <a href={`/menu/vapes/${feature.slug}`} className="hover:text-accent transition-colors">
+                                        {feature.slug ? (
+                                            <a href={`/merchandise/${feature.slug}`} className="hover:text-accent transition-colors">
                                                 {feature.text}
                                             </a>
                                         ) : (
@@ -85,9 +84,9 @@ export default function SpecialsPage() {
                                 ))}
                             </ul>
 
-                            <button className="w-full bg-white text-black py-4 font-bold uppercase tracking-[0.3em] text-xs hover:bg-accent transition-colors">
+                            <a href="/menu" className="block w-full bg-white text-black py-4 font-bold uppercase tracking-[0.3em] text-xs hover:bg-accent transition-colors text-center">
                                 Shop Today
-                            </button>
+                            </a>
                         </div>
                     </motion.div>
                 </AnimatePresence>
