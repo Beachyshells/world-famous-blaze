@@ -77,8 +77,7 @@ export function FeaturedPreview() {
                                 <p className="text-sm md:text-base text-white/70 max-w-md leading-relaxed">
                                     {product.description}
                                 </p>
-                                <p className="text-sm font-heading text-white mt-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
-                                    Explore Lineup →
+                                <p className="text-sm font-heading text-white mt-4 opacity-100 md:opacity-0 md:-translate-x-2 md:group-hover:opacity-100 md:group-hover:translate-x-0 transition-all duration-300">                                    Explore Lineup →
                                 </p>
                             </div>
                         </Link>

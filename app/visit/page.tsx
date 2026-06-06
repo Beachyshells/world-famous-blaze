@@ -112,10 +112,8 @@ export default function VisitPage() {
 
                         <div className="space-y-10">
                             <div className="flex gap-6 items-start">
-                                <div className="w-12 h-10 flex items-center justify-center shrink-0 ">
-                                    <div className="w-12 h-12 flex items-center justify-center shrink-0">
-                                        <img src="/images/marijuana.png" alt="" className="w-5 h-5" />
-                                    </div>
+                                <div className="w-12 h-12 flex items-center justify-center shrink-0">
+                                    <img src="/images/marijuana.png" alt="" className="w-5 h-5" />
                                 </div>
                                 <div>
                                     <h3 className="text-lg font-heading text-text mb-2">Bring Your ID</h3>
@@ -126,10 +124,8 @@ export default function VisitPage() {
                             </div>
 
                             <div className="flex gap-6 items-start">
-                                <div className="w-12 h-10 flex items-center justify-center shrink-0">
-                                    <div className="w-12 h-12 flex items-center justify-center shrink-0">
-                                        <img src="/images/marijuana.png" alt="" className="w-5 h-5" />
-                                    </div>
+                                <div className="w-12 h-12 flex items-center justify-center shrink-0">
+                                    <img src="/images/marijuana.png" alt="" className="w-5 h-5" />
                                 </div>
                                 <div>
                                     <h3 className="text-lg font-heading text-text mb-2">Talk to the Team</h3>
@@ -146,7 +142,7 @@ export default function VisitPage() {
                                 <div>
                                     <h3 className="text-lg font-heading text-text mb-2">Browse & Choose</h3>
                                     <p className="text-text-muted leading-relaxed">
-                                        Take your time. Check out the flower, ask about the tiers, see what&apos;s new. No pressure, no rushing.
+                                        Take your time. Check out the flower, ask about the tiers, see what's new. No pressure, no rushing.
                                     </p>
                                 </div>
                             </div>
@@ -158,7 +154,7 @@ export default function VisitPage() {
                                 <div>
                                     <h3 className="text-lg font-heading text-text mb-2">Come Back Anytime</h3>
                                     <p className="text-text-muted leading-relaxed">
-                                        We&apos;re open 24/7 and we remember our regulars. First visit or fiftieth — you&apos;re always welcome.
+                                        We&apos;re open 24/7 and we remember our regulars. First visit or fiftieth — you're always welcome.
                                     </p>
                                 </div>
                             </div>
