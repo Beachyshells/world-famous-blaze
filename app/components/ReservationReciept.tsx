@@ -97,7 +97,7 @@ export default function ReservationReceipt({
                     <div className="flex gap-3 items-start">
                         <span className="text-sm">⏰</span>
                         <div>
-                            <p className="text-sm text-text">We&apos;ll hold this for 2 hours</p>
+                            <p className="text-sm text-text">We&apos;ll hold this for 4 hours</p>
                             <p className="text-xs text-text-muted">After that it goes back on the shelf</p>
                         </div>
                     </div>
