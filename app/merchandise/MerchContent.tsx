@@ -83,8 +83,10 @@ export default function MerchContent() {
                                 description: product.description,
                                 category: categories.find(c => c.name === product.category)?.label || 'Gear',
                                 price: product.price
+
                             }}
                             href={`/merchandise/${product.slug}`}
+                            bagId={`merchandise-${product.slug}`}
                         />
                     ))}
                 </div>

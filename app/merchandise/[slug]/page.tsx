@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { allProducts, categories } from '../data'
-import { div } from 'framer-motion/m'
+import AddToBagButton from '../../components/AddToBagButton'
 
 export async function generateMetadata({
     params,
@@ -97,13 +97,16 @@ export default async function MerchDetailPage({
                         </div>
 
                         <div className="border-t border-border pt-8">
-                            <a
-                                href="/visit"
-                                className="block bg-primary text-bg px-8 py-4 text-center text-sm tracking-[0.2em] uppercase hover:opacity-90 transition-opacity rounded-[5px]"
-                            >
-                                Get Directions to Store
-                            </a>
+                            <AddToBagButton
+                                id={`merch-${product.slug}`}
+                                name={product.name}
+                                price={product.price}
+                                category={categoryLabel}
+                            />
                             <p className="text-xs text-text-muted mt-3 text-center">
+                                This is a reservation, not a purchase. Pay cash in store.
+                            </p>
+                            <p className="text-xs text-text-muted mt-2 text-center">
                                 Stop in or call{' '}
                                 <a href="tel:+15183581023" className="text-primary hover:text-accent transition-colors">
                                     (518) 358-1023
@@ -113,6 +116,6 @@ export default async function MerchDetailPage({
                     </div>
                 </div>
             </div>
-        </div >
+        </div>
     )
 }

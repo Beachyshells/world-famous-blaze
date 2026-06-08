@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { ThemeToggle } from './ThemeToggle'
+import BagIcon from './BagIcon'
 
 const navLinks = [
     { href: '/', label: 'Home' },
@@ -41,7 +42,8 @@ export function Header() {
                             {link.label}
                         </Link>
                     ))}
-                    <div className="pl-6 ml-2 border-l border-border">
+                    <div className="pl-6 ml-2 border-l border-border flex items-center gap-4">
+                        <BagIcon />
                         <ThemeToggle />
                     </div>
                 </nav>

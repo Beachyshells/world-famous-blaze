@@ -4,6 +4,8 @@ import "./globals.css";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { AgeGate } from "./components/AgeGate";
+import { BagProvider } from './context/BagContext'
+import BagDrawer from './components/BagDrawer'
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,9 +38,12 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} h-full antialiased overflow-x-hidden`}    >
       <body className="min-h-full flex flex-col">
         <AgeGate />
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <BagProvider>
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+          <BagDrawer />
+        </BagProvider>
       </body>
     </html>
   );

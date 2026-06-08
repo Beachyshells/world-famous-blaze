@@ -284,6 +284,8 @@ export default function MenuContent() {
                                         key={`${product.category}-${product.name}`}
                                         product={cardData}
                                         href={`/menu/${product.slug}`}
+                                        bagId={`menu-${product.slug}`}
+
                                     />
                                 )
                             })}

@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { useBag } from '../context/BagContext'
 
 interface CardProduct {
     name: string
@@ -17,9 +18,11 @@ interface CardProduct {
 interface ProductCardProps {
     product: CardProduct
     href?: string
+    bagId?: string
 }
 
-export default function ProductCard({ product, href }: ProductCardProps) {
+export default function ProductCard({ product, href, bagId }: ProductCardProps) {
+    const { addItem } = useBag()
     const content = (
         <div className="bg-surface border border-border rounded-[5px] p-4 hover:border-primary hover:shadow-lg transition-all duration-300 group cursor-pointer flex flex-col justify-between shadow-[0_4px_20px_-4px_rgba(26,46,31,0.03)] h-full">
             <div>
@@ -86,10 +89,27 @@ export default function ProductCard({ product, href }: ProductCardProps) {
             </div>
 
             {/* Price */}
-            <div className="pt-4 border-t border-border flex items-center justify-end mt-auto">
-                <p className="text-base text-text tracking-widest font-heading">
+            <div className="pt-4 border-t border-border flex items-center justify-between mt-auto">
+                <p className="text-base text-text font-heading">
                     ${product.price ? product.price.toFixed(2) : '0.00'}
                 </p>
+                {bagId && (
+                    <button
+                        onClick={(e) => {
+                            e.preventDefault()
+                            e.stopPropagation()
+                            addItem({
+                                id: bagId,
+                                name: product.name,
+                                price: product.price || 0,
+                                category: product.category,
+                            })
+                        }}
+                        className="text-[10px] tracking-[0.2em] uppercase text-primary hover:text-accent transition-colors cursor-pointer font-heading"
+                    >
+                        + Add
+                    </button>
+                )}
             </div>
         </div>
     )

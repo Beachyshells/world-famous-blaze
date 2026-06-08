@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { allProducts, categories, tierOptions } from '../data'
+import AddToBagButton from '../../components/AddToBagButton'
 
 export async function generateMetadata({
     params,
@@ -150,18 +151,19 @@ export default async function ProductDetailPage({
                             </p>
                         </div>
 
+
                         {/* Action Button */}
                         <div className="border-t border-border pt-8">
-                            <p className="text-xs tracking-[0.2em] uppercase text-text-muted mb-4 text-center">
-                                Click here to add this item to your wish list, then when you get to the store just let us know what you'd like to purchase!
-                            </p>
-                            <a
-                                href="/visit"
-                                className="block bg-primary rounded-[5px]text-bg px-8 py-4 text-center text-sm tracking-[0.2em] uppercase hover:opacity-90 transition-opacity cursor-pointer"
-                            >
-                                Add to wish list
-                            </a>
+                            <AddToBagButton
+                                id={`menu-${product.slug}`}
+                                name={product.name}
+                                price={product.price}
+                                category={categoryLabel}
+                            />
                             <p className="text-xs text-text-muted mt-3 text-center">
+                                This is a reservation, not a purchase. Pay cash in store.
+                            </p>
+                            <p className="text-xs text-text-muted mt-2 text-center">
                                 Stop in or call{' '}
                                 <a href="tel:+15183581023" className="text-primary hover:text-accent transition-colors">
                                     (518) 358-1023
