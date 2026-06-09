@@ -65,7 +65,7 @@ export function Header() {
 
             {/* Mobile menu */}
             {menuOpen && (
-                <nav className="lg:hidden bg-surface border-t border-border">
+                <nav className="bg-surface border-t border-border">
                     <div className="flex flex-col px-6 py-4 gap-4">
                         {navLinks.map((link) => (
                             <Link

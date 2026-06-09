@@ -7,7 +7,7 @@ export default function FireBlaze() {
     return (
         <span className="relative isolate inline-flex items-center justify-center">
             {/* Flame behind */}
-            <span className="absolute inset-0 -top-28 bottom-2.5 pointer-events-none opacity-80 overflow-hidden"
+            <span className="absolute inset-0 -top-65 bottom-3.5 pointer-events-none overflow-hidden"
                 style={{
                     maskImage: 'linear-gradient(to bottom, white 40%, transparent 100%), linear-gradient(to right, transparent 0%, white 15%, white 85%, transparent 100%)',
                     maskComposite: 'intersect',
@@ -25,6 +25,7 @@ export default function FireBlaze() {
 
             {/* Gradient text with animated glow */}
             <span
+                style={{ fontFamily: 'var(--font-playfair)' }}
                 className="relative text-transparent bg-clip-text bg-linear-to-t from-red-500 via-orange-400 to-yellow-200 animate-fire-glow"
             >
                 Blaze
