@@ -19,7 +19,7 @@ export function Hero() {
             <div className="absolute inset-0 bg-linear-to-r from-dark/85 via-dark/60 via-70% to-transparent" />
 
             {/* Content */}
-            <div className="relative max-w-7xl mx-auto px-6 md:px-8 py-20 md:py-28 z-10 w-full">
+            <div className="relative max-w-7xl mx-auto px-6 md:px-8 py-15 md:py-18 z-10 w-full">
 
                 {/* Desktop layout */}
                 <div className="hidden md:block">
@@ -105,7 +105,7 @@ export function Hero() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.4 }}
-                        className="text-5xl uppercase font-heading tracking-wide text-white leading-none"
+                        className="text-5xl uppercase font-heading tracking-wide text-white"
                     >
                         World<br />Famous<br /><FireBlaze />
                     </motion.h1>
