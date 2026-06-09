@@ -7,7 +7,7 @@ export default function FireBlaze() {
     return (
         <span className="relative isolate inline-flex items-center justify-center">
             {/* Flame behind */}
-            <span className="absolute inset-0 -top-65 bottom-3.5 pointer-events-none overflow-hidden"
+            <span className="absolute -top-12 md:-top-20 left-0 right-0 h-24 md:h-40 pointer-events-none overflow-hidden z-[-1]"
                 style={{
                     maskImage: 'linear-gradient(to bottom, white 40%, transparent 100%), linear-gradient(to right, transparent 0%, white 15%, white 85%, transparent 100%)',
                     maskComposite: 'intersect',
@@ -19,7 +19,7 @@ export default function FireBlaze() {
                     animationData={flameAnimation}
                     loop
                     autoplay
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    style={{ width: '100%', height: '100%' }}
                 />
             </span>
 
