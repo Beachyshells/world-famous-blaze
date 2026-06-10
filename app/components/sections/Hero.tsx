@@ -37,19 +37,16 @@ export function Hero() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.4 }}
-                            className="text-8xl lg:text-9xl uppercase font-heading tracking-wide text-white leading-none mb-8"
+                            // Responsive alignment: Centered on mobile, Left on large screens
+                            className="text-6xl md:text-8xl lg:text-9xl uppercase font-heading tracking-wide text-white leading-[0.9] mb-8 text-center lg:text-left flex flex-col items-center lg:items-start"
                         >
-                            World<br />Famous<br /><FireBlaze />
+                            <span>World</span>
+                            <span>Famous</span>
+                            {/* FireBlaze now sits on its own line below the text */}
+                            <FireBlaze />
                         </motion.h1>
 
-                        <motion.p
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ duration: 0.8, delay: 0.8 }}
-                            className="text-white/50 text-lg max-w-md mb-10"
-                        >
-                            Carefully curated cannabis from trusted growers. Open 24/7.
-                        </motion.p>
+
                     </div>
 
                     {/* Badge + Buttons — absolute right */}
@@ -57,8 +54,12 @@ export function Hero() {
                         <motion.div
                             initial={{ opacity: 0, x: 300, rotate: 360 }}
                             animate={{ opacity: 1, x: 0, rotate: 0 }}
-                            transition={{ duration: 1.2, delay: 1.3, ease: [0.25, 0.1, 0.25, 1] }}
-                        >
+                            transition={{
+                                type: "spring",
+                                stiffness: 30,
+                                damping: 6,
+                                delay: 0.6
+                            }}                        >
                             <Link href="/specials" className="group block">
                                 <div className="w-64 h-64 rounded-full border-2 border-accent/40 bg-dark/80 backdrop-blur-sm flex flex-col items-center justify-center text-center hover:border-accent hover:scale-105 transition-all duration-300 shadow-2xl">
                                     <p className="text-xs tracking-[0.3em] uppercase text-accent font-heading mb-2">
@@ -83,10 +84,24 @@ export function Hero() {
                             <Link href="/menu" className="bg-primary text-bg px-10 py-4 text-sm tracking-[0.2em] uppercase hover:opacity-90 transition-opacity rounded-[5px] font-heading text-center w-48">
                                 See Menu
                             </Link>
+                        </motion.div>
+                        <motion.div
+                            initial={{ opacity: 0, y: 40 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 2.2, ease: [0.25, 0.1, 0.25, 1] }}
+                        >
                             <Link href="/visit" className="border border-white/20 text-white px-10 py-4 text-sm tracking-[0.2em] uppercase hover:border-accent hover:text-accent transition-colors rounded-[5px] font-heading text-center w-48">
                                 Get Directions
                             </Link>
                         </motion.div>
+                        <motion.p
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 0.8, delay: 0.8 }}
+                            className="text-white/50 text-center text-lg max-w-md mb-10"
+                        >
+                            Carefully curated cannabis from trusted growers. Open 24/7.
+                        </motion.p>
                     </div>
                 </div>
 
